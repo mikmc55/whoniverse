@@ -15,11 +15,5 @@
         }
       ]
     }
-  ],
-  "crons": [
-    {
-      "path": "/api/news",
-      "schedule": "0 10 * * *"
-    }
   ]
 }
