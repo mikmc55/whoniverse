@@ -1,701 +1,24 @@
 // Classic Who — catalogued, not yet playable.
 //
-// Fetched from Cinemeta by scripts/fetch-metadata.js. No entry has a `url`,
-// so the addon does not offer these as streams and the landing page lists the
-// series as queued. Adding files means adding urls here, not refetching.
+// Joined from ledger/series/01-classic-who.tsv and an IMDb episode-list CSV
+// export by scripts/fetch-classic-metadata.js. No entry has a `url`, so the
+// addon does not offer these as streams and the landing page lists the series
+// as queued. Adding files means adding urls here, not refetching.
 //
-// Upstream's season 0 holds specials and shorts and is kept as season 0, which
-// is what Stremio expects. Everything in it is typed Special; refining that into
-// minisode, prequel and animated needs a pass by hand.
+// A few dozen items (minisodes, Shada, K9 & Company, two Resurrection of the
+// Daleks parts) are not on the IMDb episode list this was built from and are
+// listed with a title only.
+//
+// Rebuild with: node scripts/fetch-classic-metadata.js <csv> --write
 
 const episodes = [
-{
-  title: "An Unearthly Child - Unaired Pilot",
-  season: 0,
-  episode: 1,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 1 },
-},
-{
-  title: "The Five Doctors",
-  season: 0,
-  episode: 2,
-  type: "Special",
-  released: "1983-11-25T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 0, episode: 2 },
-},
-{
-  title: "Dimensions in Time (1)",
-  season: 0,
-  episode: 3,
-  type: "Special",
-  released: "1993-11-26T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 0, episode: 3 },
-},
-{
-  title: "Dimensions in Time (2)",
-  season: 0,
-  episode: 4,
-  type: "Special",
-  released: "1993-11-27T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 0, episode: 4 },
-},
-{
-  title: "Doctor Who - The Movie",
-  season: 0,
-  episode: 5,
-  type: "Special",
-  released: "1996-05-27T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 0, episode: 5 },
-},
-{
-  title: "Doctor Who and the Curse of Fatal Death (1)",
-  season: 0,
-  episode: 6,
-  type: "Special",
-  released: "1999-03-12T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 0, episode: 6 },
-},
-{
-  title: "Doctor Who and the Curse of Fatal Death (2)",
-  season: 0,
-  episode: 7,
-  type: "Special",
-  released: "1999-03-12T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 0, episode: 7 },
-},
-{
-  title: "Doctor Who and the Curse of Fatal Death (3)",
-  season: 0,
-  episode: 8,
-  type: "Special",
-  released: "1999-03-12T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 0, episode: 8 },
-},
-{
-  title: "Doctor Who and the Curse of Fatal Death (4)",
-  season: 0,
-  episode: 9,
-  type: "Special",
-  released: "1999-03-12T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 0, episode: 9 },
-},
-{
-  title: "Genesis of the Daleks Supplemental DVD",
-  season: 0,
-  episode: 10,
-  type: "Special",
-  released: "2006-04-10T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 0, episode: 10 },
-},
-{
-  title: "City of Death Supplemental DVD",
-  season: 0,
-  episode: 11,
-  type: "Special",
-  released: "2005-11-07T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 0, episode: 11 },
-},
-{
-  title: "The Five Doctors (Special Edition)",
-  season: 0,
-  episode: 12,
-  type: "Special",
-  released: "1995-02-01T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 0, episode: 12 },
-},
-{
-  title: "Talons of Weng-Chiang Supplemental DVD",
-  season: 0,
-  episode: 13,
-  type: "Special",
-  released: "1977-09-01T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 0, episode: 13 },
-},
-{
-  title: "An Unearthly Child - Unaired Studio Take",
-  season: 0,
-  episode: 14,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 14 },
-},
-{
-  title: "The Invasion of Time Supplemental DVD",
-  season: 0,
-  episode: 15,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 15 },
-},
-{
-  title: "The Key to Time Supplemental DVD",
-  season: 0,
-  episode: 16,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 16 },
-},
-{
-  title: "The Curse of Fenric Special Edition",
-  season: 0,
-  episode: 17,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 17 },
-},
-{
-  title: "Making of Marco Polo 1-2",
-  season: 0,
-  episode: 18,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 18 },
-},
-{
-  title: "Making of Marco Polo 2-2",
-  season: 0,
-  episode: 19,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 19 },
-},
-{
-  title: "Marco Polo End Supplement",
-  season: 0,
-  episode: 20,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 20 },
-},
-{
-  title: "The Tomb of the Cybermen Supplemental DVD",
-  season: 0,
-  episode: 21,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 21 },
-},
-{
-  title: "The Reign of Terror Supplement",
-  season: 0,
-  episode: 22,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 22 },
-},
-{
-  title: "Doctor Who and the Daleks",
-  season: 0,
-  episode: 23,
-  type: "Special",
-  released: "1966-07-01T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 0, episode: 23 },
-},
-{
-  title: "Daleks' Invasion Earth: 2150 A.D.",
-  season: 0,
-  episode: 24,
-  type: "Special",
-  released: "1966-08-05T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 0, episode: 24 },
-},
-{
-  title: "Remembrance of the Daleks Supplemental DVD",
-  season: 0,
-  episode: 25,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 25 },
-},
-{
-  title: "The Invasion Start Supplement",
-  season: 0,
-  episode: 26,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 26 },
-},
-{
-  title: "The Invasion End Supplement",
-  season: 0,
-  episode: 27,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 27 },
-},
-{
-  title: "The Two Doctors Supplemental DVD",
-  season: 0,
-  episode: 28,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 28 },
-},
-{
-  title: "The Daemons Documentary - Return to Devils End",
-  season: 0,
-  episode: 29,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 29 },
-},
-{
-  title: "Battlefield Special Edition",
-  season: 0,
-  episode: 30,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 30 },
-},
-{
-  title: "The  Seeds of Death Supplemental DVD",
-  season: 0,
-  episode: 31,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 31 },
-},
-{
-  title: "The Invasion Supplemental DVD",
-  season: 0,
-  episode: 32,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 32 },
-},
-{
-  title: "Doctor Who and the Silurians Supplemental DVD",
-  season: 0,
-  episode: 33,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 33 },
-},
-{
-  title: "The Dalek Invasion of Earth Supplemental DVD",
-  season: 0,
-  episode: 34,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 34 },
-},
-{
-  title: "Scream of the Shalka (1)",
-  season: 0,
-  episode: 35,
-  type: "Special",
-  released: "2003-11-13T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 0, episode: 35 },
-},
-{
-  title: "Scream of the Shalka (2)",
-  season: 0,
-  episode: 36,
-  type: "Special",
-  released: "2003-11-20T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 0, episode: 36 },
-},
-{
-  title: "Scream of the Shalka (3)",
-  season: 0,
-  episode: 37,
-  type: "Special",
-  released: "2003-11-27T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 0, episode: 37 },
-},
-{
-  title: "Scream of the Shalka (4)",
-  season: 0,
-  episode: 38,
-  type: "Special",
-  released: "2003-12-04T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 0, episode: 38 },
-},
-{
-  title: "Scream of the Shalka (5)",
-  season: 0,
-  episode: 39,
-  type: "Special",
-  released: "2003-12-11T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 0, episode: 39 },
-},
-{
-  title: "Scream of the Shalka (6)",
-  season: 0,
-  episode: 40,
-  type: "Special",
-  released: "2003-12-18T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 0, episode: 40 },
-},
-{
-  title: "The Missing Years",
-  season: 0,
-  episode: 41,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 41 },
-},
-{
-  title: "In a Fix with Sontarans",
-  season: 0,
-  episode: 42,
-  type: "Special",
-  released: "1985-02-23T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 0, episode: 42 },
-},
-{
-  title: "Lust in Space",
-  season: 0,
-  episode: 43,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 43 },
-},
-{
-  title: "The Doctors (1)",
-  season: 0,
-  episode: 44,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 44 },
-},
-{
-  title: "The Doctors (2)",
-  season: 0,
-  episode: 45,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 45 },
-},
-{
-  title: "The Making of The Curse of Fatal Death",
-  season: 0,
-  episode: 46,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 46 },
-},
-{
-  title: "The Story of Doctor Who",
-  season: 0,
-  episode: 47,
-  type: "Special",
-  released: "2003-12-30T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 0, episode: 47 },
-},
-{
-  title: "I Was a Doctor Who Monster",
-  season: 0,
-  episode: 48,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 48 },
-},
-{
-  title: "Whose Doctor Who",
-  season: 0,
-  episode: 49,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 49 },
-},
-{
-  title: "Where on Earth is Katy Manning?",
-  season: 0,
-  episode: 50,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 50 },
-},
-{
-  title: "Wartime",
-  season: 0,
-  episode: 51,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 51 },
-},
-{
-  title: "The Making of Silver Nemesis",
-  season: 0,
-  episode: 52,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 52 },
-},
-{
-  title: "More than 30 Years in the TARDIS",
-  season: 0,
-  episode: 53,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 53 },
-},
-{
-  title: "The Ultimate Adventure",
-  season: 0,
-  episode: 54,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 54 },
-},
-{
-  title: "Resistance is Useless",
-  season: 0,
-  episode: 55,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 55 },
-},
-{
-  title: "Shakedown: Return of the Sontarans",
-  season: 0,
-  episode: 56,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 56 },
-},
-{
-  title: "Downtime",
-  season: 0,
-  episode: 57,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 57 },
-},
-{
-  title: "Doctor Who - The Movie (workprint)",
-  season: 0,
-  episode: 58,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 58 },
-},
-{
-  title: "The Making of Shakedown",
-  season: 0,
-  episode: 59,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 59 },
-},
-{
-  title: "Do You Have a License to Save This Planet?",
-  season: 0,
-  episode: 60,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 60 },
-},
-{
-  title: "Planet of the Spiders Supplemental DVD",
-  season: 0,
-  episode: 61,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 61 },
-},
-{
-  title: "Adventures in Space and Time",
-  season: 0,
-  episode: 62,
-  type: "Special",
-  released: "1999-11-13T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 0, episode: 62 },
-},
-{
-  title: "Real Time (1)",
-  season: 0,
-  episode: 63,
-  type: "Special",
-  released: "2002-08-02T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 0, episode: 63 },
-},
-{
-  title: "Real Time (2)",
-  season: 0,
-  episode: 64,
-  type: "Special",
-  released: "2002-08-09T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 0, episode: 64 },
-},
-{
-  title: "Real Time (3)",
-  season: 0,
-  episode: 65,
-  type: "Special",
-  released: "2002-08-16T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 0, episode: 65 },
-},
-{
-  title: "Real Time (4)",
-  season: 0,
-  episode: 66,
-  type: "Special",
-  released: "2002-08-23T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 0, episode: 66 },
-},
-{
-  title: "Real Time (5)",
-  season: 0,
-  episode: 67,
-  type: "Special",
-  released: "2002-08-30T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 0, episode: 67 },
-},
-{
-  title: "Real Time (6)",
-  season: 0,
-  episode: 68,
-  type: "Special",
-  released: "2002-09-06T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 0, episode: 68 },
-},
-{
-  title: "The Aztecs Supplemental DVD",
-  season: 0,
-  episode: 69,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 69 },
-},
-{
-  title: "The Claws of Axos Supplemental DVD",
-  season: 0,
-  episode: 70,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 70 },
-},
-{
-  title: "The Daemons Supplemental DVD",
-  season: 0,
-  episode: 71,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 71 },
-},
-{
-  title: "The Mind of Evil Supplemental DVD",
-  season: 0,
-  episode: 72,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 72 },
-},
-{
-  title: "The Visitation Supplemental DVD",
-  season: 0,
-  episode: 73,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 73 },
-},
-{
-  title: "Survival Supplemental DVD",
-  season: 0,
-  episode: 74,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 74 },
-},
-{
-  title: "Enlightenment (Special Edition)",
-  season: 0,
-  episode: 75,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 75 },
-},
-{
-  title: "The War Games Supplemental DVD",
-  season: 0,
-  episode: 76,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 76 },
-},
-{
-  title: "Inferno Supplemental DVD",
-  season: 0,
-  episode: 77,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 77 },
-},
-{
-  title: "The Ice Warriors Supplemental DVD",
-  season: 0,
-  episode: 78,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 78 },
-},
-{
-  title: "Shada Supplemental DVD",
-  season: 0,
-  episode: 79,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 79 },
-},
-{
-  title: "The Mutants Supplemental DVD",
-  season: 0,
-  episode: 80,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 80 },
-},
-{
-  title: "Planet of Fire Special Edition",
-  season: 0,
-  episode: 81,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 81 },
-},
-{
-  title: "Day of the Daleks Supplemental DVD",
-  season: 0,
-  episode: 82,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 82 },
-},
-{
-  title: "The Monster of Peladon Supplemental DVD",
-  season: 0,
-  episode: 83,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 83 },
-},
-{
-  title: "Resurrection of the Daleks Supplemental DVD",
-  season: 0,
-  episode: 84,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 84 },
-},
-{
-  title: "The Caves of Androzani Supplemental DVD",
-  season: 0,
-  episode: 85,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 85 },
-},
-{
-  title: "Frontier in Space Supplemental DVD",
-  season: 0,
-  episode: 86,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 86 },
-},
-{
-  title: "The Seeds of Doom Supplemental DVD",
-  season: 0,
-  episode: 87,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 87 },
-},
-{
-  title: "The Three Doctors Supplemental DVD",
-  season: 0,
-  episode: 88,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 88 },
-},
-{
-  title: "The Ambassadors of Death Supplemental DVD",
-  season: 0,
-  episode: 89,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 89 },
-},
-{
-  title: "The Chase Supplemental DVD",
-  season: 0,
-  episode: 90,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 90 },
-},
-{
-  title: "The Green Death Supplemental DVD",
-  season: 0,
-  episode: 91,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 91 },
-},
-{
-  title: "The Tenth Planet Supplemental DVD",
-  season: 0,
-  episode: 92,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 92 },
-},
-{
-  title: "Terror of the Zygons Supplemental DVD",
-  season: 0,
-  episode: 93,
-  type: "Special",
-  imdb: { id: "tt0056751", season: 0, episode: 93 },
-},
 {
   title: "An Unearthly Child",
   season: 1,
   episode: 1,
   type: "Main Show",
   released: "1963-11-23T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 1 },
+  imdb: { id: "tt0562828", season: 1, episode: 1 },
 },
 {
   title: "The Cave of Skulls",
@@ -703,7 +26,7 @@ const episodes = [
   episode: 2,
   type: "Main Show",
   released: "1963-11-30T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 2 },
+  imdb: { id: "tt0782279", season: 1, episode: 2 },
 },
 {
   title: "The Forest of Fear",
@@ -711,7 +34,7 @@ const episodes = [
   episode: 3,
   type: "Main Show",
   released: "1963-12-07T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 3 },
+  imdb: { id: "tt0805109", season: 1, episode: 3 },
 },
 {
   title: "The Firemaker",
@@ -719,7 +42,7 @@ const episodes = [
   episode: 4,
   type: "Main Show",
   released: "1963-12-14T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 4 },
+  imdb: { id: "tt0813250", season: 1, episode: 4 },
 },
 {
   title: "The Dead Planet",
@@ -727,7 +50,7 @@ const episodes = [
   episode: 5,
   type: "Main Show",
   released: "1963-12-21T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 5 },
+  imdb: { id: "tt0562905", season: 1, episode: 5 },
 },
 {
   title: "The Survivors",
@@ -735,7 +58,7 @@ const episodes = [
   episode: 6,
   type: "Main Show",
   released: "1963-12-28T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 6 },
+  imdb: { id: "tt0819441", season: 1, episode: 6 },
 },
 {
   title: "The Escape",
@@ -743,7 +66,7 @@ const episodes = [
   episode: 7,
   type: "Main Show",
   released: "1964-01-04T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 7 },
+  imdb: { id: "tt0777345", season: 1, episode: 7 },
 },
 {
   title: "The Ambush",
@@ -751,7 +74,7 @@ const episodes = [
   episode: 8,
   type: "Main Show",
   released: "1964-01-11T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 8 },
+  imdb: { id: "tt0819440", season: 1, episode: 8 },
 },
 {
   title: "The Expedition",
@@ -759,7 +82,7 @@ const episodes = [
   episode: 9,
   type: "Main Show",
   released: "1964-01-18T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 9 },
+  imdb: { id: "tt0769064", season: 1, episode: 9 },
 },
 {
   title: "The Ordeal",
@@ -767,7 +90,7 @@ const episodes = [
   episode: 10,
   type: "Main Show",
   released: "1964-01-25T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 10 },
+  imdb: { id: "tt0769065", season: 1, episode: 10 },
 },
 {
   title: "The Rescue",
@@ -775,7 +98,7 @@ const episodes = [
   episode: 11,
   type: "Main Show",
   released: "1964-02-01T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 11 },
+  imdb: { id: "tt0777344", season: 1, episode: 11 },
 },
 {
   title: "The Edge of Destruction",
@@ -783,7 +106,7 @@ const episodes = [
   episode: 12,
   type: "Main Show",
   released: "1964-02-08T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 12 },
+  imdb: { id: "tt0756850", season: 1, episode: 12 },
 },
 {
   title: "The Brink of Disaster",
@@ -791,7 +114,7 @@ const episodes = [
   episode: 13,
   type: "Main Show",
   released: "1964-02-15T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 13 },
+  imdb: { id: "tt0769062", season: 1, episode: 13 },
 },
 {
   title: "The Roof of the World",
@@ -799,7 +122,7 @@ const episodes = [
   episode: 14,
   type: "Main Show",
   released: "1964-02-22T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 14 },
+  imdb: { id: "tt0562858", season: 1, episode: 14 },
 },
 {
   title: "The Singing Sands",
@@ -807,7 +130,7 @@ const episodes = [
   episode: 15,
   type: "Main Show",
   released: "1964-02-29T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 15 },
+  imdb: { id: "tt0769067", season: 1, episode: 15 },
 },
 {
   title: "Five Hundred Eyes",
@@ -815,7 +138,7 @@ const episodes = [
   episode: 16,
   type: "Main Show",
   released: "1964-03-07T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 16 },
+  imdb: { id: "tt0809982", season: 1, episode: 16 },
 },
 {
   title: "The Wall of Lies",
@@ -823,15 +146,15 @@ const episodes = [
   episode: 17,
   type: "Main Show",
   released: "1964-03-14T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 17 },
+  imdb: { id: "tt0769068", season: 1, episode: 17 },
 },
 {
-  title: "Rider From Shang-Tu",
+  title: "Rider from Shang-Tu",
   season: 1,
   episode: 18,
   type: "Main Show",
   released: "1964-03-21T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 18 },
+  imdb: { id: "tt0805214", season: 1, episode: 18 },
 },
 {
   title: "Mighty Kublai Khan",
@@ -839,7 +162,7 @@ const episodes = [
   episode: 19,
   type: "Main Show",
   released: "1964-03-28T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 19 },
+  imdb: { id: "tt0769059", season: 1, episode: 19 },
 },
 {
   title: "Assassin at Peking",
@@ -847,7 +170,7 @@ const episodes = [
   episode: 20,
   type: "Main Show",
   released: "1964-04-04T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 20 },
+  imdb: { id: "tt0809981", season: 1, episode: 20 },
 },
 {
   title: "The Sea of Death",
@@ -855,7 +178,7 @@ const episodes = [
   episode: 21,
   type: "Main Show",
   released: "1964-04-11T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 21 },
+  imdb: { id: "tt0562926", season: 1, episode: 21 },
 },
 {
   title: "The Velvet Web",
@@ -863,7 +186,7 @@ const episodes = [
   episode: 22,
   type: "Main Show",
   released: "1964-04-18T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 22 },
+  imdb: { id: "tt0809986", season: 1, episode: 22 },
 },
 {
   title: "The Screaming Jungle",
@@ -871,7 +194,7 @@ const episodes = [
   episode: 23,
   type: "Main Show",
   released: "1964-04-25T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 23 },
+  imdb: { id: "tt0769066", season: 1, episode: 23 },
 },
 {
   title: "The Snows of Terror",
@@ -879,7 +202,7 @@ const episodes = [
   episode: 24,
   type: "Main Show",
   released: "1964-05-02T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 24 },
+  imdb: { id: "tt0809984", season: 1, episode: 24 },
 },
 {
   title: "Sentence of Death",
@@ -887,7 +210,7 @@ const episodes = [
   episode: 25,
   type: "Main Show",
   released: "1964-05-09T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 25 },
+  imdb: { id: "tt0809983", season: 1, episode: 25 },
 },
 {
   title: "The Keys of Marinus",
@@ -895,7 +218,7 @@ const episodes = [
   episode: 26,
   type: "Main Show",
   released: "1964-05-16T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 26 },
+  imdb: { id: "tt0829417", season: 1, episode: 26 },
 },
 {
   title: "The Temple of Evil",
@@ -903,7 +226,7 @@ const episodes = [
   episode: 27,
   type: "Main Show",
   released: "1964-05-23T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 27 },
+  imdb: { id: "tt0562894", season: 1, episode: 27 },
 },
 {
   title: "The Warriors of Death",
@@ -911,7 +234,7 @@ const episodes = [
   episode: 28,
   type: "Main Show",
   released: "1964-05-30T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 28 },
+  imdb: { id: "tt0805215", season: 1, episode: 28 },
 },
 {
   title: "The Bride of Sacrifice",
@@ -919,7 +242,7 @@ const episodes = [
   episode: 29,
   type: "Main Show",
   released: "1964-06-06T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 29 },
+  imdb: { id: "tt0769061", season: 1, episode: 29 },
 },
 {
   title: "The Day of Darkness",
@@ -927,7 +250,7 @@ const episodes = [
   episode: 30,
   type: "Main Show",
   released: "1964-06-13T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 30 },
+  imdb: { id: "tt0830292", season: 1, episode: 30 },
 },
 {
   title: "Strangers in Space",
@@ -935,7 +258,7 @@ const episodes = [
   episode: 31,
   type: "Main Show",
   released: "1964-06-20T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 31 },
+  imdb: { id: "tt0562953", season: 1, episode: 31 },
 },
 {
   title: "The Unwilling Warriors",
@@ -943,7 +266,7 @@ const episodes = [
   episode: 32,
   type: "Main Show",
   released: "1964-06-27T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 32 },
+  imdb: { id: "tt0809985", season: 1, episode: 32 },
 },
 {
   title: "Hidden Danger",
@@ -951,7 +274,7 @@ const episodes = [
   episode: 33,
   type: "Main Show",
   released: "1964-07-11T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 33 },
+  imdb: { id: "tt0769057", season: 1, episode: 33 },
 },
 {
   title: "A Race Against Death",
@@ -959,15 +282,15 @@ const episodes = [
   episode: 34,
   type: "Main Show",
   released: "1964-07-18T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 34 },
+  imdb: { id: "tt0809980", season: 1, episode: 34 },
 },
 {
   title: "Kidnap",
   season: 1,
   episode: 35,
   type: "Main Show",
-  released: "1964-07-28T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 35 },
+  released: "1964-07-25T00:00:00.000Z",
+  imdb: { id: "tt0769058", season: 1, episode: 35 },
 },
 {
   title: "A Desperate Venture",
@@ -975,7 +298,7 @@ const episodes = [
   episode: 36,
   type: "Main Show",
   released: "1964-08-01T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 36 },
+  imdb: { id: "tt0769055", season: 1, episode: 36 },
 },
 {
   title: "A Land of Fear",
@@ -983,7 +306,7 @@ const episodes = [
   episode: 37,
   type: "Main Show",
   released: "1964-08-08T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 37 },
+  imdb: { id: "tt0562944", season: 1, episode: 37 },
 },
 {
   title: "Guests of Madame Guillotine",
@@ -991,7 +314,7 @@ const episodes = [
   episode: 38,
   type: "Main Show",
   released: "1964-08-15T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 38 },
+  imdb: { id: "tt0769056", season: 1, episode: 38 },
 },
 {
   title: "A Change of Identity",
@@ -999,23 +322,23 @@ const episodes = [
   episode: 39,
   type: "Main Show",
   released: "1964-08-22T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 39 },
+  imdb: { id: "tt0785282", season: 1, episode: 39 },
 },
 {
   title: "The Tyrant of France",
   season: 1,
   episode: 40,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1964-08-29T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 40 },
+  imdb: { id: "tt0785310", season: 1, episode: 40 },
 },
 {
   title: "A Bargain of Necessity",
   season: 1,
   episode: 41,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1964-09-05T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 41 },
+  imdb: { id: "tt0769054", season: 1, episode: 41 },
 },
 {
   title: "Prisoners of Conciergerie",
@@ -1023,7 +346,7 @@ const episodes = [
   episode: 42,
   type: "Main Show",
   released: "1964-09-12T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 1, episode: 42 },
+  imdb: { id: "tt0769060", season: 1, episode: 42 },
 },
 {
   title: "Planet of Giants",
@@ -1031,7 +354,7 @@ const episodes = [
   episode: 1,
   type: "Main Show",
   released: "1964-10-31T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 1 },
+  imdb: { id: "tt0562867", season: 2, episode: 1 },
 },
 {
   title: "Dangerous Journey",
@@ -1039,7 +362,7 @@ const episodes = [
   episode: 2,
   type: "Main Show",
   released: "1964-11-07T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 2 },
+  imdb: { id: "tt0776941", season: 2, episode: 2 },
 },
 {
   title: "Crisis",
@@ -1047,7 +370,7 @@ const episodes = [
   episode: 3,
   type: "Main Show",
   released: "1964-11-14T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 3 },
+  imdb: { id: "tt0776940", season: 2, episode: 3 },
 },
 {
   title: "World's End",
@@ -1055,7 +378,7 @@ const episodes = [
   episode: 4,
   type: "Main Show",
   released: "1964-11-21T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 4 },
+  imdb: { id: "tt0562904", season: 2, episode: 4 },
 },
 {
   title: "The Daleks",
@@ -1063,7 +386,7 @@ const episodes = [
   episode: 5,
   type: "Main Show",
   released: "1964-11-28T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 5 },
+  imdb: { id: "tt0776951", season: 2, episode: 5 },
 },
 {
   title: "Day of Reckoning",
@@ -1071,7 +394,7 @@ const episodes = [
   episode: 6,
   type: "Main Show",
   released: "1964-12-05T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 6 },
+  imdb: { id: "tt0776942", season: 2, episode: 6 },
 },
 {
   title: "The End of Tomorrow",
@@ -1079,7 +402,7 @@ const episodes = [
   episode: 7,
   type: "Main Show",
   released: "1964-12-12T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 7 },
+  imdb: { id: "tt0776955", season: 2, episode: 7 },
 },
 {
   title: "The Waking Ally",
@@ -1087,7 +410,7 @@ const episodes = [
   episode: 8,
   type: "Main Show",
   released: "1964-12-19T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 8 },
+  imdb: { id: "tt0776961", season: 2, episode: 8 },
 },
 {
   title: "Flashpoint",
@@ -1095,7 +418,7 @@ const episodes = [
   episode: 9,
   type: "Main Show",
   released: "1964-12-26T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 9 },
+  imdb: { id: "tt0776945", season: 2, episode: 9 },
 },
 {
   title: "The Powerful Enemy",
@@ -1103,7 +426,7 @@ const episodes = [
   episode: 10,
   type: "Main Show",
   released: "1965-01-02T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 10 },
+  imdb: { id: "tt0562945", season: 2, episode: 10 },
 },
 {
   title: "Desperate Measures",
@@ -1111,7 +434,7 @@ const episodes = [
   episode: 11,
   type: "Main Show",
   released: "1965-01-09T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 11 },
+  imdb: { id: "tt0776943", season: 2, episode: 11 },
 },
 {
   title: "The Slave Traders",
@@ -1119,7 +442,7 @@ const episodes = [
   episode: 12,
   type: "Main Show",
   released: "1965-01-16T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 12 },
+  imdb: { id: "tt0562948", season: 2, episode: 12 },
 },
 {
   title: "All Roads Lead to Rome",
@@ -1127,7 +450,7 @@ const episodes = [
   episode: 13,
   type: "Main Show",
   released: "1965-01-23T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 13 },
+  imdb: { id: "tt0776936", season: 2, episode: 13 },
 },
 {
   title: "Conspiracy",
@@ -1135,7 +458,7 @@ const episodes = [
   episode: 14,
   type: "Main Show",
   released: "1965-01-30T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 14 },
+  imdb: { id: "tt0776938", season: 2, episode: 14 },
 },
 {
   title: "Inferno",
@@ -1143,7 +466,7 @@ const episodes = [
   episode: 15,
   type: "Main Show",
   released: "1965-02-06T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 15 },
+  imdb: { id: "tt0776947", season: 2, episode: 15 },
 },
 {
   title: "The Web Planet",
@@ -1151,7 +474,7 @@ const episodes = [
   episode: 16,
   type: "Main Show",
   released: "1965-02-13T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 16 },
+  imdb: { id: "tt0562975", season: 2, episode: 16 },
 },
 {
   title: "The Zarbi",
@@ -1159,7 +482,7 @@ const episodes = [
   episode: 17,
   type: "Main Show",
   released: "1965-02-20T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 17 },
+  imdb: { id: "tt0776964", season: 2, episode: 17 },
 },
 {
   title: "Escape to Danger",
@@ -1167,7 +490,7 @@ const episodes = [
   episode: 18,
   type: "Main Show",
   released: "1965-02-27T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 18 },
+  imdb: { id: "tt0776944", season: 2, episode: 18 },
 },
 {
   title: "Crater of Needles",
@@ -1175,7 +498,7 @@ const episodes = [
   episode: 19,
   type: "Main Show",
   released: "1965-03-06T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 19 },
+  imdb: { id: "tt0776939", season: 2, episode: 19 },
 },
 {
   title: "Invasion",
@@ -1183,7 +506,7 @@ const episodes = [
   episode: 20,
   type: "Main Show",
   released: "1965-03-13T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 20 },
+  imdb: { id: "tt0776948", season: 2, episode: 20 },
 },
 {
   title: "The Centre",
@@ -1191,7 +514,7 @@ const episodes = [
   episode: 21,
   type: "Main Show",
   released: "1965-03-20T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 21 },
+  imdb: { id: "tt0776950", season: 2, episode: 21 },
 },
 {
   title: "The Lion",
@@ -1199,7 +522,7 @@ const episodes = [
   episode: 22,
   type: "Main Show",
   released: "1965-03-27T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 22 },
+  imdb: { id: "tt0562901", season: 2, episode: 22 },
 },
 {
   title: "The Knight of Jaffa",
@@ -1207,7 +530,7 @@ const episodes = [
   episode: 23,
   type: "Main Show",
   released: "1965-04-03T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 23 },
+  imdb: { id: "tt0776957", season: 2, episode: 23 },
 },
 {
   title: "The Wheel of Fortune",
@@ -1215,7 +538,7 @@ const episodes = [
   episode: 24,
   type: "Main Show",
   released: "1965-04-10T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 24 },
+  imdb: { id: "tt0776963", season: 2, episode: 24 },
 },
 {
   title: "The Warlords",
@@ -1223,7 +546,7 @@ const episodes = [
   episode: 25,
   type: "Main Show",
   released: "1965-04-17T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 25 },
+  imdb: { id: "tt0776962", season: 2, episode: 25 },
 },
 {
   title: "The Space Museum",
@@ -1231,7 +554,7 @@ const episodes = [
   episode: 26,
   type: "Main Show",
   released: "1965-04-24T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 26 },
+  imdb: { id: "tt0562957", season: 2, episode: 26 },
 },
 {
   title: "The Dimensions of Time",
@@ -1239,7 +562,7 @@ const episodes = [
   episode: 27,
   type: "Main Show",
   released: "1965-05-01T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 27 },
+  imdb: { id: "tt0776954", season: 2, episode: 27 },
 },
 {
   title: "The Search",
@@ -1247,7 +570,7 @@ const episodes = [
   episode: 28,
   type: "Main Show",
   released: "1965-05-08T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 28 },
+  imdb: { id: "tt0776960", season: 2, episode: 28 },
 },
 {
   title: "The Final Phase",
@@ -1255,7 +578,7 @@ const episodes = [
   episode: 29,
   type: "Main Show",
   released: "1965-05-15T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 29 },
+  imdb: { id: "tt0776956", season: 2, episode: 29 },
 },
 {
   title: "The Executioners",
@@ -1263,7 +586,7 @@ const episodes = [
   episode: 30,
   type: "Main Show",
   released: "1965-05-22T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 30 },
+  imdb: { id: "tt0562898", season: 2, episode: 30 },
 },
 {
   title: "The Death of Time",
@@ -1271,15 +594,15 @@ const episodes = [
   episode: 31,
   type: "Main Show",
   released: "1965-05-29T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 31 },
+  imdb: { id: "tt0776953", season: 2, episode: 31 },
 },
 {
-  title: "Flight through Eternity",
+  title: "Flight Through Eternity",
   season: 2,
   episode: 32,
   type: "Main Show",
   released: "1965-06-05T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 32 },
+  imdb: { id: "tt0776946", season: 2, episode: 32 },
 },
 {
   title: "Journey into Terror",
@@ -1287,7 +610,7 @@ const episodes = [
   episode: 33,
   type: "Main Show",
   released: "1965-06-12T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 33 },
+  imdb: { id: "tt0776949", season: 2, episode: 33 },
 },
 {
   title: "The Death of Doctor Who",
@@ -1295,7 +618,7 @@ const episodes = [
   episode: 34,
   type: "Main Show",
   released: "1965-06-19T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 34 },
+  imdb: { id: "tt0776952", season: 2, episode: 34 },
 },
 {
   title: "The Planet of Decision",
@@ -1303,7 +626,7 @@ const episodes = [
   episode: 35,
   type: "Main Show",
   released: "1965-06-26T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 35 },
+  imdb: { id: "tt0776959", season: 2, episode: 35 },
 },
 {
   title: "The Watcher",
@@ -1311,7 +634,7 @@ const episodes = [
   episode: 36,
   type: "Main Show",
   released: "1965-07-03T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 36 },
+  imdb: { id: "tt0562964", season: 2, episode: 36 },
 },
 {
   title: "The Meddling Monk",
@@ -1319,7 +642,7 @@ const episodes = [
   episode: 37,
   type: "Main Show",
   released: "1965-07-10T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 37 },
+  imdb: { id: "tt0776958", season: 2, episode: 37 },
 },
 {
   title: "A Battle of Wits",
@@ -1327,7 +650,7 @@ const episodes = [
   episode: 38,
   type: "Main Show",
   released: "1965-07-17T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 38 },
+  imdb: { id: "tt0776935", season: 2, episode: 38 },
 },
 {
   title: "Checkmate",
@@ -1335,30 +658,29 @@ const episodes = [
   episode: 39,
   type: "Main Show",
   released: "1965-07-24T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 2, episode: 39 },
+  imdb: { id: "tt0776937", season: 2, episode: 39 },
 },
 {
-  title: "Galaxy Four Introduction",
-  season: 3,
-  episode: 0,
-  type: "Main Show",
-  imdb: { id: "tt0056751", season: 3, episode: 0 },
+  title: "The Storyteller",
+  season: 2,
+  episode: 40,
+  type: "Minisode",
 },
 {
   title: "Four Hundred Dawns",
   season: 3,
   episode: 1,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1965-09-11T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 1 },
+  imdb: { id: "tt0562849", season: 3, episode: 1 },
 },
 {
   title: "Trap of Steel",
   season: 3,
   episode: 2,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1965-09-18T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 2 },
+  imdb: { id: "tt0785311", season: 3, episode: 2 },
 },
 {
   title: "Air Lock",
@@ -1366,15 +688,15 @@ const episodes = [
   episode: 3,
   type: "Main Show",
   released: "1965-09-25T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 3 },
+  imdb: { id: "tt0785283", season: 3, episode: 3 },
 },
 {
   title: "The Exploding Planet",
   season: 3,
   episode: 4,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1965-10-02T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 4 },
+  imdb: { id: "tt0785301", season: 3, episode: 4 },
 },
 {
   title: "Mission to the Unknown",
@@ -1382,7 +704,7 @@ const episodes = [
   episode: 5,
   type: "Main Show",
   released: "1965-10-09T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 5 },
+  imdb: { id: "tt0562862", season: 3, episode: 5 },
 },
 {
   title: "Temple of Secrets",
@@ -1390,7 +712,7 @@ const episodes = [
   episode: 6,
   type: "Main Show",
   released: "1965-10-16T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 6 },
+  imdb: { id: "tt0562940", season: 3, episode: 6 },
 },
 {
   title: "Small Prophet, Quick Return",
@@ -1398,7 +720,7 @@ const episodes = [
   episode: 7,
   type: "Main Show",
   released: "1965-10-23T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 7 },
+  imdb: { id: "tt0785297", season: 3, episode: 7 },
 },
 {
   title: "Death of a Spy",
@@ -1406,7 +728,7 @@ const episodes = [
   episode: 8,
   type: "Main Show",
   released: "1965-10-30T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 8 },
+  imdb: { id: "tt0785288", season: 3, episode: 8 },
 },
 {
   title: "Horse of Destruction",
@@ -1414,7 +736,7 @@ const episodes = [
   episode: 9,
   type: "Main Show",
   released: "1965-11-06T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 9 },
+  imdb: { id: "tt0785294", season: 3, episode: 9 },
 },
 {
   title: "The Nightmare Begins",
@@ -1422,7 +744,7 @@ const episodes = [
   episode: 10,
   type: "Main Show",
   released: "1965-11-13T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 10 },
+  imdb: { id: "tt0562906", season: 3, episode: 10 },
 },
 {
   title: "Day of Armageddon",
@@ -1430,7 +752,7 @@ const episodes = [
   episode: 11,
   type: "Main Show",
   released: "1965-11-20T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 11 },
+  imdb: { id: "tt0785287", season: 3, episode: 11 },
 },
 {
   title: "Devil's Planet",
@@ -1438,7 +760,7 @@ const episodes = [
   episode: 12,
   type: "Main Show",
   released: "1965-11-27T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 12 },
+  imdb: { id: "tt0785290", season: 3, episode: 12 },
 },
 {
   title: "The Traitors",
@@ -1446,7 +768,7 @@ const episodes = [
   episode: 13,
   type: "Main Show",
   released: "1965-12-04T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 13 },
+  imdb: { id: "tt0785309", season: 3, episode: 13 },
 },
 {
   title: "Counter Plot",
@@ -1454,7 +776,7 @@ const episodes = [
   episode: 14,
   type: "Main Show",
   released: "1965-12-11T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 14 },
+  imdb: { id: "tt0785286", season: 3, episode: 14 },
 },
 {
   title: "Coronas of the Sun",
@@ -1462,7 +784,7 @@ const episodes = [
   episode: 15,
   type: "Main Show",
   released: "1965-12-18T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 15 },
+  imdb: { id: "tt0785285", season: 3, episode: 15 },
 },
 {
   title: "The Feast of Steven",
@@ -1470,7 +792,7 @@ const episodes = [
   episode: 16,
   type: "Main Show",
   released: "1965-12-25T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 16 },
+  imdb: { id: "tt0785302", season: 3, episode: 16 },
 },
 {
   title: "Volcano",
@@ -1478,7 +800,7 @@ const episodes = [
   episode: 17,
   type: "Main Show",
   released: "1966-01-01T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 17 },
+  imdb: { id: "tt0785312", season: 3, episode: 17 },
 },
 {
   title: "Golden Death",
@@ -1486,7 +808,7 @@ const episodes = [
   episode: 18,
   type: "Main Show",
   released: "1966-01-08T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 18 },
+  imdb: { id: "tt0785293", season: 3, episode: 18 },
 },
 {
   title: "Escape Switch",
@@ -1494,7 +816,7 @@ const episodes = [
   episode: 19,
   type: "Main Show",
   released: "1966-01-15T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 19 },
+  imdb: { id: "tt0785292", season: 3, episode: 19 },
 },
 {
   title: "The Abandoned Planet",
@@ -1502,7 +824,7 @@ const episodes = [
   episode: 20,
   type: "Main Show",
   released: "1966-01-22T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 20 },
+  imdb: { id: "tt0785298", season: 3, episode: 20 },
 },
 {
   title: "Destruction of Time",
@@ -1510,7 +832,7 @@ const episodes = [
   episode: 21,
   type: "Main Show",
   released: "1966-01-29T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 21 },
+  imdb: { id: "tt0785289", season: 3, episode: 21 },
 },
 {
   title: "War of God",
@@ -1518,7 +840,7 @@ const episodes = [
   episode: 22,
   type: "Main Show",
   released: "1966-02-05T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 22 },
+  imdb: { id: "tt0562933", season: 3, episode: 22 },
 },
 {
   title: "The Sea Beggar",
@@ -1526,7 +848,7 @@ const episodes = [
   episode: 23,
   type: "Main Show",
   released: "1966-02-12T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 23 },
+  imdb: { id: "tt0785308", season: 3, episode: 23 },
 },
 {
   title: "Priest of Death",
@@ -1534,7 +856,7 @@ const episodes = [
   episode: 24,
   type: "Main Show",
   released: "1966-02-19T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 24 },
+  imdb: { id: "tt0785296", season: 3, episode: 24 },
 },
 {
   title: "Bell of Doom",
@@ -1542,7 +864,7 @@ const episodes = [
   episode: 25,
   type: "Main Show",
   released: "1966-02-26T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 25 },
+  imdb: { id: "tt0785284", season: 3, episode: 25 },
 },
 {
   title: "The Steel Sky",
@@ -1550,7 +872,7 @@ const episodes = [
   episode: 26,
   type: "Main Show",
   released: "1966-03-05T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 26 },
+  imdb: { id: "tt0562890", season: 3, episode: 26 },
 },
 {
   title: "The Plague",
@@ -1558,7 +880,7 @@ const episodes = [
   episode: 27,
   type: "Main Show",
   released: "1966-03-12T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 27 },
+  imdb: { id: "tt0785306", season: 3, episode: 27 },
 },
 {
   title: "The Return",
@@ -1566,7 +888,7 @@ const episodes = [
   episode: 28,
   type: "Main Show",
   released: "1966-03-19T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 28 },
+  imdb: { id: "tt0785307", season: 3, episode: 28 },
 },
 {
   title: "The Bomb",
@@ -1574,31 +896,31 @@ const episodes = [
   episode: 29,
   type: "Main Show",
   released: "1966-03-26T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 29 },
+  imdb: { id: "tt0785299", season: 3, episode: 29 },
 },
 {
   title: "The Celestial Toyroom",
   season: 3,
   episode: 30,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1966-04-02T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 30 },
+  imdb: { id: "tt0562897", season: 3, episode: 30 },
 },
 {
   title: "The Hall of Dolls",
   season: 3,
   episode: 31,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1966-04-09T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 31 },
+  imdb: { id: "tt0785304", season: 3, episode: 31 },
 },
 {
   title: "The Dancing Floor",
   season: 3,
   episode: 32,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1966-04-16T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 32 },
+  imdb: { id: "tt0785300", season: 3, episode: 32 },
 },
 {
   title: "The Final Test",
@@ -1606,7 +928,7 @@ const episodes = [
   episode: 33,
   type: "Main Show",
   released: "1966-04-23T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 33 },
+  imdb: { id: "tt0785303", season: 3, episode: 33 },
 },
 {
   title: "A Holiday for the Doctor",
@@ -1614,7 +936,7 @@ const episodes = [
   episode: 34,
   type: "Main Show",
   released: "1966-04-30T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 34 },
+  imdb: { id: "tt0562916", season: 3, episode: 34 },
 },
 {
   title: "Don't Shoot the Pianist",
@@ -1622,7 +944,7 @@ const episodes = [
   episode: 35,
   type: "Main Show",
   released: "1966-05-07T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 35 },
+  imdb: { id: "tt0785291", season: 3, episode: 35 },
 },
 {
   title: "Johnny Ringo",
@@ -1630,7 +952,7 @@ const episodes = [
   episode: 36,
   type: "Main Show",
   released: "1966-05-14T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 36 },
+  imdb: { id: "tt0785295", season: 3, episode: 36 },
 },
 {
   title: "The O.K. Corral",
@@ -1638,39 +960,39 @@ const episodes = [
   episode: 37,
   type: "Main Show",
   released: "1966-05-21T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 37 },
+  imdb: { id: "tt0785305", season: 3, episode: 37 },
 },
 {
   title: "The Savages (1)",
   season: 3,
   episode: 38,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1966-05-28T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 38 },
+  imdb: { id: "tt0562949", season: 3, episode: 38 },
 },
 {
   title: "The Savages (2)",
   season: 3,
   episode: 39,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1966-06-04T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 39 },
+  imdb: { id: "tt0807265", season: 3, episode: 39 },
 },
 {
   title: "The Savages (3)",
   season: 3,
   episode: 40,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1966-06-11T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 40 },
+  imdb: { id: "tt0807266", season: 3, episode: 40 },
 },
 {
   title: "The Savages (4)",
   season: 3,
   episode: 41,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1966-06-18T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 41 },
+  imdb: { id: "tt0807267", season: 3, episode: 41 },
 },
 {
   title: "The War Machines (1)",
@@ -1678,7 +1000,7 @@ const episodes = [
   episode: 42,
   type: "Main Show",
   released: "1966-06-25T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 42 },
+  imdb: { id: "tt0562974", season: 3, episode: 42 },
 },
 {
   title: "The War Machines (2)",
@@ -1686,7 +1008,7 @@ const episodes = [
   episode: 43,
   type: "Main Show",
   released: "1966-07-02T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 43 },
+  imdb: { id: "tt0807268", season: 3, episode: 43 },
 },
 {
   title: "The War Machines (3)",
@@ -1694,7 +1016,7 @@ const episodes = [
   episode: 44,
   type: "Main Show",
   released: "1966-07-09T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 44 },
+  imdb: { id: "tt0807269", season: 3, episode: 44 },
 },
 {
   title: "The War Machines (4)",
@@ -1702,7 +1024,7 @@ const episodes = [
   episode: 45,
   type: "Main Show",
   released: "1966-07-16T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 3, episode: 45 },
+  imdb: { id: "tt0807270", season: 3, episode: 45 },
 },
 {
   title: "The Smugglers (1)",
@@ -1710,7 +1032,7 @@ const episodes = [
   episode: 1,
   type: "Main Show",
   released: "1966-09-10T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 1 },
+  imdb: { id: "tt0562955", season: 4, episode: 1 },
 },
 {
   title: "The Smugglers (2)",
@@ -1718,7 +1040,7 @@ const episodes = [
   episode: 2,
   type: "Main Show",
   released: "1966-09-17T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 2 },
+  imdb: { id: "tt0810587", season: 4, episode: 2 },
 },
 {
   title: "The Smugglers (3)",
@@ -1726,7 +1048,7 @@ const episodes = [
   episode: 3,
   type: "Main Show",
   released: "1966-09-24T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 3 },
+  imdb: { id: "tt0810588", season: 4, episode: 3 },
 },
 {
   title: "The Smugglers (4)",
@@ -1734,7 +1056,7 @@ const episodes = [
   episode: 4,
   type: "Main Show",
   released: "1966-10-01T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 4 },
+  imdb: { id: "tt0810589", season: 4, episode: 4 },
 },
 {
   title: "The Tenth Planet (1)",
@@ -1742,7 +1064,7 @@ const episodes = [
   episode: 5,
   type: "Main Show",
   released: "1966-10-08T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 5 },
+  imdb: { id: "tt0562962", season: 4, episode: 5 },
 },
 {
   title: "The Tenth Planet (2)",
@@ -1750,7 +1072,7 @@ const episodes = [
   episode: 6,
   type: "Main Show",
   released: "1966-10-15T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 6 },
+  imdb: { id: "tt0810590", season: 4, episode: 6 },
 },
 {
   title: "The Tenth Planet (3)",
@@ -1758,63 +1080,63 @@ const episodes = [
   episode: 7,
   type: "Main Show",
   released: "1966-10-22T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 7 },
+  imdb: { id: "tt0810591", season: 4, episode: 7 },
 },
 {
   title: "The Tenth Planet (4)",
   season: 4,
   episode: 8,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1966-10-29T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 8 },
+  imdb: { id: "tt0810592", season: 4, episode: 8 },
 },
 {
   title: "The Power of the Daleks (1)",
   season: 4,
   episode: 9,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1966-11-05T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 9 },
+  imdb: { id: "tt0562943", season: 4, episode: 9 },
 },
 {
   title: "The Power of the Daleks (2)",
   season: 4,
   episode: 10,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1966-11-12T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 10 },
+  imdb: { id: "tt0810582", season: 4, episode: 10 },
 },
 {
   title: "The Power of the Daleks (3)",
   season: 4,
   episode: 11,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1966-11-19T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 11 },
+  imdb: { id: "tt0810583", season: 4, episode: 11 },
 },
 {
   title: "The Power of the Daleks (4)",
   season: 4,
   episode: 12,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1966-11-26T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 12 },
+  imdb: { id: "tt0810584", season: 4, episode: 12 },
 },
 {
   title: "The Power of the Daleks (5)",
   season: 4,
   episode: 13,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1966-12-03T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 13 },
+  imdb: { id: "tt0810585", season: 4, episode: 13 },
 },
 {
   title: "The Power of the Daleks (6)",
   season: 4,
   episode: 14,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1966-12-10T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 14 },
+  imdb: { id: "tt0810586", season: 4, episode: 14 },
 },
 {
   title: "The Highlanders (1)",
@@ -1822,7 +1144,7 @@ const episodes = [
   episode: 15,
   type: "Main Show",
   released: "1966-12-17T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 15 },
+  imdb: { id: "tt0562919", season: 4, episode: 15 },
 },
 {
   title: "The Highlanders (2)",
@@ -1830,7 +1152,7 @@ const episodes = [
   episode: 16,
   type: "Main Show",
   released: "1966-12-24T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 16 },
+  imdb: { id: "tt0810573", season: 4, episode: 16 },
 },
 {
   title: "The Highlanders (3)",
@@ -1838,7 +1160,7 @@ const episodes = [
   episode: 17,
   type: "Main Show",
   released: "1966-12-31T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 17 },
+  imdb: { id: "tt0810574", season: 4, episode: 17 },
 },
 {
   title: "The Highlanders (4)",
@@ -1846,15 +1168,15 @@ const episodes = [
   episode: 18,
   type: "Main Show",
   released: "1967-01-07T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 18 },
+  imdb: { id: "tt0810575", season: 4, episode: 18 },
 },
 {
   title: "The Underwater Menace (1)",
   season: 4,
   episode: 19,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1967-01-14T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 19 },
+  imdb: { id: "tt0562971", season: 4, episode: 19 },
 },
 {
   title: "The Underwater Menace (2)",
@@ -1862,7 +1184,7 @@ const episodes = [
   episode: 20,
   type: "Main Show",
   released: "1967-01-21T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 20 },
+  imdb: { id: "tt0810593", season: 4, episode: 20 },
 },
 {
   title: "The Underwater Menace (3)",
@@ -1870,23 +1192,23 @@ const episodes = [
   episode: 21,
   type: "Main Show",
   released: "1967-01-28T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 21 },
+  imdb: { id: "tt0810594", season: 4, episode: 21 },
 },
 {
   title: "The Underwater Menace (4)",
   season: 4,
   episode: 22,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1967-02-04T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 22 },
+  imdb: { id: "tt0810595", season: 4, episode: 22 },
 },
 {
   title: "The Moonbase (1)",
   season: 4,
   episode: 23,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1967-02-11T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 23 },
+  imdb: { id: "tt0562937", season: 4, episode: 23 },
 },
 {
   title: "The Moonbase (2)",
@@ -1894,15 +1216,15 @@ const episodes = [
   episode: 24,
   type: "Main Show",
   released: "1967-02-18T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 24 },
+  imdb: { id: "tt0810579", season: 4, episode: 24 },
 },
 {
   title: "The Moonbase (3)",
   season: 4,
   episode: 25,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1967-02-25T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 25 },
+  imdb: { id: "tt0810580", season: 4, episode: 25 },
 },
 {
   title: "The Moonbase (4)",
@@ -1910,39 +1232,39 @@ const episodes = [
   episode: 26,
   type: "Main Show",
   released: "1967-03-04T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 26 },
+  imdb: { id: "tt0810581", season: 4, episode: 26 },
 },
 {
   title: "The Macra Terror (1)",
   season: 4,
   episode: 27,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1967-03-11T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 27 },
+  imdb: { id: "tt0562930", season: 4, episode: 27 },
 },
 {
   title: "The Macra Terror (2)",
   season: 4,
   episode: 28,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1967-03-18T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 28 },
+  imdb: { id: "tt0810576", season: 4, episode: 28 },
 },
 {
   title: "The Macra Terror (3)",
   season: 4,
   episode: 29,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1967-03-25T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 29 },
+  imdb: { id: "tt0810577", season: 4, episode: 29 },
 },
 {
   title: "The Macra Terror (4)",
   season: 4,
   episode: 30,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1967-04-01T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 30 },
+  imdb: { id: "tt0810578", season: 4, episode: 30 },
 },
 {
   title: "The Faceless Ones (1)",
@@ -1950,15 +1272,15 @@ const episodes = [
   episode: 31,
   type: "Main Show",
   released: "1967-04-08T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 31 },
+  imdb: { id: "tt0562913", season: 4, episode: 31 },
 },
 {
   title: "The Faceless Ones (2)",
   season: 4,
   episode: 32,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1967-04-15T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 32 },
+  imdb: { id: "tt0810568", season: 4, episode: 32 },
 },
 {
   title: "The Faceless Ones (3)",
@@ -1966,39 +1288,39 @@ const episodes = [
   episode: 33,
   type: "Main Show",
   released: "1967-04-22T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 33 },
+  imdb: { id: "tt0810569", season: 4, episode: 33 },
 },
 {
   title: "The Faceless Ones (4)",
   season: 4,
   episode: 34,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1967-04-29T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 34 },
+  imdb: { id: "tt0810570", season: 4, episode: 34 },
 },
 {
   title: "The Faceless Ones (5)",
   season: 4,
   episode: 35,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1967-05-06T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 35 },
+  imdb: { id: "tt0810571", season: 4, episode: 35 },
 },
 {
   title: "The Faceless Ones (6)",
   season: 4,
   episode: 36,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1967-05-13T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 36 },
+  imdb: { id: "tt0810572", season: 4, episode: 36 },
 },
 {
   title: "The Evil of the Daleks (1)",
   season: 4,
   episode: 37,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1967-05-20T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 37 },
+  imdb: { id: "tt0562911", season: 4, episode: 37 },
 },
 {
   title: "The Evil of the Daleks (2)",
@@ -2006,47 +1328,47 @@ const episodes = [
   episode: 38,
   type: "Main Show",
   released: "1967-05-27T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 38 },
+  imdb: { id: "tt0810562", season: 4, episode: 38 },
 },
 {
   title: "The Evil of the Daleks (3)",
   season: 4,
   episode: 39,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1967-06-03T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 39 },
+  imdb: { id: "tt0810563", season: 4, episode: 39 },
 },
 {
   title: "The Evil of the Daleks (4)",
   season: 4,
   episode: 40,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1967-06-10T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 40 },
+  imdb: { id: "tt0810564", season: 4, episode: 40 },
 },
 {
   title: "The Evil of the Daleks (5)",
   season: 4,
   episode: 41,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1967-06-17T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 41 },
+  imdb: { id: "tt0810565", season: 4, episode: 41 },
 },
 {
   title: "The Evil of the Daleks (6)",
   season: 4,
   episode: 42,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1967-06-24T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 42 },
+  imdb: { id: "tt0810566", season: 4, episode: 42 },
 },
 {
   title: "The Evil of the Daleks (7)",
   season: 4,
   episode: 43,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1967-07-01T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 4, episode: 43 },
+  imdb: { id: "tt0810567", season: 4, episode: 43 },
 },
 {
   title: "The Tomb of the Cybermen (1)",
@@ -2054,7 +1376,7 @@ const episodes = [
   episode: 1,
   type: "Main Show",
   released: "1967-09-02T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 1 },
+  imdb: { id: "tt0562967", season: 5, episode: 1 },
 },
 {
   title: "The Tomb of the Cybermen (2)",
@@ -2062,7 +1384,7 @@ const episodes = [
   episode: 2,
   type: "Main Show",
   released: "1967-09-09T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 2 },
+  imdb: { id: "tt0811466", season: 5, episode: 2 },
 },
 {
   title: "The Tomb of the Cybermen (3)",
@@ -2070,7 +1392,7 @@ const episodes = [
   episode: 3,
   type: "Main Show",
   released: "1967-09-16T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 3 },
+  imdb: { id: "tt0811467", season: 5, episode: 3 },
 },
 {
   title: "The Tomb of the Cybermen (4)",
@@ -2078,15 +1400,15 @@ const episodes = [
   episode: 4,
   type: "Main Show",
   released: "1967-09-23T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 4 },
+  imdb: { id: "tt0811468", season: 5, episode: 4 },
 },
 {
   title: "The Abominable Snowmen (1)",
   season: 5,
   episode: 5,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1967-09-30T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 5 },
+  imdb: { id: "tt0562886", season: 5, episode: 5 },
 },
 {
   title: "The Abominable Snowmen (2)",
@@ -2094,39 +1416,39 @@ const episodes = [
   episode: 6,
   type: "Main Show",
   released: "1967-10-07T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 6 },
+  imdb: { id: "tt0811447", season: 5, episode: 6 },
 },
 {
   title: "The Abominable Snowmen (3)",
   season: 5,
   episode: 7,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1967-10-14T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 7 },
+  imdb: { id: "tt0811448", season: 5, episode: 7 },
 },
 {
   title: "The Abominable Snowmen (4)",
   season: 5,
   episode: 8,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1967-10-21T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 8 },
+  imdb: { id: "tt0811449", season: 5, episode: 8 },
 },
 {
   title: "The Abominable Snowmen (5)",
   season: 5,
   episode: 9,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1967-10-28T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 9 },
+  imdb: { id: "tt0811450", season: 5, episode: 9 },
 },
 {
   title: "The Abominable Snowmen (6)",
   season: 5,
   episode: 10,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1967-11-04T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 10 },
+  imdb: { id: "tt0811451", season: 5, episode: 10 },
 },
 {
   title: "The Ice Warriors (1)",
@@ -2134,23 +1456,23 @@ const episodes = [
   episode: 11,
   type: "Main Show",
   released: "1967-11-11T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 11 },
+  imdb: { id: "tt0562921", season: 5, episode: 11 },
 },
 {
   title: "The Ice Warriors (2)",
   season: 5,
   episode: 12,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1967-11-18T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 12 },
+  imdb: { id: "tt0811305", season: 5, episode: 12 },
 },
 {
   title: "The Ice Warriors (3)",
   season: 5,
   episode: 13,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1967-11-25T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 13 },
+  imdb: { id: "tt0811306", season: 5, episode: 13 },
 },
 {
   title: "The Ice Warriors (4)",
@@ -2158,7 +1480,7 @@ const episodes = [
   episode: 14,
   type: "Main Show",
   released: "1967-12-02T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 14 },
+  imdb: { id: "tt0811307", season: 5, episode: 14 },
 },
 {
   title: "The Ice Warriors (5)",
@@ -2166,7 +1488,7 @@ const episodes = [
   episode: 15,
   type: "Main Show",
   released: "1967-12-09T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 15 },
+  imdb: { id: "tt0811308", season: 5, episode: 15 },
 },
 {
   title: "The Ice Warriors (6)",
@@ -2174,7 +1496,7 @@ const episodes = [
   episode: 16,
   type: "Main Show",
   released: "1967-12-16T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 16 },
+  imdb: { id: "tt0811309", season: 5, episode: 16 },
 },
 {
   title: "The Enemy of the World (1)",
@@ -2182,7 +1504,7 @@ const episodes = [
   episode: 17,
   type: "Main Show",
   released: "1967-12-23T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 17 },
+  imdb: { id: "tt0562910", season: 5, episode: 17 },
 },
 {
   title: "The Enemy of the World (2)",
@@ -2190,7 +1512,7 @@ const episodes = [
   episode: 18,
   type: "Main Show",
   released: "1967-12-30T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 18 },
+  imdb: { id: "tt0811295", season: 5, episode: 18 },
 },
 {
   title: "The Enemy of the World (3)",
@@ -2198,7 +1520,7 @@ const episodes = [
   episode: 19,
   type: "Main Show",
   released: "1968-01-06T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 19 },
+  imdb: { id: "tt0811296", season: 5, episode: 19 },
 },
 {
   title: "The Enemy of the World (4)",
@@ -2206,7 +1528,7 @@ const episodes = [
   episode: 20,
   type: "Main Show",
   released: "1968-01-13T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 20 },
+  imdb: { id: "tt0811297", season: 5, episode: 20 },
 },
 {
   title: "The Enemy of the World (5)",
@@ -2214,7 +1536,7 @@ const episodes = [
   episode: 21,
   type: "Main Show",
   released: "1968-01-20T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 21 },
+  imdb: { id: "tt0811298", season: 5, episode: 21 },
 },
 {
   title: "The Enemy of the World (6)",
@@ -2222,7 +1544,7 @@ const episodes = [
   episode: 22,
   type: "Main Show",
   released: "1968-01-27T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 22 },
+  imdb: { id: "tt0811299", season: 5, episode: 22 },
 },
 {
   title: "The Web of Fear (1)",
@@ -2230,7 +1552,7 @@ const episodes = [
   episode: 23,
   type: "Main Show",
   released: "1968-02-03T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 23 },
+  imdb: { id: "tt0562976", season: 5, episode: 23 },
 },
 {
   title: "The Web of Fear (2)",
@@ -2238,15 +1560,15 @@ const episodes = [
   episode: 24,
   type: "Main Show",
   released: "1968-02-10T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 24 },
+  imdb: { id: "tt0811365", season: 5, episode: 24 },
 },
 {
   title: "The Web of Fear (3)",
   season: 5,
   episode: 25,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1968-02-17T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 25 },
+  imdb: { id: "tt0811366", season: 5, episode: 25 },
 },
 {
   title: "The Web of Fear (4)",
@@ -2254,7 +1576,7 @@ const episodes = [
   episode: 26,
   type: "Main Show",
   released: "1968-02-24T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 26 },
+  imdb: { id: "tt0811367", season: 5, episode: 26 },
 },
 {
   title: "The Web of Fear (5)",
@@ -2262,7 +1584,7 @@ const episodes = [
   episode: 27,
   type: "Main Show",
   released: "1968-03-02T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 27 },
+  imdb: { id: "tt0811368", season: 5, episode: 27 },
 },
 {
   title: "The Web of Fear (6)",
@@ -2270,55 +1592,55 @@ const episodes = [
   episode: 28,
   type: "Main Show",
   released: "1968-03-09T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 28 },
+  imdb: { id: "tt0811369", season: 5, episode: 28 },
 },
 {
   title: "Fury from the Deep (1)",
   season: 5,
   episode: 29,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1968-03-16T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 29 },
+  imdb: { id: "tt0562848", season: 5, episode: 29 },
 },
 {
   title: "Fury from the Deep (2)",
   season: 5,
   episode: 30,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1968-03-23T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 30 },
+  imdb: { id: "tt0811242", season: 5, episode: 30 },
 },
 {
   title: "Fury from the Deep (3)",
   season: 5,
   episode: 31,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1968-03-30T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 31 },
+  imdb: { id: "tt0811243", season: 5, episode: 31 },
 },
 {
   title: "Fury from the Deep (4)",
   season: 5,
   episode: 32,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1968-04-06T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 32 },
+  imdb: { id: "tt0811244", season: 5, episode: 32 },
 },
 {
   title: "Fury from the Deep (5)",
   season: 5,
   episode: 33,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1968-04-13T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 33 },
+  imdb: { id: "tt0811245", season: 5, episode: 33 },
 },
 {
   title: "Fury from the Deep (6)",
   season: 5,
   episode: 34,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1968-04-20T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 34 },
+  imdb: { id: "tt0811246", season: 5, episode: 34 },
 },
 {
   title: "The Wheel in Space (1)",
@@ -2326,7 +1648,7 @@ const episodes = [
   episode: 35,
   type: "Main Show",
   released: "1968-04-27T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 35 },
+  imdb: { id: "tt0562977", season: 5, episode: 35 },
 },
 {
   title: "The Wheel in Space (2)",
@@ -2334,7 +1656,7 @@ const episodes = [
   episode: 36,
   type: "Main Show",
   released: "1968-05-04T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 36 },
+  imdb: { id: "tt0811370", season: 5, episode: 36 },
 },
 {
   title: "The Wheel in Space (3)",
@@ -2342,7 +1664,7 @@ const episodes = [
   episode: 37,
   type: "Main Show",
   released: "1968-05-11T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 37 },
+  imdb: { id: "tt0811371", season: 5, episode: 37 },
 },
 {
   title: "The Wheel in Space (4)",
@@ -2350,7 +1672,7 @@ const episodes = [
   episode: 38,
   type: "Main Show",
   released: "1968-05-18T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 38 },
+  imdb: { id: "tt0811372", season: 5, episode: 38 },
 },
 {
   title: "The Wheel in Space (5)",
@@ -2358,7 +1680,7 @@ const episodes = [
   episode: 39,
   type: "Main Show",
   released: "1968-05-25T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 39 },
+  imdb: { id: "tt0811373", season: 5, episode: 39 },
 },
 {
   title: "The Wheel in Space (6)",
@@ -2366,7 +1688,7 @@ const episodes = [
   episode: 40,
   type: "Main Show",
   released: "1968-06-01T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 5, episode: 40 },
+  imdb: { id: "tt0811374", season: 5, episode: 40 },
 },
 {
   title: "The Dominators (1)",
@@ -2374,7 +1696,7 @@ const episodes = [
   episode: 1,
   type: "Main Show",
   released: "1968-08-10T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 1 },
+  imdb: { id: "tt0562908", season: 6, episode: 1 },
 },
 {
   title: "The Dominators (2)",
@@ -2382,7 +1704,7 @@ const episodes = [
   episode: 2,
   type: "Main Show",
   released: "1968-08-17T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 2 },
+  imdb: { id: "tt0811452", season: 6, episode: 2 },
 },
 {
   title: "The Dominators (3)",
@@ -2390,7 +1712,7 @@ const episodes = [
   episode: 3,
   type: "Main Show",
   released: "1968-08-24T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 3 },
+  imdb: { id: "tt0811453", season: 6, episode: 3 },
 },
 {
   title: "The Dominators (4)",
@@ -2398,7 +1720,7 @@ const episodes = [
   episode: 4,
   type: "Main Show",
   released: "1968-08-31T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 4 },
+  imdb: { id: "tt0811454", season: 6, episode: 4 },
 },
 {
   title: "The Dominators (5)",
@@ -2406,7 +1728,7 @@ const episodes = [
   episode: 5,
   type: "Main Show",
   released: "1968-09-07T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 5 },
+  imdb: { id: "tt0811455", season: 6, episode: 5 },
 },
 {
   title: "The Mind Robber (1)",
@@ -2414,7 +1736,7 @@ const episodes = [
   episode: 6,
   type: "Main Show",
   released: "1968-09-14T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 6 },
+  imdb: { id: "tt0562934", season: 6, episode: 6 },
 },
 {
   title: "The Mind Robber (2)",
@@ -2422,7 +1744,7 @@ const episodes = [
   episode: 7,
   type: "Main Show",
   released: "1968-09-21T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 7 },
+  imdb: { id: "tt0811456", season: 6, episode: 7 },
 },
 {
   title: "The Mind Robber (3)",
@@ -2430,7 +1752,7 @@ const episodes = [
   episode: 8,
   type: "Main Show",
   released: "1968-09-28T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 8 },
+  imdb: { id: "tt0811457", season: 6, episode: 8 },
 },
 {
   title: "The Mind Robber (4)",
@@ -2438,7 +1760,7 @@ const episodes = [
   episode: 9,
   type: "Main Show",
   released: "1968-10-05T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 9 },
+  imdb: { id: "tt0811458", season: 6, episode: 9 },
 },
 {
   title: "The Mind Robber (5)",
@@ -2446,15 +1768,15 @@ const episodes = [
   episode: 10,
   type: "Main Show",
   released: "1968-10-12T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 10 },
+  imdb: { id: "tt0811459", season: 6, episode: 10 },
 },
 {
   title: "The Invasion (1)",
   season: 6,
   episode: 11,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1968-11-02T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 11 },
+  imdb: { id: "tt0562922", season: 6, episode: 11 },
 },
 {
   title: "The Invasion (2)",
@@ -2462,7 +1784,7 @@ const episodes = [
   episode: 12,
   type: "Main Show",
   released: "1968-11-09T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 12 },
+  imdb: { id: "tt0811310", season: 6, episode: 12 },
 },
 {
   title: "The Invasion (3)",
@@ -2470,15 +1792,15 @@ const episodes = [
   episode: 13,
   type: "Main Show",
   released: "1968-11-16T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 13 },
+  imdb: { id: "tt0811311", season: 6, episode: 13 },
 },
 {
   title: "The Invasion (4)",
   season: 6,
   episode: 14,
-  type: "Main Show",
+  type: "Animated Restoration",
   released: "1968-11-23T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 14 },
+  imdb: { id: "tt0811312", season: 6, episode: 14 },
 },
 {
   title: "The Invasion (5)",
@@ -2486,7 +1808,7 @@ const episodes = [
   episode: 15,
   type: "Main Show",
   released: "1968-11-30T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 15 },
+  imdb: { id: "tt0811313", season: 6, episode: 15 },
 },
 {
   title: "The Invasion (6)",
@@ -2494,7 +1816,7 @@ const episodes = [
   episode: 16,
   type: "Main Show",
   released: "1968-12-07T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 16 },
+  imdb: { id: "tt0811314", season: 6, episode: 16 },
 },
 {
   title: "The Invasion (7)",
@@ -2502,7 +1824,7 @@ const episodes = [
   episode: 17,
   type: "Main Show",
   released: "1968-12-14T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 17 },
+  imdb: { id: "tt0811315", season: 6, episode: 17 },
 },
 {
   title: "The Invasion (8)",
@@ -2510,7 +1832,7 @@ const episodes = [
   episode: 18,
   type: "Main Show",
   released: "1968-12-21T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 18 },
+  imdb: { id: "tt0811316", season: 6, episode: 18 },
 },
 {
   title: "The Krotons (1)",
@@ -2518,7 +1840,7 @@ const episodes = [
   episode: 19,
   type: "Main Show",
   released: "1968-12-28T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 19 },
+  imdb: { id: "tt0562928", season: 6, episode: 19 },
 },
 {
   title: "The Krotons (2)",
@@ -2526,7 +1848,7 @@ const episodes = [
   episode: 20,
   type: "Main Show",
   released: "1969-01-04T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 20 },
+  imdb: { id: "tt0811317", season: 6, episode: 20 },
 },
 {
   title: "The Krotons (3)",
@@ -2534,7 +1856,7 @@ const episodes = [
   episode: 21,
   type: "Main Show",
   released: "1969-01-11T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 21 },
+  imdb: { id: "tt0811318", season: 6, episode: 21 },
 },
 {
   title: "The Krotons (4)",
@@ -2542,7 +1864,7 @@ const episodes = [
   episode: 22,
   type: "Main Show",
   released: "1969-01-18T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 22 },
+  imdb: { id: "tt0811319", season: 6, episode: 22 },
 },
 {
   title: "The Seeds of Death (1)",
@@ -2550,7 +1872,7 @@ const episodes = [
   episode: 23,
   type: "Main Show",
   released: "1969-01-25T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 23 },
+  imdb: { id: "tt0562951", season: 6, episode: 23 },
 },
 {
   title: "The Seeds of Death (2)",
@@ -2558,7 +1880,7 @@ const episodes = [
   episode: 24,
   type: "Main Show",
   released: "1969-02-01T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 24 },
+  imdb: { id: "tt0811340", season: 6, episode: 24 },
 },
 {
   title: "The Seeds of Death (3)",
@@ -2566,7 +1888,7 @@ const episodes = [
   episode: 25,
   type: "Main Show",
   released: "1969-02-08T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 25 },
+  imdb: { id: "tt0811341", season: 6, episode: 25 },
 },
 {
   title: "The Seeds of Death (4)",
@@ -2574,7 +1896,7 @@ const episodes = [
   episode: 26,
   type: "Main Show",
   released: "1969-02-15T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 26 },
+  imdb: { id: "tt0811342", season: 6, episode: 26 },
 },
 {
   title: "The Seeds of Death (5)",
@@ -2582,7 +1904,7 @@ const episodes = [
   episode: 27,
   type: "Main Show",
   released: "1969-02-22T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 27 },
+  imdb: { id: "tt0811343", season: 6, episode: 27 },
 },
 {
   title: "The Seeds of Death (6)",
@@ -2590,7 +1912,7 @@ const episodes = [
   episode: 28,
   type: "Main Show",
   released: "1969-03-01T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 28 },
+  imdb: { id: "tt0811344", season: 6, episode: 28 },
 },
 {
   title: "The Space Pirates (1)",
@@ -2598,7 +1920,7 @@ const episodes = [
   episode: 29,
   type: "Main Show",
   released: "1969-03-08T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 29 },
+  imdb: { id: "tt0562958", season: 6, episode: 29 },
 },
 {
   title: "The Space Pirates (2)",
@@ -2606,7 +1928,7 @@ const episodes = [
   episode: 30,
   type: "Main Show",
   released: "1969-03-15T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 30 },
+  imdb: { id: "tt0811346", season: 6, episode: 30 },
 },
 {
   title: "The Space Pirates (3)",
@@ -2614,7 +1936,7 @@ const episodes = [
   episode: 31,
   type: "Main Show",
   released: "1969-03-22T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 31 },
+  imdb: { id: "tt0811347", season: 6, episode: 31 },
 },
 {
   title: "The Space Pirates (4)",
@@ -2622,7 +1944,7 @@ const episodes = [
   episode: 32,
   type: "Main Show",
   released: "1969-03-29T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 32 },
+  imdb: { id: "tt0811348", season: 6, episode: 32 },
 },
 {
   title: "The Space Pirates (5)",
@@ -2630,7 +1952,7 @@ const episodes = [
   episode: 33,
   type: "Main Show",
   released: "1969-04-05T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 33 },
+  imdb: { id: "tt0811349", season: 6, episode: 33 },
 },
 {
   title: "The Space Pirates (6)",
@@ -2638,7 +1960,7 @@ const episodes = [
   episode: 34,
   type: "Main Show",
   released: "1969-04-12T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 34 },
+  imdb: { id: "tt0811350", season: 6, episode: 34 },
 },
 {
   title: "The War Games (1)",
@@ -2646,7 +1968,7 @@ const episodes = [
   episode: 35,
   type: "Main Show",
   released: "1969-04-19T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 35 },
+  imdb: { id: "tt0562973", season: 6, episode: 35 },
 },
 {
   title: "The War Games (2)",
@@ -2654,7 +1976,7 @@ const episodes = [
   episode: 36,
   type: "Main Show",
   released: "1969-04-26T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 36 },
+  imdb: { id: "tt0811357", season: 6, episode: 36 },
 },
 {
   title: "The War Games (3)",
@@ -2662,7 +1984,7 @@ const episodes = [
   episode: 37,
   type: "Main Show",
   released: "1969-05-03T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 37 },
+  imdb: { id: "tt0811358", season: 6, episode: 37 },
 },
 {
   title: "The War Games (4)",
@@ -2670,7 +1992,7 @@ const episodes = [
   episode: 38,
   type: "Main Show",
   released: "1969-05-10T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 38 },
+  imdb: { id: "tt0811359", season: 6, episode: 38 },
 },
 {
   title: "The War Games (5)",
@@ -2678,7 +2000,7 @@ const episodes = [
   episode: 39,
   type: "Main Show",
   released: "1969-05-17T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 39 },
+  imdb: { id: "tt0811360", season: 6, episode: 39 },
 },
 {
   title: "The War Games (6)",
@@ -2686,7 +2008,7 @@ const episodes = [
   episode: 40,
   type: "Main Show",
   released: "1969-05-24T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 40 },
+  imdb: { id: "tt0811361", season: 6, episode: 40 },
 },
 {
   title: "The War Games (7)",
@@ -2694,7 +2016,7 @@ const episodes = [
   episode: 41,
   type: "Main Show",
   released: "1969-05-31T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 41 },
+  imdb: { id: "tt0811362", season: 6, episode: 41 },
 },
 {
   title: "The War Games (8)",
@@ -2702,7 +2024,7 @@ const episodes = [
   episode: 42,
   type: "Main Show",
   released: "1969-06-07T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 42 },
+  imdb: { id: "tt0811363", season: 6, episode: 42 },
 },
 {
   title: "The War Games (9)",
@@ -2710,7 +2032,7 @@ const episodes = [
   episode: 43,
   type: "Main Show",
   released: "1969-06-14T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 43 },
+  imdb: { id: "tt0811364", season: 6, episode: 43 },
 },
 {
   title: "The War Games (10)",
@@ -2718,39 +2040,39 @@ const episodes = [
   episode: 44,
   type: "Main Show",
   released: "1969-06-21T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 6, episode: 44 },
+  imdb: { id: "tt0811356", season: 6, episode: 44 },
 },
 {
-  title: "Spearhead From Space (1)",
+  title: "Spearhead from Space (1)",
   season: 7,
   episode: 1,
   type: "Main Show",
   released: "1970-01-03T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 7, episode: 1 },
+  imdb: { id: "tt0562879", season: 7, episode: 1 },
 },
 {
-  title: "Spearhead From Space (2)",
+  title: "Spearhead from Space (2)",
   season: 7,
   episode: 2,
   type: "Main Show",
   released: "1970-01-10T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 7, episode: 2 },
+  imdb: { id: "tt0811440", season: 7, episode: 2 },
 },
 {
-  title: "Spearhead From Space (3)",
+  title: "Spearhead from Space (3)",
   season: 7,
   episode: 3,
   type: "Main Show",
   released: "1970-01-17T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 7, episode: 3 },
+  imdb: { id: "tt0811442", season: 7, episode: 3 },
 },
 {
-  title: "Spearhead From Space (4)",
+  title: "Spearhead from Space (4)",
   season: 7,
   episode: 4,
   type: "Main Show",
   released: "1970-01-24T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 7, episode: 4 },
+  imdb: { id: "tt0811443", season: 7, episode: 4 },
 },
 {
   title: "Doctor Who and the Silurians (1)",
@@ -2758,7 +2080,7 @@ const episodes = [
   episode: 5,
   type: "Main Show",
   released: "1970-01-31T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 7, episode: 5 },
+  imdb: { id: "tt0562954", season: 7, episode: 5 },
 },
 {
   title: "Doctor Who and the Silurians (2)",
@@ -2766,7 +2088,7 @@ const episodes = [
   episode: 6,
   type: "Main Show",
   released: "1970-02-07T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 7, episode: 6 },
+  imdb: { id: "tt0811231", season: 7, episode: 6 },
 },
 {
   title: "Doctor Who and the Silurians (3)",
@@ -2774,7 +2096,7 @@ const episodes = [
   episode: 7,
   type: "Main Show",
   released: "1970-02-14T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 7, episode: 7 },
+  imdb: { id: "tt0811232", season: 7, episode: 7 },
 },
 {
   title: "Doctor Who and the Silurians (4)",
@@ -2782,7 +2104,7 @@ const episodes = [
   episode: 8,
   type: "Main Show",
   released: "1970-02-21T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 7, episode: 8 },
+  imdb: { id: "tt0811233", season: 7, episode: 8 },
 },
 {
   title: "Doctor Who and the Silurians (5)",
@@ -2790,7 +2112,7 @@ const episodes = [
   episode: 9,
   type: "Main Show",
   released: "1970-02-28T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 7, episode: 9 },
+  imdb: { id: "tt0811234", season: 7, episode: 9 },
 },
 {
   title: "Doctor Who and the Silurians (6)",
@@ -2798,7 +2120,7 @@ const episodes = [
   episode: 10,
   type: "Main Show",
   released: "1970-03-07T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 7, episode: 10 },
+  imdb: { id: "tt0811235", season: 7, episode: 10 },
 },
 {
   title: "Doctor Who and the Silurians (7)",
@@ -2806,7 +2128,7 @@ const episodes = [
   episode: 11,
   type: "Main Show",
   released: "1970-03-14T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 7, episode: 11 },
+  imdb: { id: "tt0811236", season: 7, episode: 11 },
 },
 {
   title: "The Ambassadors of Death (1)",
@@ -2814,7 +2136,7 @@ const episodes = [
   episode: 12,
   type: "Main Show",
   released: "1970-03-21T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 7, episode: 12 },
+  imdb: { id: "tt0562887", season: 7, episode: 12 },
 },
 {
   title: "The Ambassadors of Death (2)",
@@ -2822,7 +2144,7 @@ const episodes = [
   episode: 13,
   type: "Main Show",
   released: "1970-03-28T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 7, episode: 13 },
+  imdb: { id: "tt0811276", season: 7, episode: 13 },
 },
 {
   title: "The Ambassadors of Death (3)",
@@ -2830,7 +2152,7 @@ const episodes = [
   episode: 14,
   type: "Main Show",
   released: "1970-04-04T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 7, episode: 14 },
+  imdb: { id: "tt0811277", season: 7, episode: 14 },
 },
 {
   title: "The Ambassadors of Death (4)",
@@ -2838,7 +2160,7 @@ const episodes = [
   episode: 15,
   type: "Main Show",
   released: "1970-04-11T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 7, episode: 15 },
+  imdb: { id: "tt0811278", season: 7, episode: 15 },
 },
 {
   title: "The Ambassadors of Death (5)",
@@ -2846,7 +2168,7 @@ const episodes = [
   episode: 16,
   type: "Main Show",
   released: "1970-04-18T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 7, episode: 16 },
+  imdb: { id: "tt0811279", season: 7, episode: 16 },
 },
 {
   title: "The Ambassadors of Death (6)",
@@ -2854,7 +2176,7 @@ const episodes = [
   episode: 17,
   type: "Main Show",
   released: "1970-04-25T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 7, episode: 17 },
+  imdb: { id: "tt0811280", season: 7, episode: 17 },
 },
 {
   title: "The Ambassadors of Death (7)",
@@ -2862,7 +2184,7 @@ const episodes = [
   episode: 18,
   type: "Main Show",
   released: "1970-05-02T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 7, episode: 18 },
+  imdb: { id: "tt0811281", season: 7, episode: 18 },
 },
 {
   title: "Inferno (1)",
@@ -2870,7 +2192,7 @@ const episodes = [
   episode: 19,
   type: "Main Show",
   released: "1970-05-09T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 7, episode: 19 },
+  imdb: { id: "tt0562854", season: 7, episode: 19 },
 },
 {
   title: "Inferno (2)",
@@ -2878,7 +2200,7 @@ const episodes = [
   episode: 20,
   type: "Main Show",
   released: "1970-05-16T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 7, episode: 20 },
+  imdb: { id: "tt0811252", season: 7, episode: 20 },
 },
 {
   title: "Inferno (3)",
@@ -2886,7 +2208,7 @@ const episodes = [
   episode: 21,
   type: "Main Show",
   released: "1970-05-23T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 7, episode: 21 },
+  imdb: { id: "tt0811253", season: 7, episode: 21 },
 },
 {
   title: "Inferno (4)",
@@ -2894,7 +2216,7 @@ const episodes = [
   episode: 22,
   type: "Main Show",
   released: "1970-05-30T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 7, episode: 22 },
+  imdb: { id: "tt0811254", season: 7, episode: 22 },
 },
 {
   title: "Inferno (5)",
@@ -2902,7 +2224,7 @@ const episodes = [
   episode: 23,
   type: "Main Show",
   released: "1970-06-06T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 7, episode: 23 },
+  imdb: { id: "tt0811255", season: 7, episode: 23 },
 },
 {
   title: "Inferno (6)",
@@ -2910,7 +2232,7 @@ const episodes = [
   episode: 24,
   type: "Main Show",
   released: "1970-06-13T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 7, episode: 24 },
+  imdb: { id: "tt0811256", season: 7, episode: 24 },
 },
 {
   title: "Inferno (7)",
@@ -2918,7 +2240,7 @@ const episodes = [
   episode: 25,
   type: "Main Show",
   released: "1970-06-20T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 7, episode: 25 },
+  imdb: { id: "tt0811257", season: 7, episode: 25 },
 },
 {
   title: "Terror of the Autons (1)",
@@ -2926,7 +2248,7 @@ const episodes = [
   episode: 1,
   type: "Main Show",
   released: "1971-01-02T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 8, episode: 1 },
+  imdb: { id: "tt0562883", season: 8, episode: 1 },
 },
 {
   title: "Terror of the Autons (2)",
@@ -2934,7 +2256,7 @@ const episodes = [
   episode: 2,
   type: "Main Show",
   released: "1971-01-09T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 8, episode: 2 },
+  imdb: { id: "tt0811444", season: 8, episode: 2 },
 },
 {
   title: "Terror of the Autons (3)",
@@ -2942,7 +2264,7 @@ const episodes = [
   episode: 3,
   type: "Main Show",
   released: "1971-01-16T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 8, episode: 3 },
+  imdb: { id: "tt0811445", season: 8, episode: 3 },
 },
 {
   title: "Terror of the Autons (4)",
@@ -2950,7 +2272,7 @@ const episodes = [
   episode: 4,
   type: "Main Show",
   released: "1971-01-23T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 8, episode: 4 },
+  imdb: { id: "tt0811446", season: 8, episode: 4 },
 },
 {
   title: "The Mind of Evil (1)",
@@ -2958,7 +2280,7 @@ const episodes = [
   episode: 5,
   type: "Main Show",
   released: "1971-01-30T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 8, episode: 5 },
+  imdb: { id: "tt0562935", season: 8, episode: 5 },
 },
 {
   title: "The Mind of Evil (2)",
@@ -2966,7 +2288,7 @@ const episodes = [
   episode: 6,
   type: "Main Show",
   released: "1971-02-06T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 8, episode: 6 },
+  imdb: { id: "tt0811320", season: 8, episode: 6 },
 },
 {
   title: "The Mind of Evil (3)",
@@ -2974,7 +2296,7 @@ const episodes = [
   episode: 7,
   type: "Main Show",
   released: "1971-02-13T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 8, episode: 7 },
+  imdb: { id: "tt0811321", season: 8, episode: 7 },
 },
 {
   title: "The Mind of Evil (4)",
@@ -2982,7 +2304,7 @@ const episodes = [
   episode: 8,
   type: "Main Show",
   released: "1971-02-20T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 8, episode: 8 },
+  imdb: { id: "tt0811322", season: 8, episode: 8 },
 },
 {
   title: "The Mind of Evil (5)",
@@ -2990,7 +2312,7 @@ const episodes = [
   episode: 9,
   type: "Main Show",
   released: "1971-02-27T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 8, episode: 9 },
+  imdb: { id: "tt0811323", season: 8, episode: 9 },
 },
 {
   title: "The Mind of Evil (6)",
@@ -2998,7 +2320,7 @@ const episodes = [
   episode: 10,
   type: "Main Show",
   released: "1971-03-06T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 8, episode: 10 },
+  imdb: { id: "tt0811324", season: 8, episode: 10 },
 },
 {
   title: "The Claws of Axos (1)",
@@ -3006,7 +2328,7 @@ const episodes = [
   episode: 11,
   type: "Main Show",
   released: "1971-03-13T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 8, episode: 11 },
+  imdb: { id: "tt0562899", season: 8, episode: 11 },
 },
 {
   title: "The Claws of Axos (2)",
@@ -3014,7 +2336,7 @@ const episodes = [
   episode: 12,
   type: "Main Show",
   released: "1971-03-20T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 8, episode: 12 },
+  imdb: { id: "tt0811285", season: 8, episode: 12 },
 },
 {
   title: "The Claws of Axos (3)",
@@ -3022,7 +2344,7 @@ const episodes = [
   episode: 13,
   type: "Main Show",
   released: "1971-03-27T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 8, episode: 13 },
+  imdb: { id: "tt0811286", season: 8, episode: 13 },
 },
 {
   title: "The Claws of Axos (4)",
@@ -3030,7 +2352,7 @@ const episodes = [
   episode: 14,
   type: "Main Show",
   released: "1971-04-03T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 8, episode: 14 },
+  imdb: { id: "tt0811287", season: 8, episode: 14 },
 },
 {
   title: "Colony in Space (1)",
@@ -3038,7 +2360,7 @@ const episodes = [
   episode: 15,
   type: "Main Show",
   released: "1971-04-10T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 8, episode: 15 },
+  imdb: { id: "tt0562836", season: 8, episode: 15 },
 },
 {
   title: "Colony in Space (2)",
@@ -3046,7 +2368,7 @@ const episodes = [
   episode: 16,
   type: "Main Show",
   released: "1971-04-17T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 8, episode: 16 },
+  imdb: { id: "tt0811223", season: 8, episode: 16 },
 },
 {
   title: "Colony in Space (3)",
@@ -3054,7 +2376,7 @@ const episodes = [
   episode: 17,
   type: "Main Show",
   released: "1971-04-24T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 8, episode: 17 },
+  imdb: { id: "tt0811224", season: 8, episode: 17 },
 },
 {
   title: "Colony in Space (4)",
@@ -3062,7 +2384,7 @@ const episodes = [
   episode: 18,
   type: "Main Show",
   released: "1971-05-01T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 8, episode: 18 },
+  imdb: { id: "tt0811225", season: 8, episode: 18 },
 },
 {
   title: "Colony in Space (5)",
@@ -3070,7 +2392,7 @@ const episodes = [
   episode: 19,
   type: "Main Show",
   released: "1971-05-08T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 8, episode: 19 },
+  imdb: { id: "tt0811226", season: 8, episode: 19 },
 },
 {
   title: "Colony in Space (6)",
@@ -3078,7 +2400,7 @@ const episodes = [
   episode: 20,
   type: "Main Show",
   released: "1971-05-15T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 8, episode: 20 },
+  imdb: { id: "tt0811227", season: 8, episode: 20 },
 },
 {
   title: "The Daemons (1)",
@@ -3086,7 +2408,7 @@ const episodes = [
   episode: 21,
   type: "Main Show",
   released: "1971-05-22T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 8, episode: 21 },
+  imdb: { id: "tt0562909", season: 8, episode: 21 },
 },
 {
   title: "The Daemons (2)",
@@ -3094,7 +2416,7 @@ const episodes = [
   episode: 22,
   type: "Main Show",
   released: "1971-05-29T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 8, episode: 22 },
+  imdb: { id: "tt0811291", season: 8, episode: 22 },
 },
 {
   title: "The Daemons (3)",
@@ -3102,7 +2424,7 @@ const episodes = [
   episode: 23,
   type: "Main Show",
   released: "1971-06-05T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 8, episode: 23 },
+  imdb: { id: "tt0811292", season: 8, episode: 23 },
 },
 {
   title: "The Daemons (4)",
@@ -3110,7 +2432,7 @@ const episodes = [
   episode: 24,
   type: "Main Show",
   released: "1971-06-12T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 8, episode: 24 },
+  imdb: { id: "tt0811293", season: 8, episode: 24 },
 },
 {
   title: "The Daemons (5)",
@@ -3118,7 +2440,13 @@ const episodes = [
   episode: 25,
   type: "Main Show",
   released: "1971-06-19T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 8, episode: 25 },
+  imdb: { id: "tt0811294", season: 8, episode: 25 },
+},
+{
+  title: "Return of the Autons",
+  season: 8,
+  episode: 26,
+  type: "Minisode",
 },
 {
   title: "Day of the Daleks (1)",
@@ -3126,7 +2454,7 @@ const episodes = [
   episode: 1,
   type: "Main Show",
   released: "1972-01-01T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 9, episode: 1 },
+  imdb: { id: "tt0562837", season: 9, episode: 1 },
 },
 {
   title: "Day of the Daleks (2)",
@@ -3134,7 +2462,7 @@ const episodes = [
   episode: 2,
   type: "Main Show",
   released: "1972-01-08T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 9, episode: 2 },
+  imdb: { id: "tt0811433", season: 9, episode: 2 },
 },
 {
   title: "Day of the Daleks (3)",
@@ -3142,7 +2470,7 @@ const episodes = [
   episode: 3,
   type: "Main Show",
   released: "1972-01-15T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 9, episode: 3 },
+  imdb: { id: "tt0811434", season: 9, episode: 3 },
 },
 {
   title: "Day of the Daleks (4)",
@@ -3150,7 +2478,7 @@ const episodes = [
   episode: 4,
   type: "Main Show",
   released: "1972-01-22T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 9, episode: 4 },
+  imdb: { id: "tt0811435", season: 9, episode: 4 },
 },
 {
   title: "The Curse of Peladon (1)",
@@ -3158,7 +2486,7 @@ const episodes = [
   episode: 5,
   type: "Main Show",
   released: "1972-01-29T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 9, episode: 5 },
+  imdb: { id: "tt0562903", season: 9, episode: 5 },
 },
 {
   title: "The Curse of Peladon (2)",
@@ -3166,7 +2494,7 @@ const episodes = [
   episode: 6,
   type: "Main Show",
   released: "1972-02-05T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 9, episode: 6 },
+  imdb: { id: "tt0811288", season: 9, episode: 6 },
 },
 {
   title: "The Curse of Peladon (3)",
@@ -3174,7 +2502,7 @@ const episodes = [
   episode: 7,
   type: "Main Show",
   released: "1972-02-12T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 9, episode: 7 },
+  imdb: { id: "tt0811289", season: 9, episode: 7 },
 },
 {
   title: "The Curse of Peladon (4)",
@@ -3182,7 +2510,7 @@ const episodes = [
   episode: 8,
   type: "Main Show",
   released: "1972-02-19T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 9, episode: 8 },
+  imdb: { id: "tt0811290", season: 9, episode: 8 },
 },
 {
   title: "The Sea Devils (1)",
@@ -3190,7 +2518,7 @@ const episodes = [
   episode: 9,
   type: "Main Show",
   released: "1972-02-26T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 9, episode: 9 },
+  imdb: { id: "tt0562950", season: 9, episode: 9 },
 },
 {
   title: "The Sea Devils (2)",
@@ -3198,7 +2526,7 @@ const episodes = [
   episode: 10,
   type: "Main Show",
   released: "1972-03-04T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 9, episode: 10 },
+  imdb: { id: "tt0811335", season: 9, episode: 10 },
 },
 {
   title: "The Sea Devils (3)",
@@ -3206,7 +2534,7 @@ const episodes = [
   episode: 11,
   type: "Main Show",
   released: "1972-03-11T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 9, episode: 11 },
+  imdb: { id: "tt0811336", season: 9, episode: 11 },
 },
 {
   title: "The Sea Devils (4)",
@@ -3214,7 +2542,7 @@ const episodes = [
   episode: 12,
   type: "Main Show",
   released: "1972-03-18T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 9, episode: 12 },
+  imdb: { id: "tt0811337", season: 9, episode: 12 },
 },
 {
   title: "The Sea Devils (5)",
@@ -3222,7 +2550,7 @@ const episodes = [
   episode: 13,
   type: "Main Show",
   released: "1972-03-25T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 9, episode: 13 },
+  imdb: { id: "tt0811338", season: 9, episode: 13 },
 },
 {
   title: "The Sea Devils (6)",
@@ -3230,7 +2558,7 @@ const episodes = [
   episode: 14,
   type: "Main Show",
   released: "1972-04-01T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 9, episode: 14 },
+  imdb: { id: "tt0811339", season: 9, episode: 14 },
 },
 {
   title: "The Mutants (1)",
@@ -3238,7 +2566,7 @@ const episodes = [
   episode: 15,
   type: "Main Show",
   released: "1972-04-08T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 9, episode: 15 },
+  imdb: { id: "tt0562938", season: 9, episode: 15 },
 },
 {
   title: "The Mutants (2)",
@@ -3246,7 +2574,7 @@ const episodes = [
   episode: 16,
   type: "Main Show",
   released: "1972-04-15T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 9, episode: 16 },
+  imdb: { id: "tt0811330", season: 9, episode: 16 },
 },
 {
   title: "The Mutants (3)",
@@ -3254,7 +2582,7 @@ const episodes = [
   episode: 17,
   type: "Main Show",
   released: "1972-04-22T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 9, episode: 17 },
+  imdb: { id: "tt0811331", season: 9, episode: 17 },
 },
 {
   title: "The Mutants (4)",
@@ -3262,7 +2590,7 @@ const episodes = [
   episode: 18,
   type: "Main Show",
   released: "1972-04-29T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 9, episode: 18 },
+  imdb: { id: "tt0811332", season: 9, episode: 18 },
 },
 {
   title: "The Mutants (5)",
@@ -3270,7 +2598,7 @@ const episodes = [
   episode: 19,
   type: "Main Show",
   released: "1972-05-06T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 9, episode: 19 },
+  imdb: { id: "tt0811333", season: 9, episode: 19 },
 },
 {
   title: "The Mutants (6)",
@@ -3278,7 +2606,7 @@ const episodes = [
   episode: 20,
   type: "Main Show",
   released: "1972-05-13T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 9, episode: 20 },
+  imdb: { id: "tt0811334", season: 9, episode: 20 },
 },
 {
   title: "The Time Monster (1)",
@@ -3286,7 +2614,7 @@ const episodes = [
   episode: 21,
   type: "Main Show",
   released: "1972-05-20T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 9, episode: 21 },
+  imdb: { id: "tt0562965", season: 9, episode: 21 },
 },
 {
   title: "The Time Monster (2)",
@@ -3294,7 +2622,7 @@ const episodes = [
   episode: 22,
   type: "Main Show",
   released: "1972-05-27T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 9, episode: 22 },
+  imdb: { id: "tt0811351", season: 9, episode: 22 },
 },
 {
   title: "The Time Monster (3)",
@@ -3302,7 +2630,7 @@ const episodes = [
   episode: 23,
   type: "Main Show",
   released: "1972-06-03T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 9, episode: 23 },
+  imdb: { id: "tt0811352", season: 9, episode: 23 },
 },
 {
   title: "The Time Monster (4)",
@@ -3310,7 +2638,7 @@ const episodes = [
   episode: 24,
   type: "Main Show",
   released: "1972-06-10T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 9, episode: 24 },
+  imdb: { id: "tt0811353", season: 9, episode: 24 },
 },
 {
   title: "The Time Monster (5)",
@@ -3318,7 +2646,7 @@ const episodes = [
   episode: 25,
   type: "Main Show",
   released: "1972-06-17T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 9, episode: 25 },
+  imdb: { id: "tt0811354", season: 9, episode: 25 },
 },
 {
   title: "The Time Monster (6)",
@@ -3326,7 +2654,13 @@ const episodes = [
   episode: 26,
   type: "Main Show",
   released: "1972-06-24T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 9, episode: 26 },
+  imdb: { id: "tt0811355", season: 9, episode: 26 },
+},
+{
+  title: "Defenders of Earth",
+  season: 9,
+  episode: 27,
+  type: "Minisode",
 },
 {
   title: "The Three Doctors (1)",
@@ -3334,7 +2668,7 @@ const episodes = [
   episode: 1,
   type: "Main Show",
   released: "1972-12-30T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 10, episode: 1 },
+  imdb: { id: "tt0562963", season: 10, episode: 1 },
 },
 {
   title: "The Three Doctors (2)",
@@ -3342,7 +2676,7 @@ const episodes = [
   episode: 2,
   type: "Main Show",
   released: "1973-01-06T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 10, episode: 2 },
+  imdb: { id: "tt0811460", season: 10, episode: 2 },
 },
 {
   title: "The Three Doctors (3)",
@@ -3350,7 +2684,7 @@ const episodes = [
   episode: 3,
   type: "Main Show",
   released: "1973-01-13T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 10, episode: 3 },
+  imdb: { id: "tt0811461", season: 10, episode: 3 },
 },
 {
   title: "The Three Doctors (4)",
@@ -3358,7 +2692,7 @@ const episodes = [
   episode: 4,
   type: "Main Show",
   released: "1973-01-20T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 10, episode: 4 },
+  imdb: { id: "tt0811462", season: 10, episode: 4 },
 },
 {
   title: "Carnival of Monsters (1)",
@@ -3366,7 +2700,7 @@ const episodes = [
   episode: 5,
   type: "Main Show",
   released: "1973-01-27T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 10, episode: 5 },
+  imdb: { id: "tt0562833", season: 10, episode: 5 },
 },
 {
   title: "Carnival of Monsters (2)",
@@ -3374,7 +2708,7 @@ const episodes = [
   episode: 6,
   type: "Main Show",
   released: "1973-02-03T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 10, episode: 6 },
+  imdb: { id: "tt0811220", season: 10, episode: 6 },
 },
 {
   title: "Carnival of Monsters (3)",
@@ -3382,7 +2716,7 @@ const episodes = [
   episode: 7,
   type: "Main Show",
   released: "1973-02-10T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 10, episode: 7 },
+  imdb: { id: "tt0811221", season: 10, episode: 7 },
 },
 {
   title: "Carnival of Monsters (4)",
@@ -3390,7 +2724,7 @@ const episodes = [
   episode: 8,
   type: "Main Show",
   released: "1973-02-17T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 10, episode: 8 },
+  imdb: { id: "tt0811222", season: 10, episode: 8 },
 },
 {
   title: "Frontier in Space (1)",
@@ -3398,7 +2732,7 @@ const episodes = [
   episode: 9,
   type: "Main Show",
   released: "1973-02-24T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 10, episode: 9 },
+  imdb: { id: "tt0562845", season: 10, episode: 9 },
 },
 {
   title: "Frontier in Space (2)",
@@ -3406,7 +2740,7 @@ const episodes = [
   episode: 10,
   type: "Main Show",
   released: "1973-03-03T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 10, episode: 10 },
+  imdb: { id: "tt0811237", season: 10, episode: 10 },
 },
 {
   title: "Frontier in Space (3)",
@@ -3414,7 +2748,7 @@ const episodes = [
   episode: 11,
   type: "Main Show",
   released: "1973-03-10T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 10, episode: 11 },
+  imdb: { id: "tt0811238", season: 10, episode: 11 },
 },
 {
   title: "Frontier in Space (4)",
@@ -3422,7 +2756,7 @@ const episodes = [
   episode: 12,
   type: "Main Show",
   released: "1973-03-17T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 10, episode: 12 },
+  imdb: { id: "tt0811239", season: 10, episode: 12 },
 },
 {
   title: "Frontier in Space (5)",
@@ -3430,7 +2764,7 @@ const episodes = [
   episode: 13,
   type: "Main Show",
   released: "1973-03-24T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 10, episode: 13 },
+  imdb: { id: "tt0811240", season: 10, episode: 13 },
 },
 {
   title: "Frontier in Space (6)",
@@ -3438,7 +2772,7 @@ const episodes = [
   episode: 14,
   type: "Main Show",
   released: "1973-03-31T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 10, episode: 14 },
+  imdb: { id: "tt0811241", season: 10, episode: 14 },
 },
 {
   title: "Planet of the Daleks (1)",
@@ -3446,7 +2780,7 @@ const episodes = [
   episode: 15,
   type: "Main Show",
   released: "1973-04-07T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 10, episode: 15 },
+  imdb: { id: "tt0562868", season: 10, episode: 15 },
 },
 {
   title: "Planet of the Daleks (2)",
@@ -3454,7 +2788,7 @@ const episodes = [
   episode: 16,
   type: "Main Show",
   released: "1973-04-14T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 10, episode: 16 },
+  imdb: { id: "tt0811263", season: 10, episode: 16 },
 },
 {
   title: "Planet of the Daleks (3)",
@@ -3462,7 +2796,7 @@ const episodes = [
   episode: 17,
   type: "Main Show",
   released: "1973-04-21T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 10, episode: 17 },
+  imdb: { id: "tt0811264", season: 10, episode: 17 },
 },
 {
   title: "Planet of the Daleks (4)",
@@ -3470,7 +2804,7 @@ const episodes = [
   episode: 18,
   type: "Main Show",
   released: "1973-04-28T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 10, episode: 18 },
+  imdb: { id: "tt0811265", season: 10, episode: 18 },
 },
 {
   title: "Planet of the Daleks (5)",
@@ -3478,7 +2812,7 @@ const episodes = [
   episode: 19,
   type: "Main Show",
   released: "1973-05-05T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 10, episode: 19 },
+  imdb: { id: "tt0811266", season: 10, episode: 19 },
 },
 {
   title: "Planet of the Daleks (6)",
@@ -3486,7 +2820,7 @@ const episodes = [
   episode: 20,
   type: "Main Show",
   released: "1973-05-12T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 10, episode: 20 },
+  imdb: { id: "tt0811267", season: 10, episode: 20 },
 },
 {
   title: "The Green Death (1)",
@@ -3494,7 +2828,7 @@ const episodes = [
   episode: 21,
   type: "Main Show",
   released: "1973-05-19T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 10, episode: 21 },
+  imdb: { id: "tt0562915", season: 10, episode: 21 },
 },
 {
   title: "The Green Death (2)",
@@ -3502,7 +2836,7 @@ const episodes = [
   episode: 22,
   type: "Main Show",
   released: "1973-05-26T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 10, episode: 22 },
+  imdb: { id: "tt0811300", season: 10, episode: 22 },
 },
 {
   title: "The Green Death (3)",
@@ -3510,7 +2844,7 @@ const episodes = [
   episode: 23,
   type: "Main Show",
   released: "1973-06-02T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 10, episode: 23 },
+  imdb: { id: "tt0811301", season: 10, episode: 23 },
 },
 {
   title: "The Green Death (4)",
@@ -3518,7 +2852,7 @@ const episodes = [
   episode: 24,
   type: "Main Show",
   released: "1973-06-09T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 10, episode: 24 },
+  imdb: { id: "tt0811302", season: 10, episode: 24 },
 },
 {
   title: "The Green Death (5)",
@@ -3526,7 +2860,7 @@ const episodes = [
   episode: 25,
   type: "Main Show",
   released: "1973-06-16T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 10, episode: 25 },
+  imdb: { id: "tt0811303", season: 10, episode: 25 },
 },
 {
   title: "The Green Death (6)",
@@ -3534,7 +2868,13 @@ const episodes = [
   episode: 26,
   type: "Main Show",
   released: "1973-06-23T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 10, episode: 26 },
+  imdb: { id: "tt0811304", season: 10, episode: 26 },
+},
+{
+  title: "Hello Boys!",
+  season: 10,
+  episode: 27,
+  type: "Minisode",
 },
 {
   title: "The Time Warrior (1)",
@@ -3542,7 +2882,7 @@ const episodes = [
   episode: 1,
   type: "Main Show",
   released: "1973-12-15T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 11, episode: 1 },
+  imdb: { id: "tt0562966", season: 11, episode: 1 },
 },
 {
   title: "The Time Warrior (2)",
@@ -3550,7 +2890,7 @@ const episodes = [
   episode: 2,
   type: "Main Show",
   released: "1973-12-22T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 11, episode: 2 },
+  imdb: { id: "tt0811463", season: 11, episode: 2 },
 },
 {
   title: "The Time Warrior (3)",
@@ -3558,7 +2898,7 @@ const episodes = [
   episode: 3,
   type: "Main Show",
   released: "1973-12-29T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 11, episode: 3 },
+  imdb: { id: "tt0811464", season: 11, episode: 3 },
 },
 {
   title: "The Time Warrior (4)",
@@ -3566,15 +2906,15 @@ const episodes = [
   episode: 4,
   type: "Main Show",
   released: "1974-01-05T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 11, episode: 4 },
+  imdb: { id: "tt0811465", season: 11, episode: 4 },
 },
 {
-  title: "Invasion (1)",
+  title: "Invasion of the Dinosaurs (1)",
   season: 11,
   episode: 5,
   type: "Main Show",
   released: "1974-01-12T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 11, episode: 5 },
+  imdb: { id: "tt0562855", season: 11, episode: 5 },
 },
 {
   title: "Invasion of the Dinosaurs (2)",
@@ -3582,7 +2922,7 @@ const episodes = [
   episode: 6,
   type: "Main Show",
   released: "1974-01-19T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 11, episode: 6 },
+  imdb: { id: "tt0811258", season: 11, episode: 6 },
 },
 {
   title: "Invasion of the Dinosaurs (3)",
@@ -3590,7 +2930,7 @@ const episodes = [
   episode: 7,
   type: "Main Show",
   released: "1974-01-26T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 11, episode: 7 },
+  imdb: { id: "tt0811259", season: 11, episode: 7 },
 },
 {
   title: "Invasion of the Dinosaurs (4)",
@@ -3598,7 +2938,7 @@ const episodes = [
   episode: 8,
   type: "Main Show",
   released: "1974-02-02T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 11, episode: 8 },
+  imdb: { id: "tt0811260", season: 11, episode: 8 },
 },
 {
   title: "Invasion of the Dinosaurs (5)",
@@ -3606,7 +2946,7 @@ const episodes = [
   episode: 9,
   type: "Main Show",
   released: "1974-02-09T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 11, episode: 9 },
+  imdb: { id: "tt0811261", season: 11, episode: 9 },
 },
 {
   title: "Invasion of the Dinosaurs (6)",
@@ -3614,7 +2954,7 @@ const episodes = [
   episode: 10,
   type: "Main Show",
   released: "1974-02-16T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 11, episode: 10 },
+  imdb: { id: "tt0811262", season: 11, episode: 10 },
 },
 {
   title: "Death to the Daleks (1)",
@@ -3622,7 +2962,7 @@ const episodes = [
   episode: 11,
   type: "Main Show",
   released: "1974-02-23T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 11, episode: 11 },
+  imdb: { id: "tt0562838", season: 11, episode: 11 },
 },
 {
   title: "Death to the Daleks (2)",
@@ -3630,7 +2970,7 @@ const episodes = [
   episode: 12,
   type: "Main Show",
   released: "1974-03-02T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 11, episode: 12 },
+  imdb: { id: "tt0811228", season: 11, episode: 12 },
 },
 {
   title: "Death to the Daleks (3)",
@@ -3638,7 +2978,7 @@ const episodes = [
   episode: 13,
   type: "Main Show",
   released: "1974-03-09T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 11, episode: 13 },
+  imdb: { id: "tt0811229", season: 11, episode: 13 },
 },
 {
   title: "Death to the Daleks (4)",
@@ -3646,7 +2986,7 @@ const episodes = [
   episode: 14,
   type: "Main Show",
   released: "1974-03-16T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 11, episode: 14 },
+  imdb: { id: "tt0811230", season: 11, episode: 14 },
 },
 {
   title: "The Monster of Peladon (1)",
@@ -3654,7 +2994,7 @@ const episodes = [
   episode: 15,
   type: "Main Show",
   released: "1974-03-23T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 11, episode: 15 },
+  imdb: { id: "tt0562936", season: 11, episode: 15 },
 },
 {
   title: "The Monster of Peladon (2)",
@@ -3662,7 +3002,7 @@ const episodes = [
   episode: 16,
   type: "Main Show",
   released: "1974-03-30T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 11, episode: 16 },
+  imdb: { id: "tt0811325", season: 11, episode: 16 },
 },
 {
   title: "The Monster of Peladon (3)",
@@ -3670,7 +3010,7 @@ const episodes = [
   episode: 17,
   type: "Main Show",
   released: "1974-04-06T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 11, episode: 17 },
+  imdb: { id: "tt0811326", season: 11, episode: 17 },
 },
 {
   title: "The Monster of Peladon (4)",
@@ -3678,7 +3018,7 @@ const episodes = [
   episode: 18,
   type: "Main Show",
   released: "1974-04-13T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 11, episode: 18 },
+  imdb: { id: "tt0811327", season: 11, episode: 18 },
 },
 {
   title: "The Monster of Peladon (5)",
@@ -3686,7 +3026,7 @@ const episodes = [
   episode: 19,
   type: "Main Show",
   released: "1974-04-20T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 11, episode: 19 },
+  imdb: { id: "tt0811328", season: 11, episode: 19 },
 },
 {
   title: "The Monster of Peladon (6)",
@@ -3694,7 +3034,7 @@ const episodes = [
   episode: 20,
   type: "Main Show",
   released: "1974-04-27T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 11, episode: 20 },
+  imdb: { id: "tt0811329", season: 11, episode: 20 },
 },
 {
   title: "Planet of the Spiders (1)",
@@ -3702,7 +3042,7 @@ const episodes = [
   episode: 21,
   type: "Main Show",
   released: "1974-05-04T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 11, episode: 21 },
+  imdb: { id: "tt0562869", season: 11, episode: 21 },
 },
 {
   title: "Planet of the Spiders (2)",
@@ -3710,7 +3050,7 @@ const episodes = [
   episode: 22,
   type: "Main Show",
   released: "1974-05-11T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 11, episode: 22 },
+  imdb: { id: "tt0811268", season: 11, episode: 22 },
 },
 {
   title: "Planet of the Spiders (3)",
@@ -3718,7 +3058,7 @@ const episodes = [
   episode: 23,
   type: "Main Show",
   released: "1974-05-18T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 11, episode: 23 },
+  imdb: { id: "tt0811269", season: 11, episode: 23 },
 },
 {
   title: "Planet of the Spiders (4)",
@@ -3726,7 +3066,7 @@ const episodes = [
   episode: 24,
   type: "Main Show",
   released: "1974-05-25T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 11, episode: 24 },
+  imdb: { id: "tt0811270", season: 11, episode: 24 },
 },
 {
   title: "Planet of the Spiders (5)",
@@ -3734,7 +3074,7 @@ const episodes = [
   episode: 25,
   type: "Main Show",
   released: "1974-06-01T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 11, episode: 25 },
+  imdb: { id: "tt0811271", season: 11, episode: 25 },
 },
 {
   title: "Planet of the Spiders (6)",
@@ -3742,7 +3082,7 @@ const episodes = [
   episode: 26,
   type: "Main Show",
   released: "1974-06-08T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 11, episode: 26 },
+  imdb: { id: "tt0811272", season: 11, episode: 26 },
 },
 {
   title: "Robot (1)",
@@ -3750,7 +3090,7 @@ const episodes = [
   episode: 1,
   type: "Main Show",
   released: "1974-12-28T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 12, episode: 1 },
+  imdb: { id: "tt0562875", season: 12, episode: 1 },
 },
 {
   title: "Robot (2)",
@@ -3758,7 +3098,7 @@ const episodes = [
   episode: 2,
   type: "Main Show",
   released: "1975-01-04T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 12, episode: 2 },
+  imdb: { id: "tt0811436", season: 12, episode: 2 },
 },
 {
   title: "Robot (3)",
@@ -3766,7 +3106,7 @@ const episodes = [
   episode: 3,
   type: "Main Show",
   released: "1975-01-11T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 12, episode: 3 },
+  imdb: { id: "tt0811437", season: 12, episode: 3 },
 },
 {
   title: "Robot (4)",
@@ -3774,7 +3114,7 @@ const episodes = [
   episode: 4,
   type: "Main Show",
   released: "1975-01-18T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 12, episode: 4 },
+  imdb: { id: "tt0811438", season: 12, episode: 4 },
 },
 {
   title: "The Ark in Space (1)",
@@ -3782,7 +3122,7 @@ const episodes = [
   episode: 5,
   type: "Main Show",
   released: "1975-01-25T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 12, episode: 5 },
+  imdb: { id: "tt0562891", season: 12, episode: 5 },
 },
 {
   title: "The Ark in Space (2)",
@@ -3790,7 +3130,7 @@ const episodes = [
   episode: 6,
   type: "Main Show",
   released: "1975-02-01T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 12, episode: 6 },
+  imdb: { id: "tt0811282", season: 12, episode: 6 },
 },
 {
   title: "The Ark in Space (3)",
@@ -3798,7 +3138,7 @@ const episodes = [
   episode: 7,
   type: "Main Show",
   released: "1975-02-08T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 12, episode: 7 },
+  imdb: { id: "tt0811283", season: 12, episode: 7 },
 },
 {
   title: "The Ark in Space (4)",
@@ -3806,7 +3146,7 @@ const episodes = [
   episode: 8,
   type: "Main Show",
   released: "1975-02-15T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 12, episode: 8 },
+  imdb: { id: "tt0811284", season: 12, episode: 8 },
 },
 {
   title: "The Sontaran Experiment (1)",
@@ -3814,7 +3154,7 @@ const episodes = [
   episode: 9,
   type: "Main Show",
   released: "1975-02-22T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 12, episode: 9 },
+  imdb: { id: "tt0562956", season: 12, episode: 9 },
 },
 {
   title: "The Sontaran Experiment (2)",
@@ -3822,7 +3162,7 @@ const episodes = [
   episode: 10,
   type: "Main Show",
   released: "1975-03-01T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 12, episode: 10 },
+  imdb: { id: "tt0811345", season: 12, episode: 10 },
 },
 {
   title: "Genesis of the Daleks (1)",
@@ -3830,7 +3170,7 @@ const episodes = [
   episode: 11,
   type: "Main Show",
   released: "1975-03-08T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 12, episode: 11 },
+  imdb: { id: "tt0562850", season: 12, episode: 11 },
 },
 {
   title: "Genesis of the Daleks (2)",
@@ -3838,7 +3178,7 @@ const episodes = [
   episode: 12,
   type: "Main Show",
   released: "1975-03-15T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 12, episode: 12 },
+  imdb: { id: "tt0811247", season: 12, episode: 12 },
 },
 {
   title: "Genesis of the Daleks (3)",
@@ -3846,7 +3186,7 @@ const episodes = [
   episode: 13,
   type: "Main Show",
   released: "1975-03-22T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 12, episode: 13 },
+  imdb: { id: "tt0811248", season: 12, episode: 13 },
 },
 {
   title: "Genesis of the Daleks (4)",
@@ -3854,7 +3194,7 @@ const episodes = [
   episode: 14,
   type: "Main Show",
   released: "1975-03-29T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 12, episode: 14 },
+  imdb: { id: "tt0811249", season: 12, episode: 14 },
 },
 {
   title: "Genesis of the Daleks (5)",
@@ -3862,7 +3202,7 @@ const episodes = [
   episode: 15,
   type: "Main Show",
   released: "1975-04-05T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 12, episode: 15 },
+  imdb: { id: "tt0811250", season: 12, episode: 15 },
 },
 {
   title: "Genesis of the Daleks (6)",
@@ -3870,7 +3210,7 @@ const episodes = [
   episode: 16,
   type: "Main Show",
   released: "1975-04-12T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 12, episode: 16 },
+  imdb: { id: "tt0811251", season: 12, episode: 16 },
 },
 {
   title: "Revenge of the Cybermen (1)",
@@ -3878,7 +3218,7 @@ const episodes = [
   episode: 17,
   type: "Main Show",
   released: "1975-04-19T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 12, episode: 17 },
+  imdb: { id: "tt0562874", season: 12, episode: 17 },
 },
 {
   title: "Revenge of the Cybermen (2)",
@@ -3886,7 +3226,7 @@ const episodes = [
   episode: 18,
   type: "Main Show",
   released: "1975-04-26T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 12, episode: 18 },
+  imdb: { id: "tt0811273", season: 12, episode: 18 },
 },
 {
   title: "Revenge of the Cybermen (3)",
@@ -3894,7 +3234,7 @@ const episodes = [
   episode: 19,
   type: "Main Show",
   released: "1975-05-03T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 12, episode: 19 },
+  imdb: { id: "tt0811274", season: 12, episode: 19 },
 },
 {
   title: "Revenge of the Cybermen (4)",
@@ -3902,7 +3242,7 @@ const episodes = [
   episode: 20,
   type: "Main Show",
   released: "1975-05-10T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 12, episode: 20 },
+  imdb: { id: "tt0811275", season: 12, episode: 20 },
 },
 {
   title: "Terror of the Zygons (1)",
@@ -3910,7 +3250,7 @@ const episodes = [
   episode: 1,
   type: "Main Show",
   released: "1975-08-30T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 13, episode: 1 },
+  imdb: { id: "tt0562885", season: 13, episode: 1 },
 },
 {
   title: "Terror of the Zygons (2)",
@@ -3918,7 +3258,7 @@ const episodes = [
   episode: 2,
   type: "Main Show",
   released: "1975-09-06T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 13, episode: 2 },
+  imdb: { id: "tt0811853", season: 13, episode: 2 },
 },
 {
   title: "Terror of the Zygons (3)",
@@ -3926,7 +3266,7 @@ const episodes = [
   episode: 3,
   type: "Main Show",
   released: "1975-09-13T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 13, episode: 3 },
+  imdb: { id: "tt0811854", season: 13, episode: 3 },
 },
 {
   title: "Terror of the Zygons (4)",
@@ -3934,7 +3274,7 @@ const episodes = [
   episode: 4,
   type: "Main Show",
   released: "1975-09-20T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 13, episode: 4 },
+  imdb: { id: "tt0811855", season: 13, episode: 4 },
 },
 {
   title: "Planet of Evil (1)",
@@ -3942,7 +3282,7 @@ const episodes = [
   episode: 5,
   type: "Main Show",
   released: "1975-09-27T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 13, episode: 5 },
+  imdb: { id: "tt0562865", season: 13, episode: 5 },
 },
 {
   title: "Planet of Evil (2)",
@@ -3950,7 +3290,7 @@ const episodes = [
   episode: 6,
   type: "Main Show",
   released: "1975-10-04T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 13, episode: 6 },
+  imdb: { id: "tt0811823", season: 13, episode: 6 },
 },
 {
   title: "Planet of Evil (3)",
@@ -3958,7 +3298,7 @@ const episodes = [
   episode: 7,
   type: "Main Show",
   released: "1975-10-11T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 13, episode: 7 },
+  imdb: { id: "tt0811824", season: 13, episode: 7 },
 },
 {
   title: "Planet of Evil (4)",
@@ -3966,7 +3306,7 @@ const episodes = [
   episode: 8,
   type: "Main Show",
   released: "1975-10-18T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 13, episode: 8 },
+  imdb: { id: "tt0811825", season: 13, episode: 8 },
 },
 {
   title: "Pyramids of Mars (1)",
@@ -3974,7 +3314,7 @@ const episodes = [
   episode: 9,
   type: "Main Show",
   released: "1975-10-25T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 13, episode: 9 },
+  imdb: { id: "tt0562870", season: 13, episode: 9 },
 },
 {
   title: "Pyramids of Mars (2)",
@@ -3982,7 +3322,7 @@ const episodes = [
   episode: 10,
   type: "Main Show",
   released: "1975-11-01T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 13, episode: 10 },
+  imdb: { id: "tt0811829", season: 13, episode: 10 },
 },
 {
   title: "Pyramids of Mars (3)",
@@ -3990,7 +3330,7 @@ const episodes = [
   episode: 11,
   type: "Main Show",
   released: "1975-11-08T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 13, episode: 11 },
+  imdb: { id: "tt0811830", season: 13, episode: 11 },
 },
 {
   title: "Pyramids of Mars (4)",
@@ -3998,7 +3338,7 @@ const episodes = [
   episode: 12,
   type: "Main Show",
   released: "1975-11-15T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 13, episode: 12 },
+  imdb: { id: "tt0811831", season: 13, episode: 12 },
 },
 {
   title: "The Android Invasion (1)",
@@ -4006,7 +3346,7 @@ const episodes = [
   episode: 13,
   type: "Main Show",
   released: "1975-11-22T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 13, episode: 13 },
+  imdb: { id: "tt0562888", season: 13, episode: 13 },
 },
 {
   title: "The Android Invasion (2)",
@@ -4014,7 +3354,7 @@ const episodes = [
   episode: 14,
   type: "Main Show",
   released: "1975-11-29T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 13, episode: 14 },
+  imdb: { id: "tt0811856", season: 13, episode: 14 },
 },
 {
   title: "The Android Invasion (3)",
@@ -4022,7 +3362,7 @@ const episodes = [
   episode: 15,
   type: "Main Show",
   released: "1975-12-06T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 13, episode: 15 },
+  imdb: { id: "tt0811857", season: 13, episode: 15 },
 },
 {
   title: "The Android Invasion (4)",
@@ -4030,7 +3370,7 @@ const episodes = [
   episode: 16,
   type: "Main Show",
   released: "1975-12-13T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 13, episode: 16 },
+  imdb: { id: "tt0811858", season: 13, episode: 16 },
 },
 {
   title: "The Brain of Morbius (1)",
@@ -4038,7 +3378,7 @@ const episodes = [
   episode: 17,
   type: "Main Show",
   released: "1976-01-03T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 13, episode: 17 },
+  imdb: { id: "tt0144171", season: 13, episode: 17 },
 },
 {
   title: "The Brain of Morbius (2)",
@@ -4046,7 +3386,7 @@ const episodes = [
   episode: 18,
   type: "Main Show",
   released: "1976-01-10T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 13, episode: 18 },
+  imdb: { id: "tt0811868", season: 13, episode: 18 },
 },
 {
   title: "The Brain of Morbius (3)",
@@ -4054,7 +3394,7 @@ const episodes = [
   episode: 19,
   type: "Main Show",
   released: "1976-01-17T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 13, episode: 19 },
+  imdb: { id: "tt0811869", season: 13, episode: 19 },
 },
 {
   title: "The Brain of Morbius (4)",
@@ -4062,7 +3402,7 @@ const episodes = [
   episode: 20,
   type: "Main Show",
   released: "1976-01-24T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 13, episode: 20 },
+  imdb: { id: "tt0811870", season: 13, episode: 20 },
 },
 {
   title: "The Seeds of Doom (1)",
@@ -4070,7 +3410,7 @@ const episodes = [
   episode: 21,
   type: "Main Show",
   released: "1976-01-31T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 13, episode: 21 },
+  imdb: { id: "tt0562952", season: 13, episode: 21 },
 },
 {
   title: "The Seeds of Doom (2)",
@@ -4078,7 +3418,7 @@ const episodes = [
   episode: 22,
   type: "Main Show",
   released: "1976-02-07T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 13, episode: 22 },
+  imdb: { id: "tt0811731", season: 13, episode: 22 },
 },
 {
   title: "The Seeds of Doom (3)",
@@ -4086,7 +3426,7 @@ const episodes = [
   episode: 23,
   type: "Main Show",
   released: "1976-02-14T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 13, episode: 23 },
+  imdb: { id: "tt0811732", season: 13, episode: 23 },
 },
 {
   title: "The Seeds of Doom (4)",
@@ -4094,7 +3434,7 @@ const episodes = [
   episode: 24,
   type: "Main Show",
   released: "1976-02-21T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 13, episode: 24 },
+  imdb: { id: "tt0811733", season: 13, episode: 24 },
 },
 {
   title: "The Seeds of Doom (5)",
@@ -4102,7 +3442,7 @@ const episodes = [
   episode: 25,
   type: "Main Show",
   released: "1976-02-28T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 13, episode: 25 },
+  imdb: { id: "tt0811734", season: 13, episode: 25 },
 },
 {
   title: "The Seeds of Doom (6)",
@@ -4110,7 +3450,7 @@ const episodes = [
   episode: 26,
   type: "Main Show",
   released: "1976-03-06T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 13, episode: 26 },
+  imdb: { id: "tt0811735", season: 13, episode: 26 },
 },
 {
   title: "The Masque of Mandragora (1)",
@@ -4118,7 +3458,7 @@ const episodes = [
   episode: 1,
   type: "Main Show",
   released: "1976-09-04T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 14, episode: 1 },
+  imdb: { id: "tt0562932", season: 14, episode: 1 },
 },
 {
   title: "The Masque of Mandragora (2)",
@@ -4126,7 +3466,7 @@ const episodes = [
   episode: 2,
   type: "Main Show",
   released: "1976-09-11T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 14, episode: 2 },
+  imdb: { id: "tt0811713", season: 14, episode: 2 },
 },
 {
   title: "The Masque of Mandragora (3)",
@@ -4134,7 +3474,7 @@ const episodes = [
   episode: 3,
   type: "Main Show",
   released: "1976-09-18T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 14, episode: 3 },
+  imdb: { id: "tt0811714", season: 14, episode: 3 },
 },
 {
   title: "The Masque of Mandragora (4)",
@@ -4142,7 +3482,7 @@ const episodes = [
   episode: 4,
   type: "Main Show",
   released: "1976-09-25T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 14, episode: 4 },
+  imdb: { id: "tt0811715", season: 14, episode: 4 },
 },
 {
   title: "The Hand of Fear (1)",
@@ -4150,7 +3490,7 @@ const episodes = [
   episode: 5,
   type: "Main Show",
   released: "1976-10-02T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 14, episode: 5 },
+  imdb: { id: "tt0562917", season: 14, episode: 5 },
 },
 {
   title: "The Hand of Fear (2)",
@@ -4158,7 +3498,7 @@ const episodes = [
   episode: 6,
   type: "Main Show",
   released: "1976-10-09T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 14, episode: 6 },
+  imdb: { id: "tt0811689", season: 14, episode: 6 },
 },
 {
   title: "The Hand of Fear (3)",
@@ -4166,7 +3506,7 @@ const episodes = [
   episode: 7,
   type: "Main Show",
   released: "1976-10-16T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 14, episode: 7 },
+  imdb: { id: "tt0811690", season: 14, episode: 7 },
 },
 {
   title: "The Hand of Fear (4)",
@@ -4174,7 +3514,7 @@ const episodes = [
   episode: 8,
   type: "Main Show",
   released: "1976-10-23T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 14, episode: 8 },
+  imdb: { id: "tt0811691", season: 14, episode: 8 },
 },
 {
   title: "The Deadly Assassin (1)",
@@ -4182,7 +3522,7 @@ const episodes = [
   episode: 9,
   type: "Main Show",
   released: "1976-10-30T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 14, episode: 9 },
+  imdb: { id: "tt0562907", season: 14, episode: 9 },
 },
 {
   title: "The Deadly Assassin (2)",
@@ -4190,7 +3530,7 @@ const episodes = [
   episode: 10,
   type: "Main Show",
   released: "1976-11-06T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 14, episode: 10 },
+  imdb: { id: "tt0811880", season: 14, episode: 10 },
 },
 {
   title: "The Deadly Assassin (3)",
@@ -4198,7 +3538,7 @@ const episodes = [
   episode: 11,
   type: "Main Show",
   released: "1976-11-13T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 14, episode: 11 },
+  imdb: { id: "tt0811881", season: 14, episode: 11 },
 },
 {
   title: "The Deadly Assassin (4)",
@@ -4206,7 +3546,7 @@ const episodes = [
   episode: 12,
   type: "Main Show",
   released: "1976-11-20T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 14, episode: 12 },
+  imdb: { id: "tt0811882", season: 14, episode: 12 },
 },
 {
   title: "The Face of Evil (1)",
@@ -4214,7 +3554,7 @@ const episodes = [
   episode: 13,
   type: "Main Show",
   released: "1977-01-01T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 14, episode: 13 },
+  imdb: { id: "tt0562912", season: 14, episode: 13 },
 },
 {
   title: "The Face of Evil (2)",
@@ -4222,7 +3562,7 @@ const episodes = [
   episode: 14,
   type: "Main Show",
   released: "1977-01-08T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 14, episode: 14 },
+  imdb: { id: "tt0811883", season: 14, episode: 14 },
 },
 {
   title: "The Face of Evil (3)",
@@ -4230,7 +3570,7 @@ const episodes = [
   episode: 15,
   type: "Main Show",
   released: "1977-01-15T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 14, episode: 15 },
+  imdb: { id: "tt0811884", season: 14, episode: 15 },
 },
 {
   title: "The Face of Evil (4)",
@@ -4238,7 +3578,7 @@ const episodes = [
   episode: 16,
   type: "Main Show",
   released: "1977-01-22T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 14, episode: 16 },
+  imdb: { id: "tt0811885", season: 14, episode: 16 },
 },
 {
   title: "The Robots of Death (1)",
@@ -4246,7 +3586,7 @@ const episodes = [
   episode: 17,
   type: "Main Show",
   released: "1977-01-29T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 14, episode: 17 },
+  imdb: { id: "tt0302492", season: 14, episode: 17 },
 },
 {
   title: "The Robots of Death (2)",
@@ -4254,7 +3594,7 @@ const episodes = [
   episode: 18,
   type: "Main Show",
   released: "1977-02-05T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 14, episode: 18 },
+  imdb: { id: "tt0811728", season: 14, episode: 18 },
 },
 {
   title: "The Robots of Death (3)",
@@ -4262,7 +3602,7 @@ const episodes = [
   episode: 19,
   type: "Main Show",
   released: "1977-02-12T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 14, episode: 19 },
+  imdb: { id: "tt0811729", season: 14, episode: 19 },
 },
 {
   title: "The Robots of Death (4)",
@@ -4270,7 +3610,7 @@ const episodes = [
   episode: 20,
   type: "Main Show",
   released: "1977-02-19T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 14, episode: 20 },
+  imdb: { id: "tt0811730", season: 14, episode: 20 },
 },
 {
   title: "The Talons of Weng-Chiang (1)",
@@ -4278,7 +3618,7 @@ const episodes = [
   episode: 21,
   type: "Main Show",
   released: "1977-02-26T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 14, episode: 21 },
+  imdb: { id: "tt0562961", season: 14, episode: 21 },
 },
 {
   title: "The Talons of Weng-Chiang (2)",
@@ -4286,7 +3626,7 @@ const episodes = [
   episode: 22,
   type: "Main Show",
   released: "1977-03-05T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 14, episode: 22 },
+  imdb: { id: "tt0811742", season: 14, episode: 22 },
 },
 {
   title: "The Talons of Weng-Chiang (3)",
@@ -4294,7 +3634,7 @@ const episodes = [
   episode: 23,
   type: "Main Show",
   released: "1977-03-12T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 14, episode: 23 },
+  imdb: { id: "tt0811743", season: 14, episode: 23 },
 },
 {
   title: "The Talons of Weng-Chiang (4)",
@@ -4302,7 +3642,7 @@ const episodes = [
   episode: 24,
   type: "Main Show",
   released: "1977-03-19T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 14, episode: 24 },
+  imdb: { id: "tt0811744", season: 14, episode: 24 },
 },
 {
   title: "The Talons of Weng-Chiang (5)",
@@ -4310,7 +3650,7 @@ const episodes = [
   episode: 25,
   type: "Main Show",
   released: "1977-03-26T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 14, episode: 25 },
+  imdb: { id: "tt0811745", season: 14, episode: 25 },
 },
 {
   title: "The Talons of Weng-Chiang (6)",
@@ -4318,7 +3658,7 @@ const episodes = [
   episode: 26,
   type: "Main Show",
   released: "1977-04-02T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 14, episode: 26 },
+  imdb: { id: "tt0811746", season: 14, episode: 26 },
 },
 {
   title: "Horror of Fang Rock (1)",
@@ -4326,7 +3666,7 @@ const episodes = [
   episode: 1,
   type: "Main Show",
   released: "1977-09-03T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 15, episode: 1 },
+  imdb: { id: "tt0562852", season: 15, episode: 1 },
 },
 {
   title: "Horror of Fang Rock (2)",
@@ -4334,7 +3674,7 @@ const episodes = [
   episode: 2,
   type: "Main Show",
   released: "1977-09-10T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 15, episode: 2 },
+  imdb: { id: "tt0811796", season: 15, episode: 2 },
 },
 {
   title: "Horror of Fang Rock (3)",
@@ -4342,7 +3682,7 @@ const episodes = [
   episode: 3,
   type: "Main Show",
   released: "1977-09-17T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 15, episode: 3 },
+  imdb: { id: "tt0811797", season: 15, episode: 3 },
 },
 {
   title: "Horror of Fang Rock (4)",
@@ -4350,7 +3690,7 @@ const episodes = [
   episode: 4,
   type: "Main Show",
   released: "1977-09-24T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 15, episode: 4 },
+  imdb: { id: "tt0811798", season: 15, episode: 4 },
 },
 {
   title: "The Invisible Enemy (1)",
@@ -4358,7 +3698,7 @@ const episodes = [
   episode: 5,
   type: "Main Show",
   released: "1977-10-01T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 15, episode: 5 },
+  imdb: { id: "tt0562924", season: 15, episode: 5 },
 },
 {
   title: "The Invisible Enemy (2)",
@@ -4366,7 +3706,7 @@ const episodes = [
   episode: 6,
   type: "Main Show",
   released: "1977-10-08T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 15, episode: 6 },
+  imdb: { id: "tt0811702", season: 15, episode: 6 },
 },
 {
   title: "The Invisible Enemy (3)",
@@ -4374,7 +3714,7 @@ const episodes = [
   episode: 7,
   type: "Main Show",
   released: "1977-10-15T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 15, episode: 7 },
+  imdb: { id: "tt0811703", season: 15, episode: 7 },
 },
 {
   title: "The Invisible Enemy (4)",
@@ -4382,7 +3722,7 @@ const episodes = [
   episode: 8,
   type: "Main Show",
   released: "1977-10-22T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 15, episode: 8 },
+  imdb: { id: "tt0811704", season: 15, episode: 8 },
 },
 {
   title: "Image of the Fendahl (1)",
@@ -4390,7 +3730,7 @@ const episodes = [
   episode: 9,
   type: "Main Show",
   released: "1977-10-29T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 15, episode: 9 },
+  imdb: { id: "tt0562853", season: 15, episode: 9 },
 },
 {
   title: "Image of the Fendahl (2)",
@@ -4398,7 +3738,7 @@ const episodes = [
   episode: 10,
   type: "Main Show",
   released: "1977-11-05T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 15, episode: 10 },
+  imdb: { id: "tt0811799", season: 15, episode: 10 },
 },
 {
   title: "Image of the Fendahl (3)",
@@ -4406,7 +3746,7 @@ const episodes = [
   episode: 11,
   type: "Main Show",
   released: "1977-11-12T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 15, episode: 11 },
+  imdb: { id: "tt0811800", season: 15, episode: 11 },
 },
 {
   title: "Image of the Fendahl (4)",
@@ -4414,7 +3754,7 @@ const episodes = [
   episode: 12,
   type: "Main Show",
   released: "1977-11-19T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 15, episode: 12 },
+  imdb: { id: "tt0811801", season: 15, episode: 12 },
 },
 {
   title: "The Sun Makers (1)",
@@ -4422,7 +3762,7 @@ const episodes = [
   episode: 13,
   type: "Main Show",
   released: "1977-11-26T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 15, episode: 13 },
+  imdb: { id: "tt0562960", season: 15, episode: 13 },
 },
 {
   title: "The Sun Makers (2)",
@@ -4430,7 +3770,7 @@ const episodes = [
   episode: 14,
   type: "Main Show",
   released: "1977-12-03T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 15, episode: 14 },
+  imdb: { id: "tt0811739", season: 15, episode: 14 },
 },
 {
   title: "The Sun Makers (3)",
@@ -4438,7 +3778,7 @@ const episodes = [
   episode: 15,
   type: "Main Show",
   released: "1977-12-10T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 15, episode: 15 },
+  imdb: { id: "tt0811740", season: 15, episode: 15 },
 },
 {
   title: "The Sun Makers (4)",
@@ -4446,7 +3786,7 @@ const episodes = [
   episode: 16,
   type: "Main Show",
   released: "1977-12-17T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 15, episode: 16 },
+  imdb: { id: "tt0811741", season: 15, episode: 16 },
 },
 {
   title: "Underworld (1)",
@@ -4454,7 +3794,7 @@ const episodes = [
   episode: 17,
   type: "Main Show",
   released: "1978-01-07T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 15, episode: 17 },
+  imdb: { id: "tt0562981", season: 15, episode: 17 },
 },
 {
   title: "Underworld (2)",
@@ -4462,7 +3802,7 @@ const episodes = [
   episode: 18,
   type: "Main Show",
   released: "1978-01-14T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 15, episode: 18 },
+  imdb: { id: "tt0811763", season: 15, episode: 18 },
 },
 {
   title: "Underworld (3)",
@@ -4470,7 +3810,7 @@ const episodes = [
   episode: 19,
   type: "Main Show",
   released: "1978-01-21T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 15, episode: 19 },
+  imdb: { id: "tt0811764", season: 15, episode: 19 },
 },
 {
   title: "Underworld (4)",
@@ -4478,7 +3818,7 @@ const episodes = [
   episode: 20,
   type: "Main Show",
   released: "1978-01-28T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 15, episode: 20 },
+  imdb: { id: "tt0811765", season: 15, episode: 20 },
 },
 {
   title: "The Invasion of Time (1)",
@@ -4486,7 +3826,7 @@ const episodes = [
   episode: 21,
   type: "Main Show",
   released: "1978-02-04T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 15, episode: 21 },
+  imdb: { id: "tt0562923", season: 15, episode: 21 },
 },
 {
   title: "The Invasion of Time (2)",
@@ -4494,7 +3834,7 @@ const episodes = [
   episode: 22,
   type: "Main Show",
   released: "1978-02-11T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 15, episode: 22 },
+  imdb: { id: "tt0811697", season: 15, episode: 22 },
 },
 {
   title: "The Invasion of Time (3)",
@@ -4502,7 +3842,7 @@ const episodes = [
   episode: 23,
   type: "Main Show",
   released: "1978-02-18T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 15, episode: 23 },
+  imdb: { id: "tt0811698", season: 15, episode: 23 },
 },
 {
   title: "The Invasion of Time (4)",
@@ -4510,7 +3850,7 @@ const episodes = [
   episode: 24,
   type: "Main Show",
   released: "1978-02-25T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 15, episode: 24 },
+  imdb: { id: "tt0811699", season: 15, episode: 24 },
 },
 {
   title: "The Invasion of Time (5)",
@@ -4518,7 +3858,7 @@ const episodes = [
   episode: 25,
   type: "Main Show",
   released: "1978-03-04T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 15, episode: 25 },
+  imdb: { id: "tt0811700", season: 15, episode: 25 },
 },
 {
   title: "The Invasion of Time (6)",
@@ -4526,7 +3866,13 @@ const episodes = [
   episode: 26,
   type: "Main Show",
   released: "1978-03-11T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 15, episode: 26 },
+  imdb: { id: "tt0811701", season: 15, episode: 26 },
+},
+{
+  title: "The Final Battle",
+  season: 15,
+  episode: 27,
+  type: "Minisode",
 },
 {
   title: "The Ribos Operation (1)",
@@ -4534,7 +3880,7 @@ const episodes = [
   episode: 1,
   type: "Main Show",
   released: "1978-09-02T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 16, episode: 1 },
+  imdb: { id: "tt0562946", season: 16, episode: 1 },
 },
 {
   title: "The Ribos Operation (2)",
@@ -4542,7 +3888,7 @@ const episodes = [
   episode: 2,
   type: "Main Show",
   released: "1978-09-09T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 16, episode: 2 },
+  imdb: { id: "tt0811725", season: 16, episode: 2 },
 },
 {
   title: "The Ribos Operation (3)",
@@ -4550,7 +3896,7 @@ const episodes = [
   episode: 3,
   type: "Main Show",
   released: "1978-09-16T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 16, episode: 3 },
+  imdb: { id: "tt0811726", season: 16, episode: 3 },
 },
 {
   title: "The Ribos Operation (4)",
@@ -4558,7 +3904,7 @@ const episodes = [
   episode: 4,
   type: "Main Show",
   released: "1978-09-23T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 16, episode: 4 },
+  imdb: { id: "tt0811727", season: 16, episode: 4 },
 },
 {
   title: "The Pirate Planet (1)",
@@ -4566,7 +3912,7 @@ const episodes = [
   episode: 5,
   type: "Main Show",
   released: "1978-09-30T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 16, episode: 5 },
+  imdb: { id: "tt0562941", season: 16, episode: 5 },
 },
 {
   title: "The Pirate Planet (2)",
@@ -4574,7 +3920,7 @@ const episodes = [
   episode: 6,
   type: "Main Show",
   released: "1978-10-07T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 16, episode: 6 },
+  imdb: { id: "tt0811719", season: 16, episode: 6 },
 },
 {
   title: "The Pirate Planet (3)",
@@ -4582,7 +3928,7 @@ const episodes = [
   episode: 7,
   type: "Main Show",
   released: "1978-10-14T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 16, episode: 7 },
+  imdb: { id: "tt0811720", season: 16, episode: 7 },
 },
 {
   title: "The Pirate Planet (4)",
@@ -4590,7 +3936,7 @@ const episodes = [
   episode: 8,
   type: "Main Show",
   released: "1978-10-21T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 16, episode: 8 },
+  imdb: { id: "tt0811721", season: 16, episode: 8 },
 },
 {
   title: "The Stones of Blood (1)",
@@ -4598,7 +3944,7 @@ const episodes = [
   episode: 9,
   type: "Main Show",
   released: "1978-10-28T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 16, episode: 9 },
+  imdb: { id: "tt0562959", season: 16, episode: 9 },
 },
 {
   title: "The Stones of Blood (2)",
@@ -4606,7 +3952,7 @@ const episodes = [
   episode: 10,
   type: "Main Show",
   released: "1978-11-04T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 16, episode: 10 },
+  imdb: { id: "tt0811736", season: 16, episode: 10 },
 },
 {
   title: "The Stones of Blood (3)",
@@ -4614,7 +3960,7 @@ const episodes = [
   episode: 11,
   type: "Main Show",
   released: "1978-11-11T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 16, episode: 11 },
+  imdb: { id: "tt0811737", season: 16, episode: 11 },
 },
 {
   title: "The Stones of Blood (4)",
@@ -4622,7 +3968,7 @@ const episodes = [
   episode: 12,
   type: "Main Show",
   released: "1978-11-18T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 16, episode: 12 },
+  imdb: { id: "tt0811738", season: 16, episode: 12 },
 },
 {
   title: "The Androids of Tara (1)",
@@ -4630,7 +3976,7 @@ const episodes = [
   episode: 13,
   type: "Main Show",
   released: "1978-11-25T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 16, episode: 13 },
+  imdb: { id: "tt0562889", season: 16, episode: 13 },
 },
 {
   title: "The Androids of Tara (2)",
@@ -4638,7 +3984,7 @@ const episodes = [
   episode: 14,
   type: "Main Show",
   released: "1978-12-02T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 16, episode: 14 },
+  imdb: { id: "tt0811859", season: 16, episode: 14 },
 },
 {
   title: "The Androids of Tara (3)",
@@ -4646,7 +3992,7 @@ const episodes = [
   episode: 15,
   type: "Main Show",
   released: "1978-12-09T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 16, episode: 15 },
+  imdb: { id: "tt0811860", season: 16, episode: 15 },
 },
 {
   title: "The Androids of Tara (4)",
@@ -4654,7 +4000,7 @@ const episodes = [
   episode: 16,
   type: "Main Show",
   released: "1978-12-16T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 16, episode: 16 },
+  imdb: { id: "tt0811861", season: 16, episode: 16 },
 },
 {
   title: "The Power of Kroll (1)",
@@ -4662,7 +4008,7 @@ const episodes = [
   episode: 17,
   type: "Main Show",
   released: "1978-12-23T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 16, episode: 17 },
+  imdb: { id: "tt0562942", season: 16, episode: 17 },
 },
 {
   title: "The Power of Kroll (2)",
@@ -4670,7 +4016,7 @@ const episodes = [
   episode: 18,
   type: "Main Show",
   released: "1978-12-30T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 16, episode: 18 },
+  imdb: { id: "tt0811722", season: 16, episode: 18 },
 },
 {
   title: "The Power of Kroll (3)",
@@ -4678,7 +4024,7 @@ const episodes = [
   episode: 19,
   type: "Main Show",
   released: "1979-01-06T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 16, episode: 19 },
+  imdb: { id: "tt0811723", season: 16, episode: 19 },
 },
 {
   title: "The Power of Kroll (4)",
@@ -4686,7 +4032,7 @@ const episodes = [
   episode: 20,
   type: "Main Show",
   released: "1979-01-13T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 16, episode: 20 },
+  imdb: { id: "tt0811724", season: 16, episode: 20 },
 },
 {
   title: "The Armageddon Factor (1)",
@@ -4694,7 +4040,7 @@ const episodes = [
   episode: 21,
   type: "Main Show",
   released: "1979-01-20T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 16, episode: 21 },
+  imdb: { id: "tt0562892", season: 16, episode: 21 },
 },
 {
   title: "The Armageddon Factor (2)",
@@ -4702,7 +4048,7 @@ const episodes = [
   episode: 22,
   type: "Main Show",
   released: "1979-01-27T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 16, episode: 22 },
+  imdb: { id: "tt0811862", season: 16, episode: 22 },
 },
 {
   title: "The Armageddon Factor (3)",
@@ -4710,7 +4056,7 @@ const episodes = [
   episode: 23,
   type: "Main Show",
   released: "1979-02-03T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 16, episode: 23 },
+  imdb: { id: "tt0811863", season: 16, episode: 23 },
 },
 {
   title: "The Armageddon Factor (4)",
@@ -4718,7 +4064,7 @@ const episodes = [
   episode: 24,
   type: "Main Show",
   released: "1979-02-10T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 16, episode: 24 },
+  imdb: { id: "tt0811864", season: 16, episode: 24 },
 },
 {
   title: "The Armageddon Factor (5)",
@@ -4726,7 +4072,7 @@ const episodes = [
   episode: 25,
   type: "Main Show",
   released: "1979-02-17T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 16, episode: 25 },
+  imdb: { id: "tt0811865", season: 16, episode: 25 },
 },
 {
   title: "The Armageddon Factor (6)",
@@ -4734,209 +4080,209 @@ const episodes = [
   episode: 26,
   type: "Main Show",
   released: "1979-02-24T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 16, episode: 26 },
+  imdb: { id: "tt0811866", season: 16, episode: 26 },
+},
+{
+  title: "Risen",
+  season: 17,
+  episode: 1,
+  type: "Minisode",
 },
 {
   title: "Destiny of the Daleks (1)",
   season: 17,
-  episode: 1,
+  episode: 2,
   type: "Main Show",
   released: "1979-09-01T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 17, episode: 1 },
+  imdb: { id: "tt0562840", season: 17, episode: 2 },
 },
 {
   title: "Destiny of the Daleks (2)",
   season: 17,
-  episode: 2,
+  episode: 3,
   type: "Main Show",
   released: "1979-09-08T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 17, episode: 2 },
+  imdb: { id: "tt0811667", season: 17, episode: 3 },
 },
 {
   title: "Destiny of the Daleks (3)",
   season: 17,
-  episode: 3,
+  episode: 4,
   type: "Main Show",
   released: "1979-09-15T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 17, episode: 3 },
+  imdb: { id: "tt0811668", season: 17, episode: 4 },
 },
 {
   title: "Destiny of the Daleks (4)",
   season: 17,
-  episode: 4,
+  episode: 5,
   type: "Main Show",
   released: "1979-09-22T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 17, episode: 4 },
+  imdb: { id: "tt0811669", season: 17, episode: 5 },
 },
 {
   title: "City of Death (1)",
   season: 17,
-  episode: 5,
+  episode: 6,
   type: "Main Show",
   released: "1979-09-29T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 17, episode: 5 },
+  imdb: { id: "tt0562835", season: 17, episode: 6 },
 },
 {
   title: "City of Death (2)",
   season: 17,
-  episode: 6,
+  episode: 7,
   type: "Main Show",
   released: "1979-10-06T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 17, episode: 6 },
+  imdb: { id: "tt0811662", season: 17, episode: 7 },
 },
 {
   title: "City of Death (3)",
   season: 17,
-  episode: 7,
+  episode: 8,
   type: "Main Show",
   released: "1979-10-13T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 17, episode: 7 },
+  imdb: { id: "tt0811663", season: 17, episode: 8 },
 },
 {
   title: "City of Death (4)",
   season: 17,
-  episode: 8,
+  episode: 9,
   type: "Main Show",
   released: "1979-10-20T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 17, episode: 8 },
+  imdb: { id: "tt0811664", season: 17, episode: 9 },
 },
 {
   title: "The Creature from the Pit (1)",
   season: 17,
-  episode: 9,
+  episode: 10,
   type: "Main Show",
   released: "1979-10-27T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 17, episode: 9 },
+  imdb: { id: "tt0562900", season: 17, episode: 10 },
 },
 {
   title: "The Creature from the Pit (2)",
   season: 17,
-  episode: 10,
+  episode: 11,
   type: "Main Show",
   released: "1979-11-03T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 17, episode: 10 },
+  imdb: { id: "tt0811874", season: 17, episode: 11 },
 },
 {
   title: "The Creature from the Pit (3)",
   season: 17,
-  episode: 11,
+  episode: 12,
   type: "Main Show",
   released: "1979-11-10T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 17, episode: 11 },
+  imdb: { id: "tt0811875", season: 17, episode: 12 },
 },
 {
   title: "The Creature from the Pit (4)",
   season: 17,
-  episode: 12,
+  episode: 13,
   type: "Main Show",
   released: "1979-11-17T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 17, episode: 12 },
+  imdb: { id: "tt0811876", season: 17, episode: 13 },
 },
 {
   title: "Nightmare of Eden (1)",
   season: 17,
-  episode: 13,
+  episode: 14,
   type: "Main Show",
   released: "1979-11-24T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 17, episode: 13 },
+  imdb: { id: "tt0562863", season: 17, episode: 14 },
 },
 {
   title: "Nightmare of Eden (2)",
   season: 17,
-  episode: 14,
+  episode: 15,
   type: "Main Show",
   released: "1979-12-01T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 17, episode: 14 },
+  imdb: { id: "tt0811817", season: 17, episode: 15 },
 },
 {
   title: "Nightmare of Eden (3)",
   season: 17,
-  episode: 15,
+  episode: 16,
   type: "Main Show",
   released: "1979-12-08T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 17, episode: 15 },
+  imdb: { id: "tt0811818", season: 17, episode: 16 },
 },
 {
   title: "Nightmare of Eden (4)",
   season: 17,
-  episode: 16,
+  episode: 17,
   type: "Main Show",
   released: "1979-12-15T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 17, episode: 16 },
+  imdb: { id: "tt0811819", season: 17, episode: 17 },
 },
 {
   title: "The Horns of Nimon (1)",
   season: 17,
-  episode: 17,
+  episode: 18,
   type: "Main Show",
   released: "1979-12-22T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 17, episode: 17 },
+  imdb: { id: "tt0562920", season: 17, episode: 18 },
 },
 {
   title: "The Horns of Nimon (2)",
   season: 17,
-  episode: 18,
+  episode: 19,
   type: "Main Show",
   released: "1979-12-29T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 17, episode: 18 },
+  imdb: { id: "tt0811694", season: 17, episode: 19 },
 },
 {
   title: "The Horns of Nimon (3)",
   season: 17,
-  episode: 19,
+  episode: 20,
   type: "Main Show",
   released: "1980-01-05T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 17, episode: 19 },
+  imdb: { id: "tt0811695", season: 17, episode: 20 },
 },
 {
   title: "The Horns of Nimon (4)",
   season: 17,
-  episode: 20,
+  episode: 21,
   type: "Main Show",
   released: "1980-01-12T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 17, episode: 20 },
+  imdb: { id: "tt0811696", season: 17, episode: 21 },
 },
 {
   title: "Shada (1)",
   season: 17,
-  episode: 21,
+  episode: 22,
   type: "Main Show",
-  imdb: { id: "tt0056751", season: 17, episode: 21 },
 },
 {
   title: "Shada (2)",
   season: 17,
-  episode: 22,
+  episode: 23,
   type: "Main Show",
-  imdb: { id: "tt0056751", season: 17, episode: 22 },
 },
 {
   title: "Shada (3)",
   season: 17,
-  episode: 23,
+  episode: 24,
   type: "Main Show",
-  imdb: { id: "tt0056751", season: 17, episode: 23 },
 },
 {
   title: "Shada (4)",
   season: 17,
-  episode: 24,
+  episode: 25,
   type: "Main Show",
-  imdb: { id: "tt0056751", season: 17, episode: 24 },
 },
 {
   title: "Shada (5)",
   season: 17,
-  episode: 25,
+  episode: 26,
   type: "Main Show",
-  imdb: { id: "tt0056751", season: 17, episode: 25 },
 },
 {
   title: "Shada (6)",
   season: 17,
-  episode: 26,
+  episode: 27,
   type: "Main Show",
-  imdb: { id: "tt0056751", season: 17, episode: 26 },
 },
 {
   title: "The Leisure Hive (1)",
@@ -4944,7 +4290,7 @@ const episodes = [
   episode: 1,
   type: "Main Show",
   released: "1980-08-30T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 18, episode: 1 },
+  imdb: { id: "tt0562929", season: 18, episode: 1 },
 },
 {
   title: "The Leisure Hive (2)",
@@ -4952,7 +4298,7 @@ const episodes = [
   episode: 2,
   type: "Main Show",
   released: "1980-09-06T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 18, episode: 2 },
+  imdb: { id: "tt0811709", season: 18, episode: 2 },
 },
 {
   title: "The Leisure Hive (3)",
@@ -4960,7 +4306,7 @@ const episodes = [
   episode: 3,
   type: "Main Show",
   released: "1980-09-13T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 18, episode: 3 },
+  imdb: { id: "tt0811710", season: 18, episode: 3 },
 },
 {
   title: "The Leisure Hive (4)",
@@ -4968,7 +4314,7 @@ const episodes = [
   episode: 4,
   type: "Main Show",
   released: "1980-09-20T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 18, episode: 4 },
+  imdb: { id: "tt0811711", season: 18, episode: 4 },
 },
 {
   title: "Meglos (1)",
@@ -4976,7 +4322,7 @@ const episodes = [
   episode: 5,
   type: "Main Show",
   released: "1980-09-27T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 18, episode: 5 },
+  imdb: { id: "tt0562860", season: 18, episode: 5 },
 },
 {
   title: "Meglos (2)",
@@ -4984,7 +4330,7 @@ const episodes = [
   episode: 6,
   type: "Main Show",
   released: "1980-10-04T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 18, episode: 6 },
+  imdb: { id: "tt0811811", season: 18, episode: 6 },
 },
 {
   title: "Meglos (3)",
@@ -4992,7 +4338,7 @@ const episodes = [
   episode: 7,
   type: "Main Show",
   released: "1980-10-11T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 18, episode: 7 },
+  imdb: { id: "tt0811812", season: 18, episode: 7 },
 },
 {
   title: "Meglos (4)",
@@ -5000,7 +4346,7 @@ const episodes = [
   episode: 8,
   type: "Main Show",
   released: "1980-10-18T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 18, episode: 8 },
+  imdb: { id: "tt0811813", season: 18, episode: 8 },
 },
 {
   title: "Full Circle (1)",
@@ -5008,7 +4354,7 @@ const episodes = [
   episode: 9,
   type: "Main Show",
   released: "1980-10-25T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 18, episode: 9 },
+  imdb: { id: "tt0562847", season: 18, episode: 9 },
 },
 {
   title: "Full Circle (2)",
@@ -5016,7 +4362,7 @@ const episodes = [
   episode: 10,
   type: "Main Show",
   released: "1980-11-01T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 18, episode: 10 },
+  imdb: { id: "tt0811684", season: 18, episode: 10 },
 },
 {
   title: "Full Circle (3)",
@@ -5024,7 +4370,7 @@ const episodes = [
   episode: 11,
   type: "Main Show",
   released: "1980-11-08T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 18, episode: 11 },
+  imdb: { id: "tt0811685", season: 18, episode: 11 },
 },
 {
   title: "Full Circle (4)",
@@ -5032,7 +4378,7 @@ const episodes = [
   episode: 12,
   type: "Main Show",
   released: "1980-11-15T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 18, episode: 12 },
+  imdb: { id: "tt0811686", season: 18, episode: 12 },
 },
 {
   title: "State of Decay (1)",
@@ -5040,7 +4386,7 @@ const episodes = [
   episode: 13,
   type: "Main Show",
   released: "1980-11-22T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 18, episode: 13 },
+  imdb: { id: "tt0562880", season: 18, episode: 13 },
 },
 {
   title: "State of Decay (2)",
@@ -5048,7 +4394,7 @@ const episodes = [
   episode: 14,
   type: "Main Show",
   released: "1980-11-29T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 18, episode: 14 },
+  imdb: { id: "tt0811842", season: 18, episode: 14 },
 },
 {
   title: "State of Decay (3)",
@@ -5056,7 +4402,7 @@ const episodes = [
   episode: 15,
   type: "Main Show",
   released: "1980-12-06T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 18, episode: 15 },
+  imdb: { id: "tt0811843", season: 18, episode: 15 },
 },
 {
   title: "State of Decay (4)",
@@ -5064,7 +4410,7 @@ const episodes = [
   episode: 16,
   type: "Main Show",
   released: "1980-12-13T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 18, episode: 16 },
+  imdb: { id: "tt0811844", season: 18, episode: 16 },
 },
 {
   title: "Warriors' Gate (1)",
@@ -5072,7 +4418,7 @@ const episodes = [
   episode: 17,
   type: "Main Show",
   released: "1981-01-03T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 18, episode: 17 },
+  imdb: { id: "tt0562984", season: 18, episode: 17 },
 },
 {
   title: "Warriors' Gate (2)",
@@ -5080,7 +4426,7 @@ const episodes = [
   episode: 18,
   type: "Main Show",
   released: "1981-01-10T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 18, episode: 18 },
+  imdb: { id: "tt0811770", season: 18, episode: 18 },
 },
 {
   title: "Warriors' Gate (3)",
@@ -5088,7 +4434,7 @@ const episodes = [
   episode: 19,
   type: "Main Show",
   released: "1981-01-17T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 18, episode: 19 },
+  imdb: { id: "tt0811771", season: 18, episode: 19 },
 },
 {
   title: "Warriors' Gate (4)",
@@ -5096,7 +4442,7 @@ const episodes = [
   episode: 20,
   type: "Main Show",
   released: "1981-01-24T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 18, episode: 20 },
+  imdb: { id: "tt0811772", season: 18, episode: 20 },
 },
 {
   title: "The Keeper of Traken (1)",
@@ -5104,7 +4450,7 @@ const episodes = [
   episode: 21,
   type: "Main Show",
   released: "1981-01-31T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 18, episode: 21 },
+  imdb: { id: "tt0562925", season: 18, episode: 21 },
 },
 {
   title: "The Keeper of Traken (2)",
@@ -5112,7 +4458,7 @@ const episodes = [
   episode: 22,
   type: "Main Show",
   released: "1981-02-07T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 18, episode: 22 },
+  imdb: { id: "tt0811705", season: 18, episode: 22 },
 },
 {
   title: "The Keeper of Traken (3)",
@@ -5120,7 +4466,7 @@ const episodes = [
   episode: 23,
   type: "Main Show",
   released: "1981-02-14T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 18, episode: 23 },
+  imdb: { id: "tt0811706", season: 18, episode: 23 },
 },
 {
   title: "The Keeper of Traken (4)",
@@ -5128,7 +4474,7 @@ const episodes = [
   episode: 24,
   type: "Main Show",
   released: "1981-02-21T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 18, episode: 24 },
+  imdb: { id: "tt0811707", season: 18, episode: 24 },
 },
 {
   title: "Logopolis (1)",
@@ -5136,7 +4482,7 @@ const episodes = [
   episode: 25,
   type: "Main Show",
   released: "1981-02-28T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 18, episode: 25 },
+  imdb: { id: "tt0562857", season: 18, episode: 25 },
 },
 {
   title: "Logopolis (2)",
@@ -5144,7 +4490,7 @@ const episodes = [
   episode: 26,
   type: "Main Show",
   released: "1981-03-07T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 18, episode: 26 },
+  imdb: { id: "tt0811805", season: 18, episode: 26 },
 },
 {
   title: "Logopolis (3)",
@@ -5152,7 +4498,7 @@ const episodes = [
   episode: 27,
   type: "Main Show",
   released: "1981-03-14T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 18, episode: 27 },
+  imdb: { id: "tt0811806", season: 18, episode: 27 },
 },
 {
   title: "Logopolis (4)",
@@ -5160,7 +4506,13 @@ const episodes = [
   episode: 28,
   type: "Main Show",
   released: "1981-03-21T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 18, episode: 28 },
+  imdb: { id: "tt0811807", season: 18, episode: 28 },
+},
+{
+  title: "K9 & Company: A Girl's Best Friend",
+  season: 18,
+  episode: 29,
+  type: "Special",
 },
 {
   title: "Castrovalva (1)",
@@ -5168,7 +4520,7 @@ const episodes = [
   episode: 1,
   type: "Main Show",
   released: "1982-01-04T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 19, episode: 1 },
+  imdb: { id: "tt0562834", season: 19, episode: 1 },
 },
 {
   title: "Castrovalva (2)",
@@ -5176,7 +4528,7 @@ const episodes = [
   episode: 2,
   type: "Main Show",
   released: "1982-01-05T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 19, episode: 2 },
+  imdb: { id: "tt0811659", season: 19, episode: 2 },
 },
 {
   title: "Castrovalva (3)",
@@ -5184,7 +4536,7 @@ const episodes = [
   episode: 3,
   type: "Main Show",
   released: "1982-01-11T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 19, episode: 3 },
+  imdb: { id: "tt0811660", season: 19, episode: 3 },
 },
 {
   title: "Castrovalva (4)",
@@ -5192,7 +4544,7 @@ const episodes = [
   episode: 4,
   type: "Main Show",
   released: "1982-01-12T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 19, episode: 4 },
+  imdb: { id: "tt0811661", season: 19, episode: 4 },
 },
 {
   title: "Four to Doomsday (1)",
@@ -5200,7 +4552,7 @@ const episodes = [
   episode: 5,
   type: "Main Show",
   released: "1982-01-18T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 19, episode: 5 },
+  imdb: { id: "tt0562844", season: 19, episode: 5 },
 },
 {
   title: "Four to Doomsday (2)",
@@ -5208,7 +4560,7 @@ const episodes = [
   episode: 6,
   type: "Main Show",
   released: "1982-01-19T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 19, episode: 6 },
+  imdb: { id: "tt0811678", season: 19, episode: 6 },
 },
 {
   title: "Four to Doomsday (3)",
@@ -5216,7 +4568,7 @@ const episodes = [
   episode: 7,
   type: "Main Show",
   released: "1982-01-25T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 19, episode: 7 },
+  imdb: { id: "tt0811679", season: 19, episode: 7 },
 },
 {
   title: "Four to Doomsday (4)",
@@ -5224,7 +4576,7 @@ const episodes = [
   episode: 8,
   type: "Main Show",
   released: "1982-01-26T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 19, episode: 8 },
+  imdb: { id: "tt0811680", season: 19, episode: 8 },
 },
 {
   title: "Kinda (1)",
@@ -5232,7 +4584,7 @@ const episodes = [
   episode: 9,
   type: "Main Show",
   released: "1982-02-01T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 19, episode: 9 },
+  imdb: { id: "tt0562856", season: 19, episode: 9 },
 },
 {
   title: "Kinda (2)",
@@ -5240,7 +4592,7 @@ const episodes = [
   episode: 10,
   type: "Main Show",
   released: "1982-02-02T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 19, episode: 10 },
+  imdb: { id: "tt0811802", season: 19, episode: 10 },
 },
 {
   title: "Kinda (3)",
@@ -5248,7 +4600,7 @@ const episodes = [
   episode: 11,
   type: "Main Show",
   released: "1982-02-08T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 19, episode: 11 },
+  imdb: { id: "tt0811803", season: 19, episode: 11 },
 },
 {
   title: "Kinda (4)",
@@ -5256,7 +4608,7 @@ const episodes = [
   episode: 12,
   type: "Main Show",
   released: "1982-02-09T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 19, episode: 12 },
+  imdb: { id: "tt0811804", season: 19, episode: 12 },
 },
 {
   title: "The Visitation (1)",
@@ -5264,7 +4616,7 @@ const episodes = [
   episode: 13,
   type: "Main Show",
   released: "1982-02-15T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 19, episode: 13 },
+  imdb: { id: "tt0562972", season: 19, episode: 13 },
 },
 {
   title: "The Visitation (2)",
@@ -5272,7 +4624,7 @@ const episodes = [
   episode: 14,
   type: "Main Show",
   released: "1982-02-16T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 19, episode: 14 },
+  imdb: { id: "tt0811753", season: 19, episode: 14 },
 },
 {
   title: "The Visitation (3)",
@@ -5280,7 +4632,7 @@ const episodes = [
   episode: 15,
   type: "Main Show",
   released: "1982-02-22T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 19, episode: 15 },
+  imdb: { id: "tt0811754", season: 19, episode: 15 },
 },
 {
   title: "The Visitation (4)",
@@ -5288,7 +4640,7 @@ const episodes = [
   episode: 16,
   type: "Main Show",
   released: "1982-02-23T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 19, episode: 16 },
+  imdb: { id: "tt0811755", season: 19, episode: 16 },
 },
 {
   title: "Black Orchid (1)",
@@ -5296,7 +4648,7 @@ const episodes = [
   episode: 17,
   type: "Main Show",
   released: "1982-03-01T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 19, episode: 17 },
+  imdb: { id: "tt0562832", season: 19, episode: 17 },
 },
 {
   title: "Black Orchid (2)",
@@ -5304,7 +4656,7 @@ const episodes = [
   episode: 18,
   type: "Main Show",
   released: "1982-03-02T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 19, episode: 18 },
+  imdb: { id: "tt0811658", season: 19, episode: 18 },
 },
 {
   title: "Earthshock (1)",
@@ -5312,7 +4664,7 @@ const episodes = [
   episode: 19,
   type: "Main Show",
   released: "1982-03-08T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 19, episode: 19 },
+  imdb: { id: "tt0562842", season: 19, episode: 19 },
 },
 {
   title: "Earthshock (2)",
@@ -5320,7 +4672,7 @@ const episodes = [
   episode: 20,
   type: "Main Show",
   released: "1982-03-09T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 19, episode: 20 },
+  imdb: { id: "tt0811672", season: 19, episode: 20 },
 },
 {
   title: "Earthshock (3)",
@@ -5328,7 +4680,7 @@ const episodes = [
   episode: 21,
   type: "Main Show",
   released: "1982-03-15T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 19, episode: 21 },
+  imdb: { id: "tt0811673", season: 19, episode: 21 },
 },
 {
   title: "Earthshock (4)",
@@ -5336,7 +4688,7 @@ const episodes = [
   episode: 22,
   type: "Main Show",
   released: "1982-03-16T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 19, episode: 22 },
+  imdb: { id: "tt0811674", season: 19, episode: 22 },
 },
 {
   title: "Time-Flight (1)",
@@ -5344,7 +4696,7 @@ const episodes = [
   episode: 23,
   type: "Main Show",
   released: "1982-03-22T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 19, episode: 23 },
+  imdb: { id: "tt0562979", season: 19, episode: 23 },
 },
 {
   title: "Time-Flight (2)",
@@ -5352,7 +4704,7 @@ const episodes = [
   episode: 24,
   type: "Main Show",
   released: "1982-03-23T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 19, episode: 24 },
+  imdb: { id: "tt0811759", season: 19, episode: 24 },
 },
 {
   title: "Time-Flight (3)",
@@ -5360,7 +4712,7 @@ const episodes = [
   episode: 25,
   type: "Main Show",
   released: "1982-03-29T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 19, episode: 25 },
+  imdb: { id: "tt0811760", season: 19, episode: 25 },
 },
 {
   title: "Time-Flight (4)",
@@ -5368,7 +4720,7 @@ const episodes = [
   episode: 26,
   type: "Main Show",
   released: "1982-03-30T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 19, episode: 26 },
+  imdb: { id: "tt0811761", season: 19, episode: 26 },
 },
 {
   title: "Arc of Infinity (1)",
@@ -5376,7 +4728,7 @@ const episodes = [
   episode: 1,
   type: "Main Show",
   released: "1983-01-03T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 20, episode: 1 },
+  imdb: { id: "tt0562829", season: 20, episode: 1 },
 },
 {
   title: "Arc of Infinity (2)",
@@ -5384,7 +4736,7 @@ const episodes = [
   episode: 2,
   type: "Main Show",
   released: "1983-01-05T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 20, episode: 2 },
+  imdb: { id: "tt0811651", season: 20, episode: 2 },
 },
 {
   title: "Arc of Infinity (3)",
@@ -5392,7 +4744,7 @@ const episodes = [
   episode: 3,
   type: "Main Show",
   released: "1983-01-11T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 20, episode: 3 },
+  imdb: { id: "tt0811652", season: 20, episode: 3 },
 },
 {
   title: "Arc of Infinity (4)",
@@ -5400,7 +4752,7 @@ const episodes = [
   episode: 4,
   type: "Main Show",
   released: "1983-01-12T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 20, episode: 4 },
+  imdb: { id: "tt0811653", season: 20, episode: 4 },
 },
 {
   title: "Snakedance (1)",
@@ -5408,7 +4760,7 @@ const episodes = [
   episode: 5,
   type: "Main Show",
   released: "1983-01-18T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 20, episode: 5 },
+  imdb: { id: "tt0562878", season: 20, episode: 5 },
 },
 {
   title: "Snakedance (2)",
@@ -5416,7 +4768,7 @@ const episodes = [
   episode: 6,
   type: "Main Show",
   released: "1983-01-19T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 20, episode: 6 },
+  imdb: { id: "tt0811839", season: 20, episode: 6 },
 },
 {
   title: "Snakedance (3)",
@@ -5424,7 +4776,7 @@ const episodes = [
   episode: 7,
   type: "Main Show",
   released: "1983-01-25T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 20, episode: 7 },
+  imdb: { id: "tt0811840", season: 20, episode: 7 },
 },
 {
   title: "Snakedance (4)",
@@ -5432,7 +4784,7 @@ const episodes = [
   episode: 8,
   type: "Main Show",
   released: "1983-01-26T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 20, episode: 8 },
+  imdb: { id: "tt0811841", season: 20, episode: 8 },
 },
 {
   title: "Mawdryn Undead (1)",
@@ -5440,7 +4792,7 @@ const episodes = [
   episode: 9,
   type: "Main Show",
   released: "1983-02-01T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 20, episode: 9 },
+  imdb: { id: "tt0562859", season: 20, episode: 9 },
 },
 {
   title: "Mawdryn Undead (2)",
@@ -5448,7 +4800,7 @@ const episodes = [
   episode: 10,
   type: "Main Show",
   released: "1983-02-02T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 20, episode: 10 },
+  imdb: { id: "tt0811808", season: 20, episode: 10 },
 },
 {
   title: "Mawdryn Undead (3)",
@@ -5456,7 +4808,7 @@ const episodes = [
   episode: 11,
   type: "Main Show",
   released: "1983-02-08T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 20, episode: 11 },
+  imdb: { id: "tt0811809", season: 20, episode: 11 },
 },
 {
   title: "Mawdryn Undead (4)",
@@ -5464,7 +4816,7 @@ const episodes = [
   episode: 12,
   type: "Main Show",
   released: "1983-02-09T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 20, episode: 12 },
+  imdb: { id: "tt0811810", season: 20, episode: 12 },
 },
 {
   title: "Terminus (1)",
@@ -5472,7 +4824,7 @@ const episodes = [
   episode: 13,
   type: "Main Show",
   released: "1983-02-15T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 20, episode: 13 },
+  imdb: { id: "tt0562882", season: 20, episode: 13 },
 },
 {
   title: "Terminus (2)",
@@ -5480,7 +4832,7 @@ const episodes = [
   episode: 14,
   type: "Main Show",
   released: "1983-02-16T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 20, episode: 14 },
+  imdb: { id: "tt0811847", season: 20, episode: 14 },
 },
 {
   title: "Terminus (3)",
@@ -5488,7 +4840,7 @@ const episodes = [
   episode: 15,
   type: "Main Show",
   released: "1983-02-22T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 20, episode: 15 },
+  imdb: { id: "tt0811848", season: 20, episode: 15 },
 },
 {
   title: "Terminus (4)",
@@ -5496,7 +4848,7 @@ const episodes = [
   episode: 16,
   type: "Main Show",
   released: "1983-02-23T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 20, episode: 16 },
+  imdb: { id: "tt0811849", season: 20, episode: 16 },
 },
 {
   title: "Enlightenment (1)",
@@ -5504,7 +4856,7 @@ const episodes = [
   episode: 17,
   type: "Main Show",
   released: "1983-03-01T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 20, episode: 17 },
+  imdb: { id: "tt0562843", season: 20, episode: 17 },
 },
 {
   title: "Enlightenment (2)",
@@ -5512,7 +4864,7 @@ const episodes = [
   episode: 18,
   type: "Main Show",
   released: "1983-03-02T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 20, episode: 18 },
+  imdb: { id: "tt0811675", season: 20, episode: 18 },
 },
 {
   title: "Enlightenment (3)",
@@ -5520,7 +4872,7 @@ const episodes = [
   episode: 19,
   type: "Main Show",
   released: "1983-03-08T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 20, episode: 19 },
+  imdb: { id: "tt0811676", season: 20, episode: 19 },
 },
 {
   title: "Enlightenment (4)",
@@ -5528,7 +4880,7 @@ const episodes = [
   episode: 20,
   type: "Main Show",
   released: "1983-03-09T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 20, episode: 20 },
+  imdb: { id: "tt0811677", season: 20, episode: 20 },
 },
 {
   title: "The King's Demons (1)",
@@ -5536,7 +4888,7 @@ const episodes = [
   episode: 21,
   type: "Main Show",
   released: "1983-03-15T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 20, episode: 21 },
+  imdb: { id: "tt0562927", season: 20, episode: 21 },
 },
 {
   title: "The King's Demons (2)",
@@ -5544,7 +4896,21 @@ const episodes = [
   episode: 22,
   type: "Main Show",
   released: "1983-03-16T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 20, episode: 22 },
+  imdb: { id: "tt0811708", season: 20, episode: 22 },
+},
+{
+  title: "The Five Doctors",
+  season: 20,
+  episode: 23,
+  type: "Special",
+  released: "1983-11-23T00:00:00.000Z",
+  imdb: { id: "tt0123044", season: 20, episode: 23 },
+},
+{
+  title: "The Passenger",
+  season: 20,
+  episode: 24,
+  type: "Minisode",
 },
 {
   title: "Warriors of the Deep (1)",
@@ -5552,7 +4918,7 @@ const episodes = [
   episode: 1,
   type: "Main Show",
   released: "1984-01-05T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 21, episode: 1 },
+  imdb: { id: "tt0562983", season: 21, episode: 1 },
 },
 {
   title: "Warriors of the Deep (2)",
@@ -5560,7 +4926,7 @@ const episodes = [
   episode: 2,
   type: "Main Show",
   released: "1984-01-06T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 21, episode: 2 },
+  imdb: { id: "tt0811767", season: 21, episode: 2 },
 },
 {
   title: "Warriors of the Deep (3)",
@@ -5568,7 +4934,7 @@ const episodes = [
   episode: 3,
   type: "Main Show",
   released: "1984-01-12T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 21, episode: 3 },
+  imdb: { id: "tt0811768", season: 21, episode: 3 },
 },
 {
   title: "Warriors of the Deep (4)",
@@ -5576,7 +4942,7 @@ const episodes = [
   episode: 4,
   type: "Main Show",
   released: "1984-01-13T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 21, episode: 4 },
+  imdb: { id: "tt0811769", season: 21, episode: 4 },
 },
 {
   title: "The Awakening (1)",
@@ -5584,7 +4950,7 @@ const episodes = [
   episode: 5,
   type: "Main Show",
   released: "1984-01-19T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 21, episode: 5 },
+  imdb: { id: "tt0562893", season: 21, episode: 5 },
 },
 {
   title: "The Awakening (2)",
@@ -5592,7 +4958,7 @@ const episodes = [
   episode: 6,
   type: "Main Show",
   released: "1984-01-20T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 21, episode: 6 },
+  imdb: { id: "tt0811867", season: 21, episode: 6 },
 },
 {
   title: "Frontios (1)",
@@ -5600,7 +4966,7 @@ const episodes = [
   episode: 7,
   type: "Main Show",
   released: "1984-01-26T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 21, episode: 7 },
+  imdb: { id: "tt0562846", season: 21, episode: 7 },
 },
 {
   title: "Frontios (2)",
@@ -5608,7 +4974,7 @@ const episodes = [
   episode: 8,
   type: "Main Show",
   released: "1984-01-27T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 21, episode: 8 },
+  imdb: { id: "tt0811681", season: 21, episode: 8 },
 },
 {
   title: "Frontios (3)",
@@ -5616,7 +4982,7 @@ const episodes = [
   episode: 9,
   type: "Main Show",
   released: "1984-02-02T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 21, episode: 9 },
+  imdb: { id: "tt0811682", season: 21, episode: 9 },
 },
 {
   title: "Frontios (4)",
@@ -5624,7 +4990,7 @@ const episodes = [
   episode: 10,
   type: "Main Show",
   released: "1984-02-03T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 21, episode: 10 },
+  imdb: { id: "tt0811683", season: 21, episode: 10 },
 },
 {
   title: "Resurrection of the Daleks (1)",
@@ -5632,31 +4998,27 @@ const episodes = [
   episode: 11,
   type: "Main Show",
   released: "1984-02-08T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 21, episode: 11 },
+  imdb: { id: "tt0562872", season: 21, episode: 11 },
 },
 {
   title: "Resurrection of the Daleks (2)",
   season: 21,
   episode: 12,
   type: "Main Show",
-  released: "1984-02-08T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 21, episode: 12 },
+  released: "1984-02-15T00:00:00.000Z",
+  imdb: { id: "tt0811835", season: 21, episode: 12 },
 },
 {
   title: "Resurrection of the Daleks (3)",
   season: 21,
   episode: 13,
   type: "Main Show",
-  released: "1984-02-15T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 21, episode: 13 },
 },
 {
   title: "Resurrection of the Daleks (4)",
   season: 21,
   episode: 14,
   type: "Main Show",
-  released: "1984-02-15T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 21, episode: 14 },
 },
 {
   title: "Planet of Fire (1)",
@@ -5664,7 +5026,7 @@ const episodes = [
   episode: 15,
   type: "Main Show",
   released: "1984-02-23T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 21, episode: 15 },
+  imdb: { id: "tt0562866", season: 21, episode: 15 },
 },
 {
   title: "Planet of Fire (2)",
@@ -5672,7 +5034,7 @@ const episodes = [
   episode: 16,
   type: "Main Show",
   released: "1984-02-24T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 21, episode: 16 },
+  imdb: { id: "tt0811826", season: 21, episode: 16 },
 },
 {
   title: "Planet of Fire (3)",
@@ -5680,7 +5042,7 @@ const episodes = [
   episode: 17,
   type: "Main Show",
   released: "1984-03-01T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 21, episode: 17 },
+  imdb: { id: "tt0811827", season: 21, episode: 17 },
 },
 {
   title: "Planet of Fire (4)",
@@ -5688,7 +5050,7 @@ const episodes = [
   episode: 18,
   type: "Main Show",
   released: "1984-03-02T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 21, episode: 18 },
+  imdb: { id: "tt0811828", season: 21, episode: 18 },
 },
 {
   title: "The Caves of Androzani (1)",
@@ -5696,7 +5058,7 @@ const episodes = [
   episode: 19,
   type: "Main Show",
   released: "1984-03-08T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 21, episode: 19 },
+  imdb: { id: "tt0562896", season: 21, episode: 19 },
 },
 {
   title: "The Caves of Androzani (2)",
@@ -5704,7 +5066,7 @@ const episodes = [
   episode: 20,
   type: "Main Show",
   released: "1984-03-09T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 21, episode: 20 },
+  imdb: { id: "tt0811871", season: 21, episode: 20 },
 },
 {
   title: "The Caves of Androzani (3)",
@@ -5712,7 +5074,7 @@ const episodes = [
   episode: 21,
   type: "Main Show",
   released: "1984-03-15T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 21, episode: 21 },
+  imdb: { id: "tt0811872", season: 21, episode: 21 },
 },
 {
   title: "The Caves of Androzani (4)",
@@ -5720,7 +5082,7 @@ const episodes = [
   episode: 22,
   type: "Main Show",
   released: "1984-03-16T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 21, episode: 22 },
+  imdb: { id: "tt0811873", season: 21, episode: 22 },
 },
 {
   title: "The Twin Dilemma (1)",
@@ -5728,7 +5090,7 @@ const episodes = [
   episode: 23,
   type: "Main Show",
   released: "1984-03-22T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 21, episode: 23 },
+  imdb: { id: "tt0562968", season: 21, episode: 23 },
 },
 {
   title: "The Twin Dilemma (2)",
@@ -5736,7 +5098,7 @@ const episodes = [
   episode: 24,
   type: "Main Show",
   released: "1984-03-23T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 21, episode: 24 },
+  imdb: { id: "tt0811747", season: 21, episode: 24 },
 },
 {
   title: "The Twin Dilemma (3)",
@@ -5744,7 +5106,7 @@ const episodes = [
   episode: 25,
   type: "Main Show",
   released: "1984-03-29T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 21, episode: 25 },
+  imdb: { id: "tt0811748", season: 21, episode: 25 },
 },
 {
   title: "The Twin Dilemma (4)",
@@ -5752,7 +5114,13 @@ const episodes = [
   episode: 26,
   type: "Main Show",
   released: "1984-03-30T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 21, episode: 26 },
+  imdb: { id: "tt0811749", season: 21, episode: 26 },
+},
+{
+  title: "Destination: Daleks",
+  season: 21,
+  episode: 27,
+  type: "Minisode",
 },
 {
   title: "Attack of the Cybermen (1)",
@@ -5760,7 +5128,7 @@ const episodes = [
   episode: 1,
   type: "Main Show",
   released: "1985-01-05T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 22, episode: 1 },
+  imdb: { id: "tt0562830", season: 22, episode: 1 },
 },
 {
   title: "Attack of the Cybermen (2)",
@@ -5768,7 +5136,7 @@ const episodes = [
   episode: 2,
   type: "Main Show",
   released: "1985-01-12T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 22, episode: 2 },
+  imdb: { id: "tt0811654", season: 22, episode: 2 },
 },
 {
   title: "Vengeance on Varos (1)",
@@ -5776,7 +5144,7 @@ const episodes = [
   episode: 3,
   type: "Main Show",
   released: "1985-01-19T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 22, episode: 3 },
+  imdb: { id: "tt0562982", season: 22, episode: 3 },
 },
 {
   title: "Vengeance on Varos (2)",
@@ -5784,7 +5152,7 @@ const episodes = [
   episode: 4,
   type: "Main Show",
   released: "1985-01-26T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 22, episode: 4 },
+  imdb: { id: "tt0811766", season: 22, episode: 4 },
 },
 {
   title: "The Mark of the Rani (1)",
@@ -5792,7 +5160,7 @@ const episodes = [
   episode: 5,
   type: "Main Show",
   released: "1985-02-02T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 22, episode: 5 },
+  imdb: { id: "tt0562931", season: 22, episode: 5 },
 },
 {
   title: "The Mark of the Rani (2)",
@@ -5800,7 +5168,7 @@ const episodes = [
   episode: 6,
   type: "Main Show",
   released: "1985-02-09T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 22, episode: 6 },
+  imdb: { id: "tt0811712", season: 22, episode: 6 },
 },
 {
   title: "The Two Doctors (1)",
@@ -5808,7 +5176,7 @@ const episodes = [
   episode: 7,
   type: "Main Show",
   released: "1985-02-16T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 22, episode: 7 },
+  imdb: { id: "tt0562969", season: 22, episode: 7 },
 },
 {
   title: "The Two Doctors (2)",
@@ -5816,7 +5184,7 @@ const episodes = [
   episode: 8,
   type: "Main Show",
   released: "1985-02-23T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 22, episode: 8 },
+  imdb: { id: "tt0811750", season: 22, episode: 8 },
 },
 {
   title: "The Two Doctors (3)",
@@ -5824,39 +5192,51 @@ const episodes = [
   episode: 9,
   type: "Main Show",
   released: "1985-03-02T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 22, episode: 9 },
+  imdb: { id: "tt0811751", season: 22, episode: 9 },
+},
+{
+  title: "A Fix with Sontarans",
+  season: 22,
+  episode: 10,
+  type: "Special",
 },
 {
   title: "Timelash (1)",
   season: 22,
-  episode: 10,
+  episode: 11,
   type: "Main Show",
   released: "1985-03-09T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 22, episode: 10 },
+  imdb: { id: "tt0562980", season: 22, episode: 11 },
 },
 {
   title: "Timelash (2)",
   season: 22,
-  episode: 11,
+  episode: 12,
   type: "Main Show",
   released: "1985-03-16T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 22, episode: 11 },
+  imdb: { id: "tt0811762", season: 22, episode: 12 },
 },
 {
   title: "Revelation of the Daleks (1)",
   season: 22,
-  episode: 12,
+  episode: 13,
   type: "Main Show",
   released: "1985-03-23T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 22, episode: 12 },
+  imdb: { id: "tt0562873", season: 22, episode: 13 },
 },
 {
   title: "Revelation of the Daleks (2)",
   season: 22,
-  episode: 13,
+  episode: 14,
   type: "Main Show",
   released: "1985-03-30T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 22, episode: 13 },
+  imdb: { id: "tt0811836", season: 22, episode: 14 },
+},
+{
+  title: "The Eternal Mystery",
+  season: 22,
+  episode: 15,
+  type: "Minisode",
 },
 {
   title: "The Mysterious Planet (1)",
@@ -5864,7 +5244,7 @@ const episodes = [
   episode: 1,
   type: "Main Show",
   released: "1986-09-06T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 23, episode: 1 },
+  imdb: { id: "tt0562939", season: 23, episode: 1 },
 },
 {
   title: "The Mysterious Planet (2)",
@@ -5872,7 +5252,7 @@ const episodes = [
   episode: 2,
   type: "Main Show",
   released: "1986-09-13T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 23, episode: 2 },
+  imdb: { id: "tt0811716", season: 23, episode: 2 },
 },
 {
   title: "The Mysterious Planet (3)",
@@ -5880,7 +5260,7 @@ const episodes = [
   episode: 3,
   type: "Main Show",
   released: "1986-09-20T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 23, episode: 3 },
+  imdb: { id: "tt0811717", season: 23, episode: 3 },
 },
 {
   title: "The Mysterious Planet (4)",
@@ -5888,7 +5268,7 @@ const episodes = [
   episode: 4,
   type: "Main Show",
   released: "1986-09-27T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 23, episode: 4 },
+  imdb: { id: "tt0811718", season: 23, episode: 4 },
 },
 {
   title: "Mindwarp (1)",
@@ -5896,7 +5276,7 @@ const episodes = [
   episode: 5,
   type: "Main Show",
   released: "1986-10-04T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 23, episode: 5 },
+  imdb: { id: "tt0562861", season: 23, episode: 5 },
 },
 {
   title: "Mindwarp (2)",
@@ -5904,7 +5284,7 @@ const episodes = [
   episode: 6,
   type: "Main Show",
   released: "1986-10-11T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 23, episode: 6 },
+  imdb: { id: "tt0811814", season: 23, episode: 6 },
 },
 {
   title: "Mindwarp (3)",
@@ -5912,7 +5292,7 @@ const episodes = [
   episode: 7,
   type: "Main Show",
   released: "1986-10-18T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 23, episode: 7 },
+  imdb: { id: "tt0811815", season: 23, episode: 7 },
 },
 {
   title: "Mindwarp (4)",
@@ -5920,7 +5300,7 @@ const episodes = [
   episode: 8,
   type: "Main Show",
   released: "1986-10-25T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 23, episode: 8 },
+  imdb: { id: "tt0811816", season: 23, episode: 8 },
 },
 {
   title: "Terror of the Vervoids (1)",
@@ -5928,7 +5308,7 @@ const episodes = [
   episode: 9,
   type: "Main Show",
   released: "1986-11-01T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 23, episode: 9 },
+  imdb: { id: "tt0562884", season: 23, episode: 9 },
 },
 {
   title: "Terror of the Vervoids (2)",
@@ -5936,7 +5316,7 @@ const episodes = [
   episode: 10,
   type: "Main Show",
   released: "1986-11-08T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 23, episode: 10 },
+  imdb: { id: "tt0811850", season: 23, episode: 10 },
 },
 {
   title: "Terror of the Vervoids (3)",
@@ -5944,7 +5324,7 @@ const episodes = [
   episode: 11,
   type: "Main Show",
   released: "1986-11-15T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 23, episode: 11 },
+  imdb: { id: "tt0811851", season: 23, episode: 11 },
 },
 {
   title: "Terror of the Vervoids (4)",
@@ -5952,7 +5332,7 @@ const episodes = [
   episode: 12,
   type: "Main Show",
   released: "1986-11-22T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 23, episode: 12 },
+  imdb: { id: "tt0811852", season: 23, episode: 12 },
 },
 {
   title: "The Ultimate Foe (1)",
@@ -5960,7 +5340,7 @@ const episodes = [
   episode: 13,
   type: "Main Show",
   released: "1986-11-29T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 23, episode: 13 },
+  imdb: { id: "tt0562970", season: 23, episode: 13 },
 },
 {
   title: "The Ultimate Foe (2)",
@@ -5968,7 +5348,7 @@ const episodes = [
   episode: 14,
   type: "Main Show",
   released: "1986-12-06T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 23, episode: 14 },
+  imdb: { id: "tt0811752", season: 23, episode: 14 },
 },
 {
   title: "Time and the Rani (1)",
@@ -5976,7 +5356,7 @@ const episodes = [
   episode: 1,
   type: "Main Show",
   released: "1987-09-07T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 24, episode: 1 },
+  imdb: { id: "tt0562978", season: 24, episode: 1 },
 },
 {
   title: "Time and the Rani (2)",
@@ -5984,7 +5364,7 @@ const episodes = [
   episode: 2,
   type: "Main Show",
   released: "1987-09-14T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 24, episode: 2 },
+  imdb: { id: "tt0811756", season: 24, episode: 2 },
 },
 {
   title: "Time and the Rani (3)",
@@ -5992,7 +5372,7 @@ const episodes = [
   episode: 3,
   type: "Main Show",
   released: "1987-09-21T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 24, episode: 3 },
+  imdb: { id: "tt0811757", season: 24, episode: 3 },
 },
 {
   title: "Time and the Rani (4)",
@@ -6000,7 +5380,7 @@ const episodes = [
   episode: 4,
   type: "Main Show",
   released: "1987-09-28T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 24, episode: 4 },
+  imdb: { id: "tt0811758", season: 24, episode: 4 },
 },
 {
   title: "Paradise Towers (1)",
@@ -6008,7 +5388,7 @@ const episodes = [
   episode: 5,
   type: "Main Show",
   released: "1987-10-05T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 24, episode: 5 },
+  imdb: { id: "tt0562864", season: 24, episode: 5 },
 },
 {
   title: "Paradise Towers (2)",
@@ -6016,7 +5396,7 @@ const episodes = [
   episode: 6,
   type: "Main Show",
   released: "1987-10-12T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 24, episode: 6 },
+  imdb: { id: "tt0811820", season: 24, episode: 6 },
 },
 {
   title: "Paradise Towers (3)",
@@ -6024,7 +5404,7 @@ const episodes = [
   episode: 7,
   type: "Main Show",
   released: "1987-10-19T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 24, episode: 7 },
+  imdb: { id: "tt0811821", season: 24, episode: 7 },
 },
 {
   title: "Paradise Towers (4)",
@@ -6032,7 +5412,7 @@ const episodes = [
   episode: 8,
   type: "Main Show",
   released: "1987-10-26T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 24, episode: 8 },
+  imdb: { id: "tt0811822", season: 24, episode: 8 },
 },
 {
   title: "Delta and the Bannermen (1)",
@@ -6040,7 +5420,7 @@ const episodes = [
   episode: 9,
   type: "Main Show",
   released: "1987-11-02T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 24, episode: 9 },
+  imdb: { id: "tt0562839", season: 24, episode: 9 },
 },
 {
   title: "Delta and the Bannermen (2)",
@@ -6048,7 +5428,7 @@ const episodes = [
   episode: 10,
   type: "Main Show",
   released: "1987-11-09T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 24, episode: 10 },
+  imdb: { id: "tt0811665", season: 24, episode: 10 },
 },
 {
   title: "Delta and the Bannermen (3)",
@@ -6056,7 +5436,7 @@ const episodes = [
   episode: 11,
   type: "Main Show",
   released: "1987-11-16T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 24, episode: 11 },
+  imdb: { id: "tt0811666", season: 24, episode: 11 },
 },
 {
   title: "Dragonfire (1)",
@@ -6064,7 +5444,7 @@ const episodes = [
   episode: 12,
   type: "Main Show",
   released: "1987-11-23T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 24, episode: 12 },
+  imdb: { id: "tt0562841", season: 24, episode: 12 },
 },
 {
   title: "Dragonfire (2)",
@@ -6072,7 +5452,7 @@ const episodes = [
   episode: 13,
   type: "Main Show",
   released: "1987-11-30T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 24, episode: 13 },
+  imdb: { id: "tt0811670", season: 24, episode: 13 },
 },
 {
   title: "Dragonfire (3)",
@@ -6080,7 +5460,13 @@ const episodes = [
   episode: 14,
   type: "Main Show",
   released: "1987-12-07T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 24, episode: 14 },
+  imdb: { id: "tt0811671", season: 24, episode: 14 },
+},
+{
+  title: "24 Carat",
+  season: 24,
+  episode: 15,
+  type: "Minisode",
 },
 {
   title: "Remembrance of the Daleks (1)",
@@ -6088,7 +5474,7 @@ const episodes = [
   episode: 1,
   type: "Main Show",
   released: "1988-10-05T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 25, episode: 1 },
+  imdb: { id: "tt0562871", season: 25, episode: 1 },
 },
 {
   title: "Remembrance of the Daleks (2)",
@@ -6096,7 +5482,7 @@ const episodes = [
   episode: 2,
   type: "Main Show",
   released: "1988-10-12T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 25, episode: 2 },
+  imdb: { id: "tt0811832", season: 25, episode: 2 },
 },
 {
   title: "Remembrance of the Daleks (3)",
@@ -6104,7 +5490,7 @@ const episodes = [
   episode: 3,
   type: "Main Show",
   released: "1988-10-19T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 25, episode: 3 },
+  imdb: { id: "tt0811833", season: 25, episode: 3 },
 },
 {
   title: "Remembrance of the Daleks (4)",
@@ -6112,7 +5498,7 @@ const episodes = [
   episode: 4,
   type: "Main Show",
   released: "1988-10-26T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 25, episode: 4 },
+  imdb: { id: "tt0811834", season: 25, episode: 4 },
 },
 {
   title: "The Happiness Patrol (1)",
@@ -6120,7 +5506,7 @@ const episodes = [
   episode: 5,
   type: "Main Show",
   released: "1988-11-02T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 25, episode: 5 },
+  imdb: { id: "tt0562918", season: 25, episode: 5 },
 },
 {
   title: "The Happiness Patrol (2)",
@@ -6128,7 +5514,7 @@ const episodes = [
   episode: 6,
   type: "Main Show",
   released: "1988-11-09T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 25, episode: 6 },
+  imdb: { id: "tt0811692", season: 25, episode: 6 },
 },
 {
   title: "The Happiness Patrol (3)",
@@ -6136,7 +5522,7 @@ const episodes = [
   episode: 7,
   type: "Main Show",
   released: "1988-11-16T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 25, episode: 7 },
+  imdb: { id: "tt0811693", season: 25, episode: 7 },
 },
 {
   title: "Silver Nemesis (1)",
@@ -6144,7 +5530,7 @@ const episodes = [
   episode: 8,
   type: "Main Show",
   released: "1988-11-23T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 25, episode: 8 },
+  imdb: { id: "tt0562877", season: 25, episode: 8 },
 },
 {
   title: "Silver Nemesis (2)",
@@ -6152,7 +5538,7 @@ const episodes = [
   episode: 9,
   type: "Main Show",
   released: "1988-11-30T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 25, episode: 9 },
+  imdb: { id: "tt0811837", season: 25, episode: 9 },
 },
 {
   title: "Silver Nemesis (3)",
@@ -6160,7 +5546,7 @@ const episodes = [
   episode: 10,
   type: "Main Show",
   released: "1988-12-07T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 25, episode: 10 },
+  imdb: { id: "tt0811838", season: 25, episode: 10 },
 },
 {
   title: "The Greatest Show in the Galaxy (1)",
@@ -6168,7 +5554,7 @@ const episodes = [
   episode: 11,
   type: "Main Show",
   released: "1988-12-14T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 25, episode: 11 },
+  imdb: { id: "tt0562914", season: 25, episode: 11 },
 },
 {
   title: "The Greatest Show in the Galaxy (2)",
@@ -6176,7 +5562,7 @@ const episodes = [
   episode: 12,
   type: "Main Show",
   released: "1988-12-21T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 25, episode: 12 },
+  imdb: { id: "tt0811886", season: 25, episode: 12 },
 },
 {
   title: "The Greatest Show in the Galaxy (3)",
@@ -6184,7 +5570,7 @@ const episodes = [
   episode: 13,
   type: "Main Show",
   released: "1988-12-28T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 25, episode: 13 },
+  imdb: { id: "tt0811887", season: 25, episode: 13 },
 },
 {
   title: "The Greatest Show in the Galaxy (4)",
@@ -6192,7 +5578,7 @@ const episodes = [
   episode: 14,
   type: "Main Show",
   released: "1989-01-04T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 25, episode: 14 },
+  imdb: { id: "tt0811888", season: 25, episode: 14 },
 },
 {
   title: "Battlefield (1)",
@@ -6200,7 +5586,7 @@ const episodes = [
   episode: 1,
   type: "Main Show",
   released: "1989-09-06T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 26, episode: 1 },
+  imdb: { id: "tt0562831", season: 26, episode: 1 },
 },
 {
   title: "Battlefield (2)",
@@ -6208,7 +5594,7 @@ const episodes = [
   episode: 2,
   type: "Main Show",
   released: "1989-09-13T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 26, episode: 2 },
+  imdb: { id: "tt0811655", season: 26, episode: 2 },
 },
 {
   title: "Battlefield (3)",
@@ -6216,7 +5602,7 @@ const episodes = [
   episode: 3,
   type: "Main Show",
   released: "1989-09-20T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 26, episode: 3 },
+  imdb: { id: "tt0811656", season: 26, episode: 3 },
 },
 {
   title: "Battlefield (4)",
@@ -6224,7 +5610,7 @@ const episodes = [
   episode: 4,
   type: "Main Show",
   released: "1989-09-27T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 26, episode: 4 },
+  imdb: { id: "tt0811657", season: 26, episode: 4 },
 },
 {
   title: "Ghost Light (1)",
@@ -6232,7 +5618,7 @@ const episodes = [
   episode: 5,
   type: "Main Show",
   released: "1989-10-04T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 26, episode: 5 },
+  imdb: { id: "tt0562851", season: 26, episode: 5 },
 },
 {
   title: "Ghost Light (2)",
@@ -6240,7 +5626,7 @@ const episodes = [
   episode: 6,
   type: "Main Show",
   released: "1989-10-11T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 26, episode: 6 },
+  imdb: { id: "tt0811687", season: 26, episode: 6 },
 },
 {
   title: "Ghost Light (3)",
@@ -6248,7 +5634,7 @@ const episodes = [
   episode: 7,
   type: "Main Show",
   released: "1989-10-18T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 26, episode: 7 },
+  imdb: { id: "tt0811688", season: 26, episode: 7 },
 },
 {
   title: "The Curse of Fenric (1)",
@@ -6256,7 +5642,7 @@ const episodes = [
   episode: 8,
   type: "Main Show",
   released: "1989-10-25T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 26, episode: 8 },
+  imdb: { id: "tt0562902", season: 26, episode: 8 },
 },
 {
   title: "The Curse of Fenric (2)",
@@ -6264,7 +5650,7 @@ const episodes = [
   episode: 9,
   type: "Main Show",
   released: "1989-11-01T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 26, episode: 9 },
+  imdb: { id: "tt0811877", season: 26, episode: 9 },
 },
 {
   title: "The Curse of Fenric (3)",
@@ -6272,7 +5658,7 @@ const episodes = [
   episode: 10,
   type: "Main Show",
   released: "1989-11-08T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 26, episode: 10 },
+  imdb: { id: "tt0811878", season: 26, episode: 10 },
 },
 {
   title: "The Curse of Fenric (4)",
@@ -6280,7 +5666,7 @@ const episodes = [
   episode: 11,
   type: "Main Show",
   released: "1989-11-15T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 26, episode: 11 },
+  imdb: { id: "tt0811879", season: 26, episode: 11 },
 },
 {
   title: "Survival (1)",
@@ -6288,7 +5674,7 @@ const episodes = [
   episode: 12,
   type: "Main Show",
   released: "1989-11-22T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 26, episode: 12 },
+  imdb: { id: "tt0562881", season: 26, episode: 12 },
 },
 {
   title: "Survival (2)",
@@ -6296,7 +5682,7 @@ const episodes = [
   episode: 13,
   type: "Main Show",
   released: "1989-11-29T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 26, episode: 13 },
+  imdb: { id: "tt0811845", season: 26, episode: 13 },
 },
 {
   title: "Survival (3)",
@@ -6304,7 +5690,13 @@ const episodes = [
   episode: 14,
   type: "Main Show",
   released: "1989-12-06T00:00:00.000Z",
-  imdb: { id: "tt0056751", season: 26, episode: 14 },
+  imdb: { id: "tt0811846", season: 26, episode: 14 },
+},
+{
+  title: "The Promise",
+  season: 26,
+  episode: 15,
+  type: "Minisode",
 }
 ];
 
