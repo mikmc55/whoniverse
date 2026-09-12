@@ -1,151 +1,209 @@
-// Populate a series' episode list from Cinemeta.
+// Populate Classic Who's episode list by joining the ledger to an IMDb
+// episode-list CSV export (Position, Const, Title, Release Date, ...).
 //
-// Cinemeta is Stremio's own metadata addon, keyed by IMDb id and free to query,
-// so it gives titles, air dates, overviews and stills for every series in the
-// registry without an API key.
+// Cinemeta only covers about a third of Classic Who — its season/episode
+// numbering for the older serials is too patchy to key off. An IMDb "export
+// list to CSV" of the show's own episode page has one row per broadcast
+// episode with its own tt id and air date, which is what this joins against.
 //
-// What it writes is a catalogue, not a library: entries carry no `url`, so the
-// addon still treats the series as unplayable and the landing page lists it as
-// queued. Adding files later means filling in urls, not re-fetching this.
+// The join is by (serial title, part number), not by row position: IMDb's
+// own list has a few rows out of broadcast order (The Face of Evil's Part
+// Two and Three are swapped on the page itself), so position drifts but the
+// title never does.
 //
-//   node scripts/fetch-metadata.js                 every series missing data
-//   node scripts/fetch-metadata.js torchwood       just this one
-//   node scripts/fetch-metadata.js --force         refetch even if data exists
+//   node scripts/fetch-classic-metadata.js path/to/classic.csv
+//   node scripts/fetch-classic-metadata.js path/to/classic.csv --write
 
-const fs = require('node:fs');
-const path = require('node:path');
-const { series } = require('../lib/series');
+const fs = require('fs');
+const path = require('path');
 
-const CINEMETA = 'https://v3-cinemeta.strem.io/meta';
+const ROOT = path.join(__dirname, '..');
+const WRITE = process.argv.includes('--write');
+const csvPath = process.argv.slice(2).find((a) => !a.startsWith('--'));
 
-/**
- * Season 0 is upstream's bucket for anything outside the numbered run —
- * specials, minisodes, charity shorts. We keep our own five-way taxonomy, and
- * the only distinction Cinemeta actually supports is "in a season" versus
- * "not", so everything in season 0 becomes a Special and is refined by hand.
- */
-function typeFor(video) {
-  return video.season === 0 ? 'Special' : 'Main Show';
+if (!csvPath) {
+  console.error('usage: node scripts/fetch-classic-metadata.js <csv-file> [--write]');
+  process.exit(1);
 }
 
-async function fetchSeries(imdbId) {
-  for (const kind of ['series', 'movie']) {
-    const res = await fetch(`${CINEMETA}/${kind}/${imdbId}.json`);
-    if (!res.ok) continue;
-    const { meta } = await res.json();
-    if (meta) return { meta, kind };
+function tsv(file) {
+  const rows = fs.readFileSync(file, 'utf8').replace(/\r/g, '').trim().split('\n');
+  const head = rows[0].split('\t');
+  return rows.slice(1).map((r) => {
+    const c = r.split('\t');
+    return Object.fromEntries(head.map((h, i) => [h, c[i] ?? '']));
+  });
+}
+
+// Minimal CSV reader: handles quoted fields with embedded commas, which the
+// Genres column always has ("Adventure, Drama, ..."). Good enough for an
+// IMDb list export; not a general CSV parser.
+function csv(file) {
+  const text = fs.readFileSync(file, 'utf8').replace(/\r/g, '');
+  const lines = text.trim().split('\n');
+  function splitLine(line) {
+    const out = [];
+    let cur = '';
+    let inQuotes = false;
+    for (let i = 0; i < line.length; i++) {
+      const ch = line[i];
+      if (inQuotes) {
+        if (ch === '"' && line[i + 1] === '"') { cur += '"'; i++; }
+        else if (ch === '"') inQuotes = false;
+        else cur += ch;
+      } else if (ch === '"') inQuotes = true;
+      else if (ch === ',') { out.push(cur); cur = ''; }
+      else cur += ch;
+    }
+    out.push(cur);
+    return out;
   }
-  throw new Error(`no Cinemeta entry for ${imdbId}`);
+  const head = splitLine(lines[0]);
+  return lines.slice(1).map((l) => Object.fromEntries(head.map((h, i) => [h, splitLine(l)[i] ?? ''])));
 }
 
-function toEpisodes(meta, kind) {
-  // A film has no videos; it is one entry, numbered so the catalog can address it.
-  if (kind === 'movie' || !meta.videos?.length) {
-    return [{
-      title: meta.name,
-      season: 1,
-      episode: 1,
-      type: 'Special',
-      released: meta.released || (meta.year ? `${meta.year}-01-01T00:00:00.000Z` : null),
-      overview: meta.description || '',
-      thumbnail: meta.background || meta.poster || '',
-      imdb: { id: meta.imdb_id || meta.id, season: 1, episode: 1 },
-    }];
+const WORD2NUM = {
+  one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7,
+  eight: 8, nine: 9, ten: 10, eleven: 11, twelve: 12, thirteen: 13, fourteen: 14,
+};
+
+function clean(s) {
+  return s
+    .replace(/æ/g, 'ae').replace(/Æ/g, 'Ae')
+    .replace(/œ/g, 'oe').replace(/Œ/g, 'Oe')
+    .replace(/[’‘]/g, "'").replace(/[–—]/g, '-')
+    .replace(/&/g, 'and')
+    .trim().toLowerCase();
+}
+
+// IMDb's own numbering quirks that don't reduce to a simple rule.
+//   - "Invasion of the Dinosaurs" part 1 aired (and is listed) under the
+//     bare title "Invasion", to hide the reveal.
+const TITLE_ALIASES = new Map([
+  ['invasion of the dinosaurs|1', 'invasion|1'],
+]);
+
+// Season 23, "The Trial of a Time Lord", is one 14-part IMDb entry
+// ("The Trial of a Time Lord: Part One".."Part Fourteen") but the ledger
+// keeps its four constituent stories as separate titles. Map ledger
+// (title, local part) to the continuous Trial part number.
+const TRIAL_SUBSERIALS = [
+  ['the mysterious planet', 4],
+  ['mindwarp', 4],
+  ['terror of the vervoids', 4],
+  ['the ultimate foe', 2],
+];
+const trialAlias = new Map();
+{
+  let offset = 0;
+  for (const [base, count] of TRIAL_SUBSERIALS) {
+    for (let n = 1; n <= count; n++) trialAlias.set(`${base}|${n}`, `the trial of a time lord|${offset + n}`);
+    offset += count;
   }
-
-  return meta.videos
-    .slice()
-    .sort((a, b) => (a.season - b.season) || (a.episode - b.episode))
-    .map((v) => ({
-      title: v.name || v.title || `Episode ${v.episode}`,
-      // Season 0 is kept as season 0, not folded onto season 1. Folding it put
-      // 93 specials on top of Classic Who's 42-episode first season and showed
-      // it as 135. Stremio treats season 0 as specials by convention anyway.
-      season: v.season,
-      episode: v.episode,
-      type: typeFor(v),
-      released: v.released || v.firstAired || null,
-      overview: v.overview || v.description || '',
-      thumbnail: v.thumbnail || '',
-      imdb: { id: meta.imdb_id || meta.id, season: v.season, episode: v.episode },
-    }));
 }
 
-function render(key, name, episodes) {
-  const body = episodes.map((e) => {
-    const lines = [
-      `  title: ${JSON.stringify(e.title)},`,
-      `  season: ${e.season},`,
-      `  episode: ${e.episode},`,
-      `  type: ${JSON.stringify(e.type)},`,
-    ];
-    if (e.released) lines.push(`  released: ${JSON.stringify(e.released)},`);
-    if (e.overview) lines.push(`  overview: ${JSON.stringify(e.overview)},`);
-    if (e.thumbnail) lines.push(`  thumbnail: ${JSON.stringify(e.thumbnail)},`);
-    lines.push(`  imdb: { id: ${JSON.stringify(e.imdb.id)}, season: ${e.imdb.season}, episode: ${e.imdb.episode} },`);
-    return `{\n${lines.join('\n')}\n}`;
-  }).join(',\n');
+function ledgerKey(title) {
+  const m = title.match(/^(.*) \((\d+)\)$/);
+  if (!m) return clean(title) + '|';
+  const base = clean(m[1]);
+  const num = Number(m[2]);
+  const raw = `${base}|${num}`;
+  return TITLE_ALIASES.get(raw) || trialAlias.get(raw) || raw;
+}
 
-  return `// ${name} — catalogued, not yet playable.
+function csvKey(rawTitle) {
+  const title = rawTitle.startsWith('Doctor Who: ') ? rawTitle.slice('Doctor Who: '.length) : rawTitle;
+  const m = title.match(/^(.*): (?:Part|Episode) (\w+)$/);
+  if (!m) return clean(title) + '|';
+  const base = clean(m[1]);
+  const word = m[2].toLowerCase();
+  const num = WORD2NUM[word] ?? (/^\d+$/.test(m[2]) ? Number(m[2]) : null);
+  return num == null ? clean(title) + '|' : `${base}|${num}`;
+}
+
+const ledgerRows = tsv(path.join(ROOT, 'ledger', 'series', '01-classic-who.tsv'));
+const csvRows = csv(csvPath);
+
+const byKey = new Map();
+for (const row of csvRows) byKey.set(csvKey(row.Title), row);
+
+const dataFile = path.join(ROOT, 'data', 'classic-who.js');
+let existing = [];
+try { existing = require(dataFile); } catch { /* nothing yet */ }
+const curated = existing.filter((e) => e.url || e.streamUrl).length;
+if (curated) {
+  console.error(`refused — ${curated} curated entries in data/classic-who.js have a url; this would overwrite them`);
+  process.exit(1);
+}
+
+function isoDate(d) {
+  return d ? `${d}T00:00:00.000Z` : undefined;
+}
+
+const out = [];
+const unmatched = [];
+let seasonCounter = {};
+for (const row of ledgerRows) {
+  const season = Number(row.season);
+  seasonCounter[season] = (seasonCounter[season] || 0) + 1;
+  const episode = seasonCounter[season];
+
+  const key = ledgerKey(row.title);
+  const src = byKey.get(key);
+  const e = { title: row.title, season, episode, type: row.category };
+  if (src) {
+    e.released = isoDate(src['Release Date']);
+    e.imdb = { id: src.Const, season, episode };
+  } else {
+    unmatched.push(`${row.category.padEnd(20)} S${season} E${episode}  ${row.title}`);
+  }
+  out.push(e);
+}
+
+console.log(`${out.length} rows, ${out.length - unmatched.length} matched to an IMDb id, ${unmatched.length} unmatched`);
+if (unmatched.length) {
+  console.log('\nunmatched (left with title only, add by hand or extend the CSV):');
+  for (const u of unmatched) console.log('   ' + u);
+}
+
+if (!WRITE) {
+  console.log('\ndry run. add --write.');
+  process.exit(0);
+}
+
+const KEYS = ['title', 'season', 'episode', 'type', 'released', 'overview', 'thumbnail', 'imdb'];
+function render(e) {
+  const lines = [];
+  for (const k of KEYS) {
+    if (e[k] === undefined) continue;
+    if (k === 'imdb') {
+      lines.push(`  imdb: { id: ${JSON.stringify(e.imdb.id)}, season: ${e.imdb.season}, episode: ${e.imdb.episode} },`);
+    } else {
+      lines.push(`  ${k}: ${typeof e[k] === 'number' ? e[k] : JSON.stringify(e[k])},`);
+    }
+  }
+  return '{\n' + lines.join('\n') + '\n}';
+}
+
+const header = `// Classic Who — catalogued, not yet playable.
 //
-// Fetched from Cinemeta by scripts/fetch-metadata.js. No entry has a \`url\`,
-// so the addon does not offer these as streams and the landing page lists the
-// series as queued. Adding files means adding urls here, not refetching.
+// Joined from ledger/series/01-classic-who.tsv and an IMDb episode-list CSV
+// export by scripts/fetch-classic-metadata.js. No entry has a \`url\`, so the
+// addon does not offer these as streams and the landing page lists the series
+// as queued. Adding files means adding urls here, not refetching.
 //
-// Upstream's season 0 holds specials and shorts and is kept as season 0, which
-// is what Stremio expects. Everything in it is typed Special; refining that into
-// minisode, prequel and animated needs a pass by hand.
+// A few dozen items (minisodes, Shada, K9 & Company, two Resurrection of the
+// Daleks parts) are not on the IMDb episode list this was built from and are
+// listed with a title only.
+//
+// Rebuild with: node scripts/fetch-classic-metadata.js <csv> --write
 
 const episodes = [
-${body}
+${out.map(render).join(',\n')}
 ];
 
 module.exports = episodes;
 `;
-}
 
-async function main() {
-  const args = process.argv.slice(2);
-  const force = args.includes('--force');
-  const only = args.filter((a) => !a.startsWith('--'));
-
-  for (const entry of series) {
-    if (only.length && !only.includes(entry.key)) continue;
-
-    const file = path.join(__dirname, '..', 'data', `${entry.data}.js`);
-    const existing = require(file);
-
-    // Never overwrite hand-curated work. An entry with a url was placed there
-    // deliberately — ordered, typed, pointed at a real file — and none of that
-    // comes back from Cinemeta. `--force` with no series named once wiped New
-    // Who's 239 curated entries and every bucket url with them.
-    const curated = existing.filter((e) => e.url || e.streamUrl).length;
-    if (curated) {
-      console.log(`${entry.key.padEnd(14)} refused — ${curated} curated entries with urls`);
-      continue;
-    }
-
-    if (existing.length && !force) {
-      console.log(`${entry.key.padEnd(14)} skipped — ${existing.length} entries already`);
-      continue;
-    }
-
-    const imdbId = entry.imdb.default;
-    try {
-      const { meta, kind } = await fetchSeries(imdbId);
-      const episodes = toEpisodes(meta, kind);
-      fs.writeFileSync(file, render(entry.key, entry.name, episodes));
-
-      const seasons = new Set(episodes.map((e) => e.season));
-      const specials = episodes.filter((e) => e.season === 0).length;
-      console.log(
-        `${entry.key.padEnd(14)} ${String(episodes.length).padStart(4)} entries, ` +
-        `${seasons.size} groups${specials ? ` (${specials} in season 0)` : ''}, from ${imdbId}`
-      );
-    } catch (err) {
-      console.log(`${entry.key.padEnd(14)} FAILED — ${err.message}`);
-    }
-  }
-}
-
-main().catch((e) => { console.error(e.message); process.exit(1); });
+fs.writeFileSync(dataFile, header, 'utf8');
+console.log('\nwrote data/classic-who.js');

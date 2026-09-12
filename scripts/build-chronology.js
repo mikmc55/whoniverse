@@ -71,7 +71,7 @@ for (const row of allWho) {
   if (!src) { out.push(e); continue; }
   // Only what the source actually has. An item with no file yet contributes a
   // title and nothing else, and the client greys it out the same as elsewhere.
-  ffor (const k of ['released', 'overview', 'quality', 'audio', 'thumbnail',
+  for (const k of ['released', 'overview', 'quality', 'audio', 'thumbnail',
     'streamUrl', 'subtitleUrl', 'filename', 'imdb', 'overrideUrl']) {
     if (src[k] !== undefined) e[k] = src[k];
   }
