@@ -15,12 +15,14 @@ const episodes = [
   season: 1,
   episode: 1,
   type: "Special",
+  imdb: { id: "tt0261655", season: 1, episode: 1 },
 },
 {
   title: "Dimensions in Time (2)",
   season: 1,
   episode: 2,
   type: "Special",
+  imdb: { id: "tt0261655", season: 1, episode: 2 },
 },
 {
   title: "Doctor Who: The Movie",
@@ -34,48 +36,56 @@ const episodes = [
   thumbnail: "https://cdn.nubblyn.com/file/whoniverse/wilderness_years/season_1/S01_E03_doctor_who_the_movie.jpg?v=e6baebd8",
   streamUrl: "https://cdn.nubblyn.com/file/whoniverse/wilderness_years/season_1/S01_E03_doctor_who_the_movie.mkv?v=5142391b",
   filename: "S01_E03_doctor_who_the_movie.mkv",
+  imdb: { id: "tt0116118", season: 1, episode: 1 },
 },
 {
   title: "Doctor Who and the Curse of Fatal Death (1)",
   season: 1,
   episode: 4,
   type: "Special",
+  imdb: { id: "tt0212887", season: 1, episode: 1 },
 },
 {
   title: "Doctor Who and the Curse of Fatal Death (2)",
   season: 1,
   episode: 5,
   type: "Special",
+  imdb: { id: "tt0212887", season: 1, episode: 2 },
 },
 {
   title: "Doctor Who and the Curse of Fatal Death (3)",
   season: 1,
   episode: 6,
   type: "Special",
+  imdb: { id: "tt0212887", season: 1, episode: 3 },
 },
 {
   title: "Doctor Who and the Curse of Fatal Death (4)",
   season: 1,
   episode: 7,
   type: "Special",
+  imdb: { id: "tt0212887", season: 1, episode: 4 },
 },
 {
   title: "Death Comes to Time",
   season: 1,
   episode: 8,
   type: "Animated Series",
+  imdb: { id: "tt2935032", season: 1, episode: 1 },
 },
 {
   title: "Real Time",
   season: 1,
   episode: 9,
   type: "Animated Series",
+  imdb: { id: "tt2935126", season: 1, episode: 1 },
 },
 {
   title: "Scream of the Shalka",
   season: 1,
   episode: 10,
   type: "Animated Series",
+  imdb: { id: "tt0388894", season: 1, episode: 1 },
 }
 ];
 
